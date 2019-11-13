@@ -129,7 +129,7 @@ Due to hardships faced during its intial development as documented in the previo
 
 Any further changes or additions that need to be made after the release of v1.0.0 will require a high-quality formal specification, and oversight from a digitally fluent project manager.
 
-A roadmap with planned future changes can be found in [docs](https://github.com/Fdawgs/ydh-discharge-summary-form/tree/master/docs/worklogs).
+A roadmap with planned future changes can be found in [docs](https://github.com/Fdawgs/ydh-discharge-summary-form/tree/master/docs/).
 
 # License
 `ydh-discharge-summary-form` is licensed under the [MIT](https://github.com/Fdawgs/ydh-discharge-summary-form/blob/master/LICENSE) license.
