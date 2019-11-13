@@ -1,0 +1,472 @@
+<div id="Medication" class="tab-div">
+    <div class="full-column">
+
+        <div class="block">
+            <label>
+                <h3>Medication Details</h3>
+            </label>
+        </div>
+
+        <div class="block">
+            <label>
+                <strong>Note:</strong> Drug allergies are also retrieved directly from <a
+                    href="https://trakcare.ydh.nhs.uk/trakcare/">TrakCare</a>,<br>
+                retrieving any asserted between the admission and discharge date in this form.
+                Please ensure the allergy details are up to date in the system before signing off summary.
+            </label>
+        </div>
+
+        <div class="block">
+            <label>Drug Allergies:</label>
+            <textarea class="input" name="medication_allergiesFreetext" cols="20" rows="4"
+                spellcheck="true" required><%- typeof medication_allergiesFreetext !== 'undefined' ? medication_allergiesFreetext : '' %></textarea>
+        </div>
+
+        <div class="block">
+            <label>
+                <h4>Medication Changes</h4>
+            </label>
+        </div>
+        <div class="block" id="medchange-header">
+            <label>Were medications changed during this admission?:</label>
+            <select class="binaryinput" name="medication_change">
+                <option value="" onclick="hideClass('medication-change-button');"></option>
+                <option value="No" onclick="hideClass('medication-change-button');">No</option>
+                <option value="Yes" onclick="showClass('medication-change-button')">Yes</option>
+            </select>
+            <button class="input medication-change-button" style="width:25%" onclick="addMedicationChangeBlock()"
+                type="button" title="Add new medication change item">Add new Medication Change</button>
+        </div>
+
+
+        <%
+        if (typeof changedmeds !== 'undefined') {
+            let parsedChangedMeds;
+            if (typeof changedmeds === 'string') {
+                parsedChangedMeds = JSON.parse(changedmeds);
+            } else {
+                parsedChangedMeds = changedmeds;
+            }
+        
+            parsedChangedMeds.forEach((element) => { %>
+        <div class="block form-block"><span title="Remove medication item" class="closebtn"
+                onclick="this.parentElement.remove();">×</span>
+            <br><br>
+            <div class="block">
+                <label>Medication Changed:</label>
+                <input class="input" type="text" name="medication_changedMed"
+                    value="<%- typeof element.medication_changedMed !== 'undefined' ? element.medication_changedMed : '' %>">
+            </div>
+
+            <div class="block">
+                <label>Reason For Change:</label>
+                <input class="input" type="text" name="medication_changedReason"
+                    value="<%- typeof element.medication_changedReason !== 'undefined' ? element.medication_changedReason : '' %>">
+            </div>
+
+            <div class="block">
+                <label>Future Plan For This Medication:</label>
+                <select class="input" name="medication_changedPlan">
+                    <%  let medicationChangedPlanOption = ['', 'Complete the prescribed course', 'Continue as prescribed',
+                        'Not to be restarted', 'Restart after clinical review', 'Review needed by GP', 'Started during admission'];
+                        for (let j = 0; j < medicationChangedPlanOption.length; j += 1) {
+                            let attributes;
+
+                            if (typeof element.medication_changedPlan !== 'undefined' && element.medication_changedPlan === medicationChangedPlanOption[j]) {
+                                attributes = 'selected';
+                            } else {
+                                attributes = '';
+                            }
+                    %>
+                    <option value="<%=medicationChangedPlanOption[j]%>" <%-attributes%>>
+                        <%=medicationChangedPlanOption[j]%></option>
+                    <%
+                        }
+                    %>
+                </select>
+            </div>
+        </div>
+        <%})}%>
+
+        <div class="block">
+            <label>
+                <h4>TTO Prescriptions</h4>
+            </label>
+        </div>
+
+
+        <div class="block" id="ttos-header">
+            <label>Were TTOs prescribed?:</label>
+            <select class="binaryinput" name="medication_tto">
+                <option value="" onclick="hideClass('medication-tto-button');"></option>
+                <option value="No" onclick="hideClass('medication-tto-button');">No</option>
+                <option value="Yes" onclick="showClass('medication-tto-button')">Yes</option>
+            </select>
+            <button class="input medication-tto-button" style="width:25%;" onclick="addMedicationBlock()" type="button"
+                title="Add new pharmacy TTO item">Add new TTO</button>
+        </div>
+
+        <%
+        if (typeof ttos !== 'undefined') {
+            let parsedTtos;
+            if (typeof ttos === 'string') {
+                parsedTtos = JSON.parse(ttos);
+            } else {
+                parsedTtos = ttos;
+            }
+        
+            parsedTtos.forEach((element) => {
+                let ttoDisabled = '';
+                let ttoReadonly = ''; %>
+        <div class="block form-block">
+
+            <% if (element.medication_ttoLockDate !== '') { 
+                ttoDisabled = 'disabled';
+                ttoReadonly = 'readonly';
+                %>
+            <span style="float: left; margin-left: 0px; margin-right: 15px">
+                Locked <%=element.medication_ttoLockDate%> by <%=element.medication_ttoLockUser%>
+                <input type='hidden' name='medication_ttoLockDate' value='<%=element.medication_ttoLockDate%>' />
+                <input type='hidden' name='medication_ttoLockUser' value='<%=element.medication_ttoLockUser%>' />
+            </span>
+            <% } else { %>
+            <span title="Remove medication item" class="closebtn" onclick="this.parentElement.remove();">×</span>
+            <span title="Lock medication" class="closebtn" style="float: left; margin-left: 0px; margin-right: 15px"
+                onclick="confirmLock(this);">
+                <input type='hidden' name='medication_ttoLockDate' value='' />
+                <input type='hidden' name='medication_ttoLockUser' value='' />
+                ⚿
+            </span>
+            <% } %>
+
+            <br><br>
+            <div class="half-column">
+                <div class="block">
+                    <label>Medication:</label>
+                    <input class="input <%=ttoDisabled%>" type="text" name="medication_ttoMedication"
+                        value="<%- typeof element.medication_ttoMedication !== 'undefined' ? element.medication_ttoMedication : '' %>"
+                        onchange="highRiskDrugCheck(this)" <%=ttoReadonly%>>
+                </div>
+
+
+
+                <div class="block">
+                    <label style="width: 15%">Dose:</label>
+                    <input style="width: 30%" class="input <%=ttoDisabled%>" name="medication_ttoDose" type="number"
+                        min="1"
+                        value="<%- typeof element.medication_ttoDose !== 'undefined' ? element.medication_ttoDose : '1' %>"
+                        <%=ttoReadonly%>>
+
+                    <label style="width: 15%">Unit:</label>
+
+                    <input style="width:30%;" class="input <%=ttoDisabled%>" list="medicationTtoUnits"
+                        name="medication_ttoUnit"
+                        value="<%- typeof element.medication_ttoUnit !== 'undefined' ? element.medication_ttoUnit : '' %>"
+                        <%=ttoReadonly%>>
+                    <datalist id="medicationTtoUnits">
+                        <option value=""></option>
+                        <option value="application">application</option>
+                        <option value="applicatorful">applicatorful</option>
+                        <option value="bottle(s)">bottle(s)</option>
+                        <option value="caplet">caplet</option>
+                        <option value="capsule">capsule</option>
+                        <option value="drop(s)">drop(s)</option>
+                        <option value="g">g</option>
+                        <option value="mcg">mcg</option>
+                        <option value="mg">mg</option>
+                        <option value="ml">ml</option>
+                        <option value="ng">ng</option>
+                        <option value="patch">patch</option>
+                        <option value="pessary">pessary</option>
+                        <option value="puff(s)">puff(s)</option>
+                        <option value="sachet">sachet</option>
+                        <option value="spray(s)">spray(s)</option>
+                        <option value="suppository">suppository</option>
+                        <option value="tablet">tablet</option>
+                        <option value="units">units</option>
+                    </datalist>
+                </div>
+                <div class="block">
+                    <label>Route:</label>
+                    <input class="input <%=ttoDisabled%>" list="medicationTtoRoutes" name="medication_ttoRoute"
+                        value="<%- typeof element.medication_ttoRoute !== 'undefined' ? element.medication_ttoRoute : '' %>"
+                        <%=ttoReadonly%>>
+                    <datalist id="medicationTtoRoutes">
+                        <option value=""></option>
+                        <option value="BUC - Buccal">BUC - Buccal</option>
+                        <option value="IA - Intraartciular">IA - Intraartciular</option>
+                        <option value="IM - Intramuscular">IM - Intramuscular</option>
+                        <option value="INH - By inhilation">INH - By inhilation</option>
+                        <option value="Intraoccular">Intraoccular</option>
+                        <option value="Intravitreal">Intravitreal</option>
+                        <option value="IV - Intravenous">IV - Intravenous</option>
+                        <option value="NEB - By nebulisation">NEB - By nebulisation</option>
+                        <option value="NG - By nasogastric tube">NG - By nasogastric tube</option>
+                        <option value="PEG">PEG</option>
+                        <option value="PO - Oral">PO - Oral</option>
+                        <option value="PR - Rectal">PR - Rectal</option>
+                        <option value="PV - Vaginal">PV - Vaginal</option>
+                        <option value="SC - Subcutaneous">SC - Subcutaneous</option>
+                        <option value="SL - Sublingual">SL - Sublingual</option>
+                        <option value="TD - Transdermal">TD - Transdermal</option>
+                        <option value="TOP - Topical">TOP - Topical</option>
+                    </datalist>
+                </div>
+            </div>
+
+            <div class="half-column">
+                <div class="block">
+                    <label>Frequency:</label>
+                    <input class="input <%=ttoDisabled%>" list="medicationTtoFrequencies" name="medication_ttoFrequency"
+                        value="<%- typeof element.medication_ttoFrequency !== 'undefined' ? element.medication_ttoFrequency : '' %>"
+                        <%=ttoReadonly%>>
+                    <datalist id="medicationTtoFrequencies">
+                        <option value=""></option>
+                        <option value="5 times per day">5 times per day</option>
+                        <option value="Alternate days">Alternate days</option>
+                        <option value="As directed">As directed</option>
+                        <option value="BD PRN - twice daily as needed">BD PRN - twice daily as needed</option>
+                        <option value="BD - twice daily">BD - twice daily</option>
+                        <option value="OD - once daily">OD - once daily</option>
+                        <option value="OD PRN - once daily as needed">OD PRN - once daily as needed</option>
+                        <option value="OM - once each morning">OM - once each morning</option>
+                        <option value="ON - once each night">ON - once each night</option>
+                        <option value="Once at lunchtime">Once at lunchtime</option>
+                        <option value="Once at suppertime">Once at suppertime</option>
+                        <option value="Once weekly">Once weekly</option>
+                        <option value="PRN - as needed">PRN - as needed</option>
+                        <option value="QDS - 4 times per day">QDS - 4 times per day</option>
+                        <option value="QDS PRN - 4 times per day as needed">QDS PRN - 4 times per day as needed</option>
+                        <option value="TDS - 3 times per day">TDS - 3 times per day</option>
+                        <option value="TDS PRN - 3 times per day as needed">TDS PRN - 3 times per day as needed</option>
+                    </datalist>
+                </div>
+
+                <div class="block">
+                    <label>Start Date:</label>
+                    <input class="input <%=ttoDisabled%>" type="date" name="medication_ttoStartDate"
+                        value="<%- typeof element.medication_ttoStartDate !== 'undefined' ? element.medication_ttoStartDate : '' %>"
+                        <%=ttoReadonly%>>
+                </div>
+
+                <div class="block">
+                    <label>Length of Course:</label>
+                    <input class="input <%=ttoDisabled%>" list="medicationTtoLengthOfCourses"
+                        name="medication_ttoLengthOfCourse"
+                        value="<%- typeof element.medication_ttoLengthOfCourse !== 'undefined' ? element.medication_ttoLengthOfCourse : '' %>"
+                        <%=ttoReadonly%>>
+                    <datalist id="medicationTtoLengthOfCourses">
+                        <option value=""></option>
+                        <option value="1 day">1 day</option>
+                        <option value="2 days">2 days</option>
+                        <option value="3 days">3 days</option>
+                        <option value="4 days">4 days</option>
+                        <option value="5 days">5 days</option>
+                        <option value="6 days">6 days</option>
+                        <option value="7 days">7 days</option>
+                        <option value="8 days">8 days</option>
+                        <option value="9 days">9 days</option>
+                        <option value="10 days">10 days</option>
+                        <option value="11 days">11 days</option>
+                        <option value="12 days">12 days</option>
+                        <option value="13 days">13 days</option>
+                        <option value="14 days">14 days</option>
+                        <option value="Ongoing">Ongoing</option>
+                    </datalist>
+                </div>
+
+                <div class="block">
+                    <label>Comments:</label>
+                    <textarea class="input <%=ttoDisabled%>" name="medication_ttoComments" cols="20" rows="4"
+                        spellcheck="true"
+                        <%=ttoReadonly%>><%- typeof element.medication_ttoComments !== 'undefined' ? element.medication_ttoComments : '' %></textarea>
+                </div>
+            </div>
+
+            <div class="full-column" style="display: block">
+                <hr>
+            </div>
+
+            <div class="half-column">
+                <div class="block">
+                    <label>
+                        <h3>Pharmacy Sign Off</h3>
+                    </label>
+                </div>
+                <div class="block">
+                    <label>
+                        <h4>Pharmacy Clinical Screen</h4>
+                    </label>
+                </div>
+
+                <div class="sign-off">
+                    <div class="block">
+                        <label>I confirm this TTO is correct:</label>
+                        <input class="binaryinput" type="checkbox" name="medication_ttoPharmacySignOffCheck"
+                            title="Confirm TTO correct" onclick="signOff(this);"
+                            <% if (typeof element.medication_ttoPharmacySignOffCheck !== 'undefined' && element.medication_ttoPharmacySignOffCheck === 'on') { %>
+                            checked disabled <% } else if (useraccess.pharmacy.disabled === '') {%> <%} else {%>
+                            disabled <%} %> />
+
+                        <input name="medication_ttoPharmacySignOffCheck" type="hidden"
+                            value="<%- element.medication_ttoPharmacySignOffCheck !== 'undefined' && element.medication_ttoPharmacySignOffCheck === 'on' ? 'on' : '' %>" />
+                    </div>
+
+                    <div class="block">
+                        <label>Name:</label>
+                        <input class="input disabled" type="text" name="medication_ttoPharmacySignOffName"
+                            value="<%- typeof element.medication_ttoPharmacySignOffName !== 'undefined' ? element.medication_ttoPharmacySignOffName : '' %>"
+                            readonly />
+                    </div>
+
+                    <div class="block">
+                        <label>Date:</label>
+                        <input class="input disabled" type="date" name="medication_ttoPharmacySignOffDate"
+                            value="<%- typeof element.medication_ttoPharmacySignOffDate !== 'undefined' ? element.medication_ttoPharmacySignOffDate : '' %>"
+                            readonly />
+                    </div>
+
+                    <div class="block">
+                        <label>Time:</label>
+                        <input class="input disabled" type="time" name="medication_ttoPharmacySignOffTime"
+                            value="<%- typeof element.medication_ttoPharmacySignOffTime !== 'undefined' ? element.medication_ttoPharmacySignOffTime : '' %>"
+                            readonly />
+                    </div>
+                </div>
+            </div>
+
+            <div class="half-column">
+
+                <div class="block">
+                    <label>
+                    </label>
+                </div>
+
+                <div class="block">
+                    <label>Availability:</label>
+
+                    <% if (ttoDisabled) {%>
+                    <input class="input disabled" type="text" name="medication_ttoPharmacyAvailability"
+                        value="<%=element.medication_ttoPharmacyAvailability%>" readonly />
+                    <%} else {%>
+                    <select class="input <%=ttoDisabled%>" name="medication_ttoPharmacyAvailability">
+                        <%  let medicationTtoPharmacyAvailability = ['', 'CD Prescription',
+                            'For Dispensing', 'Kitchen', 'Not Dispensed',
+                            'On Ward', 'Ordered from Pharmacy today', 'PODs (At Home)',
+                            'PODs (Blister Pack)', 'PODs (Patient Locker)', 'TTO pack on ward'];
+                                for (let k = 0; k < medicationTtoPharmacyAvailability.length; k += 1) {
+                                    let attributes;
+
+                                    if (typeof element.medication_ttoPharmacyAvailability !== 'undefined' && element.medication_ttoPharmacyAvailability === medicationTtoPharmacyAvailability[k]) {
+                                        attributes = 'selected';
+                                    } else {
+                                        attributes = '';
+                                    }
+
+                                    attributes += ` ${useraccess.pharmacy.disabled}`;
+
+                            %>
+                        <option value="<%=medicationTtoPharmacyAvailability[k]%>" <%-attributes%>>
+                            <%=medicationTtoPharmacyAvailability[k]%></option>
+                        <%
+                                }
+                            %>
+                    </select>
+
+                    <%}%>
+                </div>
+
+
+                <div class="block">
+                    <label>
+                        <h4>Pharmacy Final Check</h4>
+                    </label>
+                </div>
+                <div class="sign-off">
+                    <div class="block">
+                        <label>I confirm this TTO is correct:</label>
+                        <input class="binaryinput" type="checkbox" name="medication_finalPharmacySignOffCheck"
+                            title="Confirm TTO correct" onclick="signOff(this);"
+                            <% if (typeof element.medication_finalPharmacySignOffCheck !== 'undefined' && element.medication_finalPharmacySignOffCheck === 'on') { %>
+                    checked disabled <% } else {%>
+                    <%}%> />
+
+                    <input name="medication_finalPharmacySignOffCheck" type="hidden"
+                    value="<%- element.medication_finalPharmacySignOffCheck !== 'undefined' && element.medication_finalPharmacySignOffCheck === 'on' ? 'on' : '' %>"
+                    />
+                </div>
+                <div class="block">
+                    <label>Name:</label>
+                    <input class="input disabled" type="text" name="medication_finalPharmacySignOffName"
+                        value="<%- typeof element.medication_finalPharmacySignOffName !== 'undefined' ? element.medication_finalPharmacySignOffName : '' %>"
+                        readonly />
+                </div>
+                <div class="block">
+                    <label>Date:</label>
+                    <input class="input disabled" type="date" name="medication_finalPharmacySignOffDate"
+                        value="<%- typeof element.medication_finalPharmacySignOffDate !== 'undefined' ? element.medication_finalPharmacySignOffDate : '' %>"
+                        readonly />
+                </div>
+                <div class="block">
+                    <label>Time:</label>
+                    <input class="input disabled" type="time" name="medication_finalPharmacySignOffTime"
+                        value="<%- typeof element.medication_finalPharmacySignOffTime !== 'undefined' ? element.medication_finalPharmacySignOffTime : '' %>"
+                        readonly />
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <% })} %>
+
+
+    <div class="block">
+        <label>
+            <h3>Overall Pharmacy Sign Off</h3>
+        </label>
+    </div>
+    <div class="block">
+        <label>Comments:</label>
+        <textarea class="input" name="medication_overallPharmacyComments" cols="20" rows="4"
+            spellcheck="true"><%- typeof medication_overallPharmacyComments !== 'undefined' ? medication_overallPharmacyComments : '' %></textarea>
+    </div>
+    <div class="sign-off">
+        <div class="block">
+            <label>I confirm the medication section of this summary is correct:</label>
+
+            <input class="binaryinput" type="checkbox" name="medication_overallPharmacySignOffCheck"
+                title="Confirm discharge summary correct" onclick="signOff(this);"
+                <% if (typeof medication_overallPharmacySignOffCheck !== 'undefined' && medication_overallPharmacySignOffCheck === 'on') { %>
+                checked disabled
+                <% } else if (useraccess.nurse.disabled === '' || useraccess.transcribe.disabled === '') {%>
+                <%} else {%> disabled <%} %> />
+            <% if (typeof medication_overallPharmacySignOffCheck !== 'undefined' && medication_overallPharmacySignOffCheck === 'on') { %>
+            <input name="medication_overallPharmacySignOffCheck" type="hidden" value="on" />
+            <% } %>
+        </div>
+
+        <div class="block">
+            <label>Name:</label>
+            <input class="input disabled" type="text" name="medication_overallPharmacySignOffName"
+                value="<%- typeof medication_overallPharmacySignOffName !== 'undefined' ? medication_overallPharmacySignOffName : '' %>"
+                readonly />
+        </div>
+
+        <div class="block">
+            <label>Date:</label>
+            <input class="input disabled" type="date" name="medication_overallPharmacySignOffDate"
+                value="<%- typeof medication_overallPharmacySignOffDate !== 'undefined' ? medication_overallPharmacySignOffDate : '' %>"
+                readonly />
+        </div>
+
+        <div class="block">
+            <label>Time:</label>
+            <input class="input disabled" type="time" name="medication_overallPharmacySignOffTime"
+                value="<%- typeof medication_overallPharmacySignOffTime !== 'undefined' ? medication_overallPharmacySignOffTime : '' %>"
+                readonly />
+        </div>
+    </div>
+
+</div>
+<% include save_section.ejs %>
+</div>

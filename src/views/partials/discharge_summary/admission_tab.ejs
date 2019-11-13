@@ -1,0 +1,229 @@
+<div id="Admission" class="tab-div">
+    <div class="full-column">
+
+        <div class="block">
+            <label>
+                <h3>Admission Details</h3>
+            </label>
+        </div>
+
+        <div class="block">
+            <label>Admitting Specialty:</label>
+            <!-- Refer to https://www.datadictionary.nhs.uk/data_dictionary/attributes/m/main_specialty_code_de.asp -->
+            <select class="input" name="admission_specialty">
+                <%  const admissionSpecialtyOption = ['',
+                        'ACCIDENT & EMERGENCY',
+                        'ANAESTHETICS',
+                        'CARDIOLOGY',
+                        'CLINICAL HAEMATOLOGY',
+                        'DERMATOLOGY',
+                        'ENT',
+                        'GASTROENTEROLOGY',
+                        'GENERAL MEDICINE',
+                        'GENERAL SURGERY',
+                        'GERIATRIC MEDICINE',
+                        'GYNAECOLOGY',
+                        'MEDICAL ONCOLOGY',
+                        'MIDWIFE EPISODE',
+                        'NEPHROLOGY',
+                        'NEUROLOGY',
+                        'OBSTETRICS',
+                        'OPHTHALMOLOGY',
+                        'ORAL & MAXILLO FACIAL SURGERY',
+                        'ORAL SURGERY',
+                        'PAEDIATRIC CARDIOLOGY',
+                        'PAEDIATRIC DENTISTRY',
+                        'PAEDIATRICS',
+                        'PLASTIC SURGERY',
+                        'RESPIRATORY MEDICINE',
+                        'RHEUMATOLOGY',
+                        'TRAUMA & ORTHOPAEDICS',
+                        'UROLOGY'];
+                    for (let j = 0; j < admissionSpecialtyOption.length; j += 1) {
+                        let attributes;
+                    
+                        if (typeof admission_specialty !== 'undefined' && admission_specialty === admissionSpecialtyOption[j]) {
+                            attributes = 'selected';
+                        } else {
+                            attributes = '';
+                        }
+                %>
+                <option value="<%=admissionSpecialtyOption[j]%>" <%-attributes%>><%=admissionSpecialtyOption[j]%>
+                </option>
+                <%
+                    }
+                %>
+            </select>
+        </div>
+
+        <div class="block">
+            <label>Admission Date:</label>
+            <input class="input" type="date" name="admission_date"
+                value="<%- typeof admission_date !== 'undefined' ? admission_date : '' %>" />
+        </div>
+
+        <div class="block">
+            <label>Admission Time:</label>
+            <input class="input" type="time" name="admission_time"
+                value="<%- typeof admission_time !== 'undefined' ? admission_time : '' %>" />
+        </div>
+
+        <div class="block">
+            <label>Admission Method:</label>
+            <!-- Refer to https://www.datadictionary.nhs.uk/data_dictionary/attributes/a/add/admission_method_de.asp -->
+            <select class="input" name="admission_method">
+                <%  const admissionMethodOption = ['', 'Elective - Booked', 'Elective - Planned',
+                        'Elective - Waiting List', 'Emergency - A&E of ANOTHER provider where not admitted',
+                        'Emergency - A&E or dental casualty department', 'Emergency - Baby born at home as intended',
+                        'Emergency - Bed Bureau', 'Emergency - Consultant Clinic', 'Emergency - GP',
+                        'Emergency - Mental Health Crisis Resolution Team', 'Emergency - Other',
+                        'Emergency - Transfer of admitted patient from ANOTHER provider', 'Emergency - Waiting List',
+                        'Maternity - Admitted ante partum', 'Maternity - Admitted post partum', 'Other - Baby born in hospital',
+                        'Other - Baby born outside of hospital except when at home as intended',
+                        'Other - Transfer of admitted patient from ANOTHER provider other than in emergency'];
+                    
+                    for (let k = 0; k < admissionMethodOption.length; k += 1) {
+                        let attributes;
+                    
+                        if (typeof admission_method !== 'undefined' && admission_method === admissionMethodOption[k]) {
+                            attributes = 'selected';
+                        } else {
+                            attributes = '';
+                        }
+                %>
+                <option value="<%=admissionMethodOption[k]%>" <%-attributes%>><%=admissionMethodOption[k]%></option>
+                <%
+                    }
+                %>
+            </select>
+        </div>
+
+        <div class="block">
+            <label>Admitting Consultant:</label>
+            <input class="input" type="text" name="admission_careProvider"
+                value="<%- typeof admission_careProvider !== 'undefined' ? admission_careProvider : '' %>" />
+        </div>
+
+        <div class="block">
+            <label>Admitting Ward:</label>
+            <select class="input" id="admission_ward" name="admission_ward">
+                <%  const admissionWardOption = ['', '10', '6A', '6B', '7A', '7B', '8A', '8B', '9A',
+                        '9B', 'AAU', 'ACCU', 'AEC', 'CDU(P)', 'DL', 'DYTH', 'EAU', 'ED', 'FAU', 'FREYA',
+                        'GYNAE THEATRES', 'ICU', 'JASMINE', 'KW', 'MAIN THEATRES', 'QDH', 'QUEENSWAY'];
+                    for (let l = 0; l < admissionWardOption.length; l += 1) {
+                        let attributes;
+                    
+                        if (typeof admission_ward !== 'undefined' && admission_ward === admissionWardOption[l]) {
+                            attributes = 'selected';
+                        } else {
+                            attributes = '';
+                        }
+                %>
+                <option value="<%=admissionWardOption[l]%>" <%-attributes%>><%=admissionWardOption[l]%></option>
+                <%
+                    }
+                %>
+            </select>
+        </div>
+
+        <div class="block">
+            <label>Source of Admission:</label>
+            <!-- Refer to https://www.datadictionary.nhs.uk/data_dictionary/attributes/s/smo/source_of_admission_de.asp -->
+            <select class="input" id="admission_source" name="admission_source">
+                <%  const admissionSourceOption = [
+                        {
+                            value: '',
+                            option: ''
+                        },
+                        {
+                            value: 'Babies born in or on the way to hospital',
+                            option: 'Babies born in or on the way to hospital'
+                        },
+                        {
+                            value: 'Court',
+                            option: 'Court'
+                        },
+                        {
+                            value: 'Local Authority residential accommodation i.e. where care is provided',
+                            option: 'Local Authority Residential Accommodation'
+                        },
+                        {
+                            value: 'Local Authority foster care',
+                            option: 'Local Authority foster care'
+                        },
+                        {
+                            value: 'NHS run Care Home',
+                            option: 'NHS Care Home'
+                        },
+                        {
+                            value: 'NHS other Hospital Provider - high security psychiatric accommodation',
+                            option: 'NHS Other Hospital Provider - High security psychiatric accommodation'
+                        },
+                        {
+                            value: 'NHS other Hospital Provider - medium secure unit',
+                            option: 'NHS Other Hospital Provider - Medium secure unit'
+                        },
+                        {
+                            value: 'NHS other Hospital Provider - WARD for general PATIENTS or the younger physically disabled',
+                            option: 'NHS Other Hospital Provider - Ward for general patients or the younger physically disabled'
+                        },
+                        {
+                            value: 'NHS other Hospital Provider - WARD for maternity PATIENTS or Neonates',
+                            option: 'NHS Other Hospital Provider - Ward for maternity patients or Neonates'
+                        },
+                        {
+                            value: 'NHS other Hospital Provider - WARD for PATIENTS who are mentally ill or have Learning Disabilities',
+                            option: 'NHS Other Hospital Provider - Ward for patients who are mentally ill or have learning disabilities'
+                        },
+                        {
+                            value: 'Non-NHS (other than Local Authority) run Care Home',
+                            option: 'Non-NHS Care Home'
+                        },
+                        {
+                            value: 'Non-NHS (other than Local Authority) run Hospice',
+                            option: 'Non-NHS Hospice'
+                        },
+                        {
+                            value: 'Non-NHS run hospital',
+                            option: 'Non-NHS Hospital'
+                        },
+                        {
+                            value: 'Non-NHS run hospital - medium secure unit',
+                            option: 'Non-NHS Hospital - Medium secure unit'
+                        },
+                        {
+                            value: 'Penal establishment',
+                            option: 'Penal establishment'
+                        },
+                        {
+                            value: 'Police Station / Police Custody Suite',
+                            option: 'Police Station / Police Custody Suite'
+                        },
+                        {
+                            value: 'Temporary place of residence',
+                            option: 'Temporary place of Residence'
+                        },
+                        {
+                            value: 'Usual place of residence',
+                            option: 'Usual place of residence'
+                        }
+                    ];
+                    
+                    for (let m = 0; m < admissionSourceOption.length; m += 1) {
+                        let attributes;
+                        if (typeof admission_source !== 'undefined' && admission_source === admissionSourceOption[m].value) {
+                            attributes = 'selected';
+                        } else {
+                            attributes = '';
+                        }
+                %>
+                <option value="<%=admissionSourceOption[m].value%>" <%-attributes%>><%=admissionSourceOption[m].option%>
+                </option>
+                <%
+                    }
+                %>
+            </select>
+        </div>
+    </div>
+    <% include save_section.ejs %>
+</div>

@@ -1,0 +1,334 @@
+<div id="Clinical" class="tab-div">
+    <div class="full-column">
+
+        <div class="block">
+            <label>
+                <h3>Clinical Details</h3>
+            </label>
+        </div>
+
+        <div class="block">
+            <label>Reason For Admission:</label>
+            <textarea class="input" name="clinical_admissionReason" cols="20" rows="4"
+                spellcheck="true"><%- typeof clinical_admissionReason !== 'undefined' ? clinical_admissionReason : '' %></textarea>
+        </div>
+
+        <div class="block">
+            <label>
+                <h4>Diagnosis</h4>
+            </label>
+        </div>
+
+        <div class="block">
+            <label>Initial Diagnosis:</label>
+            <textarea class="input" name="clinical_initialPresentation" cols="20" rows="4"
+                spellcheck="true"><%- typeof clinical_initialPresentation !== 'undefined' ? clinical_initialPresentation : '' %></textarea>
+        </div>
+
+        <div class="block">
+            <label>Pre-existing Medical Conditions and Past Medical History:</label>
+            <textarea class="input" name="clinical_preexistingConditions" cols="20" rows="4"
+                spellcheck="true"><%- typeof clinical_preexistingConditions !== 'undefined' ? clinical_preexistingConditions : '' %></textarea>
+        </div>
+
+        <div class="block">
+            <label>Significant Investigations And Procedures:</label>
+            <textarea class="input" name="clinical_significantInvestigations" cols="20" rows="4"
+                spellcheck="true"><%- typeof clinical_significantInvestigations !== 'undefined' ? clinical_significantInvestigations : '' %></textarea>
+        </div>
+
+        <div class="block">
+            <label><a href="#" class=" info"
+                    title="Include any details of consultant escalation plans entered onto SPN">&#9072; Course and
+                    Management of Condition:</a></label>
+            <textarea class="input" name="clinical_conditionManagement" cols="20" rows="4"
+                spellcheck="true"><%- typeof clinical_conditionManagement !== 'undefined' ? clinical_conditionManagement : '' %></textarea>
+        </div>
+
+        <div class="block">
+            <label>Details of Outstanding Results and Investigations:</label>
+            <textarea class="input" name="clinical_outstandingResults" cols="20" rows="4"
+                spellcheck="true"><%- typeof clinical_outstandingResults !== 'undefined' ? clinical_outstandingResults : '' %></textarea>
+        </div>
+
+        <div class="block">
+            <label>Patient's Concerns, Expectations, and Wishes:</label>
+            <textarea class="input" name="clinical_patientConcerns" cols="20" rows="4"
+                spellcheck="true"><%- typeof clinical_patientConcerns !== 'undefined' ? clinical_patientConcerns : '' %></textarea>
+        </div>
+
+        <div class="block">
+            <label>Significant Events:</label>
+            <textarea class="input" name="clinical_significantEvents" cols="20" rows="4"
+                spellcheck="true"><%- typeof clinical_significantEvents !== 'undefined' ? clinical_significantEvents : '' %></textarea>
+        </div>
+
+        <div class="block">
+            <label>Adverse Incidents:</label>
+            <textarea class="input" name="clinical_adverseIncidents" cols="20" rows="4"
+                spellcheck="true"><%- typeof clinical_adverseIncidents !== 'undefined' ? clinical_adverseIncidents : '' %></textarea>
+        </div>
+
+
+        <div class="block">
+            <label>
+                <h4>Acute Kidney Injury</h4>
+            </label>
+        </div>
+
+        <div class="block">
+            <label>Has the patient suffered an Acute Kidney Injury (AKI)?:</label>
+            <select class="binaryinput" name="clinical_aki">
+                <%  const clinicalAkiOption = [
+                        {
+                            value: '',
+                            option: '',
+                            attributes: 'onclick="hideClass(\'clinical-aki-div\'); unselect(\'clinical-aki-input\'); clearValue(\'clinical-aki-textarea\');"'
+                        },
+                        {
+                            value: 'No',
+                            option: 'No',
+                            attributes: 'onclick="hideClass(\'clinical-aki-div\'); unselect(\'clinical-aki-input\'); clearValue(\'clinical-aki-textarea\');"'
+                        },
+                        {
+                            value: 'Yes',
+                            option: 'Yes',
+                            attributes: 'onclick="showClass(\'clinical-aki-div\');"'
+                        }
+                    ];
+                    
+                    for (let q = 0; q < clinicalAkiOption.length; q += 1) {
+                        let attributes;
+                    
+                        if (typeof clinical_aki !== 'undefined' && clinical_aki === clinicalAkiOption[q].value) {
+                            attributes = `${clinicalAkiOption[q].attributes} selected`;
+                        } else {
+                            attributes = clinicalAkiOption[q].attributes;
+                        }
+                %>
+                <option value="<%=clinicalAkiOption[q].value%>" <%-attributes%>><%=clinicalAkiOption[q].option%>
+                </option>
+                <%
+                    }
+                %>
+            </select>
+        </div>
+
+        <div class="clinical-aki-div block">
+            <label><a target="_blank" rel="noreferrer noopener"
+                    href="https://www.thinkkidneys.nhs.uk/kquip/tools/restart-drugs-stopped-aki/">Think Kidneys
+                    Guidance</a></label> <br>
+            <label><a target="_blank" rel="noreferrer noopener"
+                    href="https://www.nice.org.uk/guidance/cg182/chapter/1-recommendations#frequency-of-monitoring-2">NICE
+                    CKD182 Guidance on follow-up</a></label>
+        </div>
+
+        <div class="clinical-aki-div block">
+            <label>AKI Present on admission?:</label>
+            <select class="clinical-aki-input binaryinput" name="clinical_akiPresent">
+                <%  const clinicalAkiPresentOption = ['', 'No', 'Yes'];
+                    for (let r = 0; r < clinicalAkiPresentOption.length; r += 1) {
+                        let attributes;
+                    
+                        if (typeof clinical_akiPresent !== 'undefined' && clinical_akiPresent === clinicalAkiPresentOption[r]) {
+                            attributes = 'selected';
+                        } else {
+                            attributes = '';
+                        }
+                %>
+                <option value="<%=clinicalAkiPresentOption[r]%>" <%-attributes%>><%=clinicalAkiPresentOption[r]%>
+                </option>
+                <%
+                    }
+                %>
+            </select>
+        </div>
+
+        <div class="clinical-aki-div block">
+            <label>AKI Hospital acquired?:</label>
+            <select class="clinical-aki-input binaryinput" name="clinical_akiHospital">
+                <%  const clinicalAkiHospitalOption = ['', 'No', 'Yes'];
+                    for (let s = 0; s < clinicalAkiHospitalOption.length; s += 1) {
+                        let attributes;
+                    
+                        if (typeof clinical_akiHospital !== 'undefined' && clinical_akiHospital === clinicalAkiHospitalOption[s]) {
+                            attributes = 'selected';
+                        } else {
+                            attributes = '';
+                        }
+                %>
+                <option value="<%=clinicalAkiHospitalOption[s]%>" <%-attributes%>><%=clinicalAkiHospitalOption[s]%>
+                </option>
+                <%
+                    }
+                %>
+            </select>
+        </div>
+
+        <div class="clinical-aki-div block">
+            <label>Highest AKI Stage:</label>
+            <select class="clinical-aki-input binaryinput" name="clinical_akiStage">
+                <%  const clinicalAkiStageOption = ['', 'Stage 1', 'Stage 2', 'Stage 3'];
+                    for (let i = 0; i < clinicalAkiStageOption.length; i += 1) {
+                        let attributes;
+                    
+                        if (typeof clinical_akiStage !== 'undefined' && clinical_akiStage === clinicalAkiStageOption[i]) {
+                            attributes = 'selected';
+                        } else {
+                            attributes = '';
+                        }
+                %>
+                <option value="<%=clinicalAkiStageOption[i]%>" <%-attributes%>><%=clinicalAkiStageOption[i]%></option>
+                <%
+                    }
+                %>
+            </select>
+        </div>
+
+        <div class="clinical-aki-div block">
+            <label>Confirm a medication review has been undertaken for AKI:</label>
+            <select class="clinical-aki-input binaryinput" name="clinical_akiMedReview">
+                <%  const clinicalAkiMedReviewOption = ['No', 'Yes'];
+                    for (let i = 0; i < clinicalAkiMedReviewOption.length; i += 1) {
+                        let attributes;
+                    
+                        if (typeof clinical_akiMedReview !== 'undefined' && clinical_akiMedReview === clinicalAkiMedReviewOption[i]) {
+                            attributes = 'selected';
+                        } else {
+                            attributes = '';
+                        }
+                %>
+                <option value="<%=clinicalAkiMedReviewOption[i]%>" <%-attributes%>><%=clinicalAkiMedReviewOption[i]%>
+                </option>
+                <%
+                    }
+                %>
+            </select>
+        </div>
+
+
+        <div class="block">
+            <label>
+                <h4>Advanced Care</h4>
+            </label>
+        </div>
+
+        <div class="block">
+            <label>Does the Patient have a Continuing YDH Do Not Attempt Resuscitation (DNAR) order?:</label>
+            <select class="binaryinput" name="clinical_dnar">
+                <%  const clinicalDnarOption = ['', 'No', 'Yes'];
+                    for (let i = 0; i < clinicalDnarOption.length; i += 1) {
+                        let attributes;
+                    
+                        if (typeof clinical_dnar !== 'undefined' && clinical_dnar === clinicalDnarOption[i]) {
+                            attributes = 'selected';
+                        } else {
+                            attributes = '';
+                        }
+                %>
+                <option value="<%=clinicalDnarOption[i]%>" <%-attributes%>><%=clinicalDnarOption[i]%>
+                </option>
+                <%
+                    }
+                %>
+            </select>
+        </div>
+
+        <div class="block">
+            <label>Has the Patient been entered on the <a target="_blank" rel="noreferrer noopener"
+                    href="https://pyrusapps.blackpear.com ">Electronic Palliative
+                    Care
+                    Coordination System</a> (EPaCCS)?:</label>
+            <select class="binaryinput" name="clinical_epaccs">
+                <%  const clinicalEpaccsOption = ['', 'No', 'Yes'];
+                    for (let i = 0; i < clinicalEpaccsOption.length; i += 1) {
+                        let attributes;
+                    
+                        if (typeof clinical_epaccs !== 'undefined' && clinical_epaccs === clinicalEpaccsOption[i]) {
+                            attributes = 'selected';
+                        } else {
+                            attributes = '';
+                        }
+                %>
+                <option value="<%=clinicalEpaccsOption[i]%>" <%-attributes%>><%=clinicalEpaccsOption[i]%>
+                </option>
+                <%
+                    }
+                %>
+            </select>
+        </div>
+
+
+        <div class="block">
+            <label>Have discussions occurred regarding Advanced Care Planning?:</label>
+            <select class="binaryinput" name="clinical_advancedCarePlan">
+                <option value=""
+                    onclick="hideClass('clinical-advancedcareplan-text'); uncheckRadio('clinical-advancedcareplan-input')">
+                </option>
+                <option value="No"
+                    onclick="hideClass('clinical-advancedcareplan-text'); uncheckRadio('clinical-advancedcareplan-input')">
+                    No</option>
+                <option value="Yes" onclick="showClass('clinical-advancedcareplan-text')">Yes</option>
+            </select>
+        </div>
+
+        <div class="clinical-advancedcareplan-text block">
+            <label><strong>Please select one of the following suggested text for communication around advanced care
+                    planning:</strong></label>
+        </div>
+
+        <div class="clinical-advancedcareplan-text block">
+            <label>The hospital team feels that <%= patient_forename %> has severe advanced
+                progressive illness.
+                Because of this, we believe that now is the right time to start thinking about the future.
+                We would be most grateful if you could <strong>begin the process of advance care
+                    planning.</strong></label>
+            <input class="binaryinput clinical-advancedcareplan-input" type="radio" name="clinical_advancedCarePlanText"
+                value="begin">
+        </div>
+
+        <div class="clinical-advancedcareplan-text block">
+            <label>The hospital team felt that <%= patient_forename %> has severe, advanced
+                progressive illness.
+                Because of this, we have begun discussions about advance care planning.
+                <strong>They have been given the Planning Ahead document.</strong>
+                We would be grateful if you could continue this discussion with the patient
+                with a view to making decisions on their future care.
+                Once this is done, this information should go
+                on to the electronic palliative care coordination system or special patient notes, having obtained
+                consent from the patient.</label>
+            <input class="binaryinput clinical-advancedcareplan-input" type="radio" name="clinical_advancedCarePlanText"
+                value="given">
+        </div>
+
+        <div class="clinical-advancedcareplan-text block">
+            <label>The hospital team felt that <%= patient_forename %> has severe, advanced
+                progressive illness.
+                Because of this, we have begun
+                discussions about advance care planning.
+                <strong>They have <em>not</em> been given the Planning Ahead
+                    document.</strong> We
+                would be grateful if you could continue this discussion with the patient with a view to making
+                decisions on their future care. Once this is done, this information should go on to the
+                electronic
+                palliative care coordination system or special patient notes, having obtained consent from the
+                patient.</label>
+            <input class="binaryinput clinical-advancedcareplan-input" type="radio" name="clinical_advancedCarePlanText"
+                value="notgiven">
+        </div>
+
+        <div class="clinical-advancedcareplan-text block">
+            <label>The hospital team felt that <%= patient_forename %> has severe, advanced
+                progressive disease.
+                We began discussions with the
+                patient about the care they would like to receive in the future and they have completed advance care
+                planning. This has been recorded on the Planning Ahead document. <strong>The outcome of these
+                    discussions
+                    has been placed on the electronic palliative care coordination system/special patient notes, with
+                    the patient’s consent.</strong></label>
+            <input class="binaryinput clinical-advancedcareplan-input" type="radio" name="clinical_advancedCarePlanText"
+                value="epaccs">
+        </div>
+    </div>
+    <% include save_section.ejs %>
+</div>

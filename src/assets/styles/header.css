@@ -1,0 +1,60 @@
+/**
+ * header.css
+ *
+ * Styles for headers and alerts across all pages,
+ * and the banner that sits under the header 
+ * in the discharge_summary pages.
+ */
+
+.header {
+    color: #fff;
+    background-color: #6D3176;
+    width: 100%;
+    min-height: 70px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.header-h1 {
+    margin-left: 10px;
+    padding-top: 12.5px;
+    padding-bottom: 12.5px;
+    float: left;
+    font-size: larger
+}
+
+.header-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+#banner-container {
+    width: 100%;
+    margin-top: -20px;
+    margin-bottom: 20px;
+    background-color: #f1f1f1;
+    padding: 5px;
+}
+
+#banner {
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+}
+
+/* start alert style */
+
+.alert {
+    margin-top: -20px;
+    padding: 20px;
+    background-color: green;
+    color: white;
+}
+
+.alert.success {
+    background-color: #4CAF50;
+}
+
+/* end alert styles */

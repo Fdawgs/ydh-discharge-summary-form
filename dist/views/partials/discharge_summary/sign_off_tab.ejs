@@ -1,0 +1,171 @@
+<div id="Sign-Off" class="tab-div">
+    <div class="half-column">
+
+        <div class="block">
+            <label>
+                <h3>Nurse Sign Off</h3>
+            </label>
+        </div>
+
+
+        <div class="block">
+            <label>TTOs Explained to Patient:</label>
+            <input class="binaryinput" type="checkbox" name="signoff_nurseTTOs"
+                title="Confirm that TTOs have been explained to patient"
+                <%- typeof signoff_nurseTTOs !== 'undefined' && signoff_nurseTTOs === 'on' ? 'checked' : '' %> />
+        </div>
+        <div class="block">
+            <label>
+                <h4>First Nurse Sign Off</h4>
+            </label>
+        </div>
+
+        <div class="sign-off">
+            <div class="block">
+                <label>I confirm that this discharge summary is correct:</label>
+                <input class="binaryinput" type="checkbox" name="signoff_nurseFirstCheck"
+                    title="Confirm discharge summary correct" onclick="signOff(this);"
+                    <% if (typeof signoff_drCheckbox === 'undefined') { %> disabled
+                    <% } else if (typeof signoff_nurseFirstCheck !== 'undefined' && signoff_nurseFirstCheck === 'on') { %>
+                    checked disabled <% } else { %> <% } %> />
+                <% if (typeof signoff_nurseFirstCheck !== 'undefined' && signoff_nurseFirstCheck === 'on') { %>
+                <input name="signoff_nurseFirstCheck" type="hidden" value="on" />
+                <% } %>
+            </div>
+
+            <div class="block">
+                <label>Name:</label>
+                <input class="input disabled" type="text" name="signoff_nurseFirstName"
+                    value="<%- typeof signoff_nurseFirstName !== 'undefined' ? signoff_nurseFirstName : '' %>"
+                    readonly />
+            </div>
+            <div class="block">
+                <label>Date:</label>
+                <input class="input disabled" type="date" name="signoff_nurseFirstDate"
+                    value="<%- typeof signoff_nurseFirstDate !== 'undefined' ? signoff_nurseFirstDate : '' %>"
+                    readonly />
+            </div>
+
+            <div class="block">
+                <label>Time:</label>
+                <input class="input disabled" type="time" name="signoff_nurseFirstTime"
+                    value="<%- typeof signoff_nurseFirstTime !== 'undefined' ? signoff_nurseFirstTime : '' %>"
+                    readonly />
+            </div>
+        </div>
+
+        <div class="block">
+            <label>
+                <h4>Second Nurse Sign Off</h4>
+            </label>
+        </div>
+
+        <div class="sign-off">
+            <div class="block">
+                <label>I confirm that this discharge summary is correct:</label>
+                <input class="binaryinput" type="checkbox" name="signoff_nurseSecondCheck"
+                    title="Confirm discharge summary correct" onclick="signOff(this);"
+                    <% if (typeof signoff_drCheckbox === 'undefined') { %> disabled
+                    <% } else if (typeof signoff_nurseSecondCheck !== 'undefined' && signoff_nurseSecondCheck === 'on') { %>
+                    checked disabled <% } else { %> <% } %> />
+                <% if (typeof signoff_nurseSecondCheck !== 'undefined' && signoff_nurseSecondCheck === 'on') { %>
+                <input name="signoff_nurseSecondCheck" type="hidden" value="on" />
+                <% } %>
+            </div>
+
+
+            <div class="block">
+                <label>Name:</label>
+                <input class="input disabled" type="text" name="signoff_nurseSecondName"
+                    value="<%- typeof signoff_nurseSecondName !== 'undefined' ? signoff_nurseSecondName : '' %>"
+                    readonly />
+            </div>
+            <div class="block">
+                <label>Date:</label>
+                <input class="input disabled" type="date" name="signoff_nurseSecondDate"
+                    value="<%- typeof signoff_nurseSecondDate !== 'undefined' ? signoff_nurseSecondDate : '' %>"
+                    readonly />
+            </div>
+
+            <div class="block">
+                <label>Time:</label>
+                <input class="input disabled" type="time" name="signoff_nurseSecondTime"
+                    value="<%- typeof signoff_nurseSecondTime !== 'undefined' ? signoff_nurseSecondTime : '' %>"
+                    readonly />
+            </div>
+        </div>
+    </div>
+
+
+    <div class="half-column">
+
+        <div class="block">
+            <label>
+                <h3>Dr. Sign Off</h3>
+            </label>
+        </div>
+        <div class="sign-off">
+            <div class="block">
+                <label>I confirm that I have completed all the relevant
+                    sections of this summary. This is ready to be
+                    sent to the GP via electronic transmission:</label>
+
+                <input class="binaryinput" type="checkbox" name="signoff_drCheckbox"
+                    title="Confirm discharge summary correct" onclick="signOff(this);"
+                    <% if (typeof signoff_drCheckbox !== 'undefined' && signoff_drCheckbox === 'on') { %> checked
+                    disabled <% } else { %> <% } %> />
+
+                <% if (typeof signoff_drCheckbox !== 'undefined' && signoff_drCheckbox === 'on') { %>
+                <input name="signoff_drCheckbox" type="hidden" value="on" />
+                <% } %>
+            </div>
+
+            <div class="block">
+                <label>Name:</label>
+                <input class="input disabled" type="text" name="signoff_drName"
+                    value="<%- typeof signoff_drName !== 'undefined' ? signoff_drName : '' %>" readonly />
+            </div>
+
+            <div class="block">
+                <label>Date:</label>
+                <input class="input disabled" type="date" name="signoff_drDate"
+                    value="<%- typeof signoff_drDate !== 'undefined' ? signoff_drDate : '' %>" readonly />
+            </div>
+
+            <div class="block">
+                <label>Time:</label>
+                <input class="input disabled" type="time" name="signoff_drTime"
+                    value="<%- typeof signoff_drTime !== 'undefined' ? signoff_drTime : '' %>" readonly />
+            </div>
+        </div>
+        <div class="block">
+            <label>Contact No:</label>
+            <input class="input" type="tel" name="signoff_drContactNo"
+                value="<%- typeof signoff_drContactNo !== 'undefined' ? signoff_drContactNo : '' %>" />
+        </div>
+
+        <div class="block">
+            <label>Grade:</label>
+            <select class="input" name="signoff_drGrade">
+                <%  const signoffDrGradeOption = ['', 'Associate Specialist', 'Consultant', 'F1', 'F2', 'Middle Grade',
+                    'Registrar', 'SHO', 'Trainee ACP'];
+                    for (let i = 0; i < signoffDrGradeOption.length; i += 1) {
+                        let attributes;
+
+                        if (typeof signoff_drGrade !== 'undefined' && signoff_drGrade === signoffDrGradeOption[i]) {
+                            attributes = 'selected';
+                        } else {
+                            attributes = '';
+                        }
+                %>
+                <option value="<%=signoffDrGradeOption[i]%>" <%-attributes%>><%=signoffDrGradeOption[i]%>
+                </option>
+                <%
+                    }
+                %>
+            </select>
+        </div>
+
+    </div>
+    <% include save_section.ejs %>
+</div>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+    <% include ../partials/head %>
+</head>
+
+<body>
+    <% include ../partials/header %>
+
+    <% if (typeof query !== 'undefined' && query.result !== 'undefined') { %>
+
+    <div class="alert <%= query.result %>">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <%
+        let text;
+        switch (query.command) {
+            case 'UPDATE':
+                text = 'Discharge summary update';
+            break;
+            case 'INSERT':
+                text = 'New discharge summary creation'
+            break;
+        } %>
+
+        <strong><%=query.result.toUpperCase()%></strong>: <%-text%>
+        <%-query.result === 'warning' ? 'failed, please raise a ticket with IT services' : 'completed'%>
+    </div>
+    <% } %>
+    <div class="container page-wrap" style="overflow: hidden; margin-bottom: 20px">
+
+        <form action="/discharge_summary" method="POST">
+            <div class="half-column">
+
+                <div class="block">
+                    <label>
+                        <h3>Patient</h3>
+                    </label>
+                </div>
+
+
+                <div class="block">
+                    <label>NHS No:</label>
+                    <input class="input disabled" type="search" name="patient_nhsNo" value="<%= patient_nhsNo %>"
+                        readonly />
+                </div>
+
+                <div class="block">
+                    <label>Hospital No:</label>
+                    <input class="input disabled" type="search" name="patient_mrn" value="<%= patient_mrn %>"
+                        readonly />
+                </div>
+
+                <div class="block">
+                    <label>Surname:</label>
+                    <input class="input disabled" type="search" name="patient_surname" value="<%= patient_surname %>"
+                        readonly />
+                </div>
+
+                <div class="block">
+                    <label>Forename:</label>
+                    <input class="input disabled" type="search" name="patient_forename" value="<%= patient_forename %>"
+                        readonly />
+                </div>
+
+                <div class="block">
+                    <label>DoB:</label>
+                    <input class="input disabled" type="search" name="patient_dob" value="<%= patient_dob %>"
+                        readonly />
+                </div>
+
+                <div class="block">
+                    <label>Gender:</label>
+                    <input class="input disabled" type="search" name="patient_gender" value="<%= patient_gender %>"
+                        readonly />
+                </div>
+
+                <div class="block">
+                    <label>
+                        <h4>Address</h4>
+                    </label>
+                </div>
+
+                <% patient_address.forEach((element, index) => { %>
+                <div class="block">
+                    <label>Line <%= index + 1 %>:</label>
+                    <input class="input disabled" type="search" name="patient_addressLine<%= index + 1 %>"
+                        value="<%= element %>" readonly />
+                </div>
+                <% }) %>
+
+                <div class="block">
+                    <label>City:</label>
+                    <input type="search" name="patient_addressCity" value="<%= patient_addressCity %>"
+                        class="input disabled" readonly />
+                </div>
+
+                <div class="block">
+                    <label>County:</label>
+                    <input type="search" name="patient_addressDistrict" value="<%= patient_addressDistrict %>"
+                        class="input disabled" readonly />
+                </div>
+
+                <div class="block">
+                    <label>Postcode:</label>
+                    <input type="search" name="patient_addressPostalCode" value="<%= patient_addressPostalCode %>"
+                        class="input disabled" readonly />
+                </div>
+
+                <div class="block" style="width: 50%; margin: 0 auto;">
+                    <input type="hidden" name="gp_id" value="<%= gp_id %>" />
+                    <input type="hidden" name="gp_name" value="<%= gp_name %>" />
+                    <input type="hidden" name="gp_address" value="<%= gp_address %>" />
+                    <button type="submit" class="btn-link">Create new discharge summary form</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="half-column">
+            <div class="block">
+                <h3>In-Progress Discharge Summaries</h3>
+            </div>
+
+            <% in_progress_discharge_summaries.forEach((element) => { %>
+            <form action="/discharge_summary" method="POST">
+                <div class="block form-block">
+                    <% /**
+                        * Stupid way of getting it into DD/MM/YYYY because for some
+                        * reason localestring pushes it into American
+                        */
+                        const lastUpdated = new Date(element.lastUpdate);
+                        const lastUpdatedString = [
+                            lastUpdated.getDate(),
+                            ((lastUpdated.getMonth() + 1) < 10 ? `0${lastUpdated.getMonth() + 1}` : (lastUpdated.getMonth() + 1)),
+                            lastUpdated.getFullYear()
+                        ].join('/');
+                    %>
+
+                    <span style="float: left">
+                        <strong>ID:</strong>
+                        <%= element.id %>
+                    </span>
+
+                    <span style="float: right">
+                        <strong>Last Updated:</strong>
+                        <%- lastUpdatedString + ' ' +  new Date(element.lastUpdate).toLocaleTimeString() %></span>
+                    <br>
+                    <span style="float: right">
+                        <strong>Last Updated By:</strong>
+                        <%- element.raw.lastUpdatedBy %></span><br><br>
+                    <div class="block">
+                        <%- element.raw.signoff_nurseFirstName === '' ? '<label style="background-color: red">First Nurse: <span>&times;</span>' : '<label style="background-color: green">First Nurse: <span>&check;</span>'%></label>
+                        <%- element.raw.signoff_nurseSecondName === '' ? '<label style="background-color: red">Second Nurse: <span>&times;</span>' : '<label style="background-color: green">Second Nurse: <span>&check;</span>'%></label>
+                        <%- element.raw.signoff_drName === '' ? '<label style="background-color: red">Dr: <span>&times;</span>' : '<label style="background-color: green">Dr: <span>&check;</span>'%></label>
+                        <% const pharmacyCheck = [];
+                            if (typeof element.raw.ttos !== 'undefined') {
+                                element.raw.ttos.forEach((tto) => {
+                                    if (typeof tto.medication_finalPharmacySignOffCheck !== 'undefined' && tto.medication_finalPharmacySignOffCheck === 'on') {
+                                        pharmacyCheck.push('checked');
+                                    } else {
+                                        pharmacyCheck.push('unchecked');
+                                    }
+                                });
+                            } else {
+                                pharmacyCheck.push('checked');
+                            }
+                        %>
+
+                        <%- pharmacyCheck.includes('unchecked') ? '<label style="background-color: red">Pharmacy: <span>&times;</span>' : '<label style="background-color: green">Pharmacy: <span>&check;</span>'%></label>
+                    </div>
+
+                    <!-- Build up inputs to pass through to continue form -->
+                    <input type="hidden" name="row_id" value="<%= element.id %>" />
+                    <input type="hidden" name="version" value="<%= element.version %>" />
+                    <input type="hidden" name="lastUpdate"
+                        value="<%- lastUpdatedString + ' ' +  new Date(element.lastUpdate).toLocaleTimeString() %>" />
+                    <% Object.keys(element.raw).forEach((rawElement) => {%>
+                    <input type="hidden" name="<%= rawElement %>"
+                        value="<%= typeof element.raw[rawElement] === 'object' ? JSON.stringify(element.raw[rawElement]) : element.raw[rawElement] %>" />
+                    <% }) %>
+                    <button type="submit" class="btn-link" style="float: right">Continue Form</button>
+
+                </div>
+            </form>
+            <% }) %>
+        </div>
+    </div>
+    <% include ../partials/footer %>
+</body>
+
+</html>

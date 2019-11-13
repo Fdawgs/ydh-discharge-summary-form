@@ -1,0 +1,55 @@
+/**
+ * form.css
+ *
+ * Styles for the entire form and inputs on the discharge_summary page.
+ */
+
+div.block {
+    overflow: hidden;
+    padding: 10px;
+}
+
+div.block label {
+    width: 40%;
+    display: block;
+    float: left;
+    text-align: right;
+}
+
+div.block .input {
+    width: 50%;
+    margin-left: 4px;
+    float: left;
+}
+
+div.block .binaryinput {
+    width: 10%;
+    margin-left: 4px;
+    float: left;
+}
+
+.form-block {
+    margin: 20px;
+    padding: 20px;
+    color: white;
+}
+
+.collapsible-div .form-block {
+    background-color: #777;
+}
+
+#Follow-Up .form-block {
+    background-color: #F59409;
+}
+
+#Medication .form-block {
+    background-color: darkolivegreen;
+}
+
+.clinical-advancedcareplan-text, .clinical-aki-div, .discharge-different-address, .medication-tto-button, .medication-change-button {
+    display: none;
+}
+
+textarea {
+    resize: vertical
+}

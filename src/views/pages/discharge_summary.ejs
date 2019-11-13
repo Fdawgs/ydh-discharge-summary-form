@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en-GB">
+
+<head>
+    <% include ../partials/head %>
+    <script src="/scripts/discharge_summary.js" async></script>
+    <script src="/scripts/medication_tab.js"> async</script>
+    <script src="/scripts/discharge_tab.js"> async</script>
+</head>
+
+<!-- TODO: Tidy this god-awful code up in the body onload -->
+
+<body
+    onload="<%- typeof clinical_aki !== 'undefined' && clinical_aki === 'Yes' ? 'showClass(\'clinical-aki-div\');' : ''%> <%- typeof discharge_destination !== 'undefined' && discharge_destination !== 'Usual place of residence' ? 'showClass(\'discharge-different-address\');' : ''%>">
+    <% include ../partials/header %>
+
+    <% include ../partials/banner %>
+
+    <div class="container page-wrap">
+
+        <div class="tab">
+            <button id="defaultOpen" class="tab-button" onclick="openTab(event, 'Patient')"
+                title="Patient details - Demographics and GP" style="border-color: #BFD730;">Patient</button>
+            <button class="tab-button" onclick="openTab(event, 'Admission')" title="Admission details"
+                style="border-color: #29327E;">Admission</button>
+            <button class="tab-button" onclick="openTab(event, 'Discharge')" title="Discharge details"
+                style="border-color: #35A8DF;">Discharge</button>
+            <button class="tab-button" onclick="openTab(event, 'Clinical')"
+                title="Clinical details - Diagnoses and conditions" style="border-color: #BE1824;">Clinical</button>
+            <button class="tab-button" onclick="openTab(event, 'Medication')"
+                title="Medication details - Changes and TTOs" style="border-color: darkolivegreen;">Medication</button>
+            <button class="tab-button" onclick="openTab(event, 'Follow-Up')" title="Follow-up appointment details"
+                style="border-color: #F59409;">Follow-Up</button>
+            <button class="tab-button" onclick="openTab(event, 'Sign-Off')" title="Sign off details"
+                style="border-color: #6D3176;">Sign Off</button>
+        </div>
+
+        <form action="/" method="POST" autocomplete="off">
+            <input type="hidden" name="row_id" value="<%- typeof row_id !== 'undefined' ? row_id : '' %>" />
+            <input type="hidden" name="version" value="<%- typeof version !== 'undefined' ? version : '' %>" />
+            <% include ../partials/discharge_summary/patient_tab.ejs %>
+            <% include ../partials/discharge_summary/admission_tab.ejs %>
+            <% include ../partials/discharge_summary/discharge_tab.ejs %>
+            <% include ../partials/discharge_summary/clinical_tab.ejs %>
+            <% include ../partials/discharge_summary/medication_tab.ejs %>
+            <% include ../partials/discharge_summary/follow_up_tab.ejs %>
+            <% include ../partials/discharge_summary/sign_off_tab.ejs %>
+        </form>
+    </div>
+    <% include ../partials/footer %>
+</body>
+
+</html>

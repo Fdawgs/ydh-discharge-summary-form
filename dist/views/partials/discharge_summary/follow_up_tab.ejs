@@ -1,0 +1,120 @@
+<div id="Follow-Up" class="tab-div">
+    <div class="full-column">
+        <div class="block">
+            <label>
+                <h3>Follow-Up Requirements</h3>
+            </label>
+        </div>
+
+        <div class="clinical-aki-div block">
+            <label>
+                <h4>AKI Follow-Up</h4>
+            </label>
+        </div>
+
+        <div class="clinical-aki-div block">
+            <label><a href="#" class="info"
+                    title="This section has appeared because 'yes' has been selected for the question ‘Has the patient suffered an Acute Kidney Injury (AKI)?’ in the Clinical tab">&#9072;
+                    Serum Creatinine at discharge?:</a></label>
+            <textarea class="clinical-aki-textarea input" name="followup_akiText" cols="20" rows="4"
+                spellcheck="true"></textarea>
+        </div>
+
+        <div class="clinical-aki-div block">
+            <label>The patient is:</label>
+            <select class="clinical-aki-input binaryinput" name="followup_akiStatus">
+                <option value=""></option>
+                <option value="Stable">Stable</option>
+                <option value="Improving">Improving</option>
+            </select>
+        </div>
+
+        <div class="clinical-aki-div block">
+            <label>
+                <h4>Follow-Up</h4>
+            </label>
+        </div>
+
+        <div class="block" id="follow-up-header">
+            <label>Does this patient require a follow-up?:</label>
+            <button class="input" style="width:25%" onclick="addFollowUpBlock()" type="button"
+                title="Add new follow-up item">Add new follow-up</button>
+        </div>
+
+
+        <%
+        if (typeof followups !== 'undefined') {
+            let parsedFollowups;
+            if (typeof followups === 'string') {
+                parsedFollowups = JSON.parse(followups);
+            } else {
+                parsedFollowups = followups;
+            }
+        
+            parsedFollowups.forEach((element) => { %>
+
+        <div class="block form-block"><span class="closebtn" title="Remove follow-up item"
+                onclick="this.parentElement.remove();">×</span>
+            <br>
+            <br>
+            <div class="block">
+                <label>Follow-Up With:</label>
+                <select class="input" name="followup_with">
+                    <%  let followUpWithOption = ['', 'AEC', 'Community Pharmacy',
+                            'Community Rehab Team', 'ICRT - Dorset', 'Dietician', 'District Nurse',
+                            'Dressing Clinic', 'GP', 'IRT - Somerset', 'Other Hospital',
+                            'Patient to Arrange', 'Practice Nurse', 'QCAC', 'YDH'];
+                            for (let j = 0; j < followUpWithOption.length; j += 1) {
+                                let attributes;
+
+                                if (typeof element.followup_with !== 'undefined' && element.followup_with === followUpWithOption[j]) {
+                                    attributes = 'selected';
+                                } else {
+                                    attributes = '';
+                                }
+                        %>
+                    <option value="<%=followUpWithOption[j]%>" <%-attributes%>>
+                        <%=followUpWithOption[j]%></option>
+                    <%
+                            }
+                        %>
+                </select>
+            </div>
+            <div class="block">
+                <label>When:</label>
+                <input class="input" name="followup_intervalNumber" style="width: 10%" type="number" min="1"
+                    value="<%- typeof element.followup_intervalNumber !== 'undefined' ? element.followup_intervalNumber : '1' %>">
+                <select class="input" name="followup_interval" style="width: 25%">
+                    <%  let followUpIntervalOption = ['', 'Day(s)', 'Week(s)', 'Month(s)'];
+                        for (let k = 0; k < followUpIntervalOption.length; k += 1) {
+                            let attributes;
+
+                            if (typeof element.followup_interval !== 'undefined' && element.followup_interval === followUpIntervalOption[k]) {
+                                attributes = 'selected';
+                            } else {
+                                attributes = '';
+                            }
+                    %>
+                    <option value="<%=followUpIntervalOption[k]%>" <%-attributes%>>
+                        <%=followUpIntervalOption[k]%></option>
+                    <%
+                        }
+                    %>
+                </select>
+            </div>
+            <div class="block">
+                <label>Follow-Up Clinical Details:</label>
+                <textarea class="input" name="followup_details" cols="20" rows="4"
+                    spellcheck="true"><%=element.followup_details%></textarea>
+            </div>
+            <div class="block">
+                <label>Follow-Up Notes:</label>
+                <textarea class="input" name="followup_notes" cols="20" rows="4"
+                    spellcheck="true"><%=element.followup_notes%></textarea>
+            </div>
+        </div>
+        <%})}%>
+
+    </div>
+    <% include save_section.ejs %>
+</div>

@@ -1,0 +1,146 @@
+<div id="Patient" class="tab-div">
+
+    <div class="half-column">
+
+        <div class="block">
+            <label>
+                <h3>Demographics</h3>
+            </label>
+        </div>
+
+        <div class="block">
+            <label>NHS No:</label>
+            <input class="input disabled" type="text" name="patient_nhsNo" value="<%= patient_nhsNo %>" readonly />
+        </div>
+
+        <div class="block">
+            <label>Hospital No:</label>
+            <input class="input disabled" type="text" name="patient_mrn" value="<%= patient_mrn %>" readonly />
+        </div>
+
+        <div class="block">
+            <label>Surname:</label>
+            <input class="input disabled" type="text" name="patient_surname" value="<%= patient_surname %>" readonly />
+        </div>
+
+        <div class="block">
+            <label>Forename:</label>
+            <input class="input disabled" type="text" name="patient_forename" value="<%= patient_forename %>"
+                readonly />
+        </div>
+
+        <div class="block">
+            <label>DoB:</label>
+            <input class="input disabled" type="text" name="patient_dob" value="<%= patient_dob %>" readonly />
+        </div>
+
+        <div class="block">
+            <label>Gender:</label>
+            <input class="input disabled" type="text" name="patient_gender" value="<%= patient_gender %>" readonly />
+        </div>
+
+        <div class="block">
+            <label>
+                <h4>Address</h4>
+            </label>
+        </div>
+
+        <% patient_address.forEach((element, index) => { %>
+        <div class="block">
+            <label>Line <%= index + 1 %>:</label>
+            <input class="input disabled" type="text" name="patient_addressLine<%= index + 1 %>" value="<%= element %>"
+                readonly />
+        </div>
+        <% }) %>
+
+        <div class="block">
+            <label>City:</label>
+            <input type="text" name="patient_addressCity" value="<%= patient_addressCity %>" class="input disabled"
+                readonly />
+        </div>
+
+        <div class="block">
+            <label>County:</label>
+            <input type="text" name="patient_addressDistrict" value="<%= patient_addressDistrict %>"
+                class="input disabled" readonly />
+        </div>
+
+        <div class="block">
+            <label>Postcode:</label>
+            <input type="text" name="patient_addressPostalCode" value="<%= patient_addressPostalCode %>"
+                class="input disabled" readonly />
+        </div>
+
+        <div class="block">
+            <label>Accommodation Type:</label>
+            <select class="input" name="patient_addressAccommodationType">
+                <%  const patientAddressOption = ['', 'Home', 'No Fixed Abode', 'Nursing Home', 'Residential Home', 'Warden Controlled'];
+                    for (let i = 0; i < patientAddressOption.length; i += 1) {
+                        let attributes;
+
+                        if (typeof patient_addressAccommodationType !== 'undefined' && patient_addressAccommodationType === patientAddressOption[i]) {
+                            attributes = 'selected';
+                        } else {
+                            attributes = '';
+                        }
+                %>
+                <option value="<%=patientAddressOption[i]%>" <%-attributes%>><%=patientAddressOption[i]%></option>
+                <%
+                    }
+                %>
+            </select>
+        </div>
+    </div>
+
+    <div class="half-column">
+        <div class="block">
+            <label>
+                <h3>GP</h3>
+            </label>
+        </div>
+
+        <div class="block">
+            <label>GP ID:</label>
+            <% if (typeof gp_id !== 'undefined') {%>
+            <input type="text" name="gp_id" value="<%= gp_id %>" class="input disabled" readonly />
+            <% } else { %>
+            <input class="input" type="text" name="gp_id" value="" />
+            <% } %>
+        </div>
+
+        <div class="block">
+            <label>GP Name:</label>
+            <% if (typeof gp_name !== 'undefined') {%>
+            <input type="text" name="gp_name" value="<%= gp_name %>" class="input disabled" readonly />
+            <% } else { %>
+            <input class="input" type="text" name="gp_name" value="" />
+            <% } %>
+        </div>
+
+        <div class="block">
+            <label>GP Address:</label>
+            <% if (typeof gp_address !== 'undefined') {%>
+            <textarea class="input disabled" name="gp_address" cols="20" rows="3" spellcheck="true"
+                readonly><%= gp_address %></textarea>
+            <% } else { %>
+            <textarea class="input" name="gp_address" cols="20" rows="3" spellcheck="true"></textarea>
+            <% } %>
+        </div>
+
+        <div class="block">
+            <label>
+                <h3>Individual Requirements</h3>
+            </label>
+        </div>
+
+        <div class="block">
+            <label><a href="#" class="info"
+                    title="These may be communication, cultural, cognitive, or mobility needs">&#9072; Individual
+                    requirements:</a></label>
+            <textarea class="input" name="patient_individualRequirements" cols="20" rows="3"
+                spellcheck="true"><%- typeof patient_individualRequirements !== 'undefined' ? patient_individualRequirements : '' %></textarea>
+
+        </div>
+    </div>
+    <% include save_section.ejs %>
+</div>

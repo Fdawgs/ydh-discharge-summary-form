@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="en-GB">
+
+<head>
+    <% include ../partials/head %>
+    <script src="/scripts/home.js" async></script>
+</head>
+
+<body>
+    <% include ../partials/header %>
+
+    <div class="container page-wrap" style="overflow: hidden; margin-bottom: 20px">
+
+        <div class="half-column">
+            <form action="/searchpatient" method="GET" autocomplete="off">
+                <div class="block">
+                    <h3>Search for patient by NHS Number OR Hospital No:</h3>
+                </div>
+                <div class="block">
+                    <label>NHS No:</label>
+                    <input class="input" style="width:30%;" type="search" placeholder="0000000000" name="nhsno"
+                        minlength="10" maxlength="10" />
+                </div>
+                <div class="block">
+                    <label>Hospital No:</label>
+                    <input class="input" style="width:30%;" type="search" placeholder="000000" name="mrn" minlength="6"
+                        maxlength="9" />
+                    <input class="input" style="width:20%;" type="submit" value="Find patient" />
+                </div>
+            </form>
+        </div>
+        <div class="full-column">
+            <div class="block">
+                <h3>Discharge Summaries awaiting sign off:</h3>
+            </div>
+
+            <% include ../partials/home/in_progress_section.ejs %>
+
+            <div class="block">
+                <h3>Test patient Hospital Nos:</h3>
+                <p>
+                    008017610<br>
+                    008040663<br>
+                    5484125<br>
+                    008000340<br>
+                    5166536<br>
+                </p>
+            </div>
+        </div>
+
+
+    </div>
+    <% include ../partials/footer %>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+/**
+ * base.css
+ *
+ * Styles for collective classes, elements and ids.
+ */
+
+* {
+    margin: 0;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+html, body {
+    height: 97%;
+}
+
+.container {
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.half-column {
+    float: left;
+    width: 50%;
+}
+
+.full-column {
+    float: left;
+    width: 100%;
+}
+
+.page-wrap {
+    min-height: 100%;
+    /* equal to footer height */
+    margin-bottom: -50px;
+}
+
+.page-wrap:after {
+    content: "";
+    display: block;
+}
+
+@media (max-width: 900px) {
+    .tab-div {
+        flex-flow: column;
+    }
+    .half-column {
+        width: 100%;
+    }
+}
+
+/** 
+ * closebtn appears in the dynamically created TTO, changed meds and follow-up
+ * sections of the discharge summary
+ */
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
+
+/* Used to stylise input boxes that are in readonly mode, so users
+don't think they can edit them */
+
+.disabled {
+    background-color: #F0F0F0;
+    color: #6D6D6D;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+.disabled::-webkit-clear-button {
+    display: none;
+}
+
+.disabled::-ms-clear {
+    display: none;
+}
+
+.info {
+    text-decoration: underline;
+    text-decoration-style: dashed;
+}
+
+.info:hover {
+    cursor: help;
+}
+
+hr {
+    border: none;
+    border-top: 3px solid white;
+    color: white;
+    overflow: visible;
+    text-align: center;
+    height: 5px;
+}

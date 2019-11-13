@@ -1,0 +1,69 @@
+{
+  "name": "ydh-discharge-summary-form",
+  "version": "0.10.0",
+  "description": "",
+  "keywords": [
+    "YDH",
+    "NHS",
+    "FHIR",
+    "Discharge"
+  ],
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint src/*/*/*.js --fix",
+    "jest": "jest src/server/ --detectOpenHandles",
+    "start": "nodemon --exec babel-node dist/index.js ",
+    "copy": "@powershell Copy-Item src/* dist -force -recurse -verbose",
+    "build": "babel src --out-dir dist",
+    "serve": "node dist/index.js",
+    "test": "npm run lint"
+  },
+  "jest": {
+    "clearMocks": true,
+    "collectCoverage": true,
+    "testEnvironment": "node",
+    "verbose": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fdawgs/ydh-discharge-summary-form.git"
+  },
+  "author": "Frazer Smith",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Fdawgs/ydh-discharge-summary-form/issues"
+  },
+  "homepage": "https://github.com/Fdawgs/ydh-discharge-summary-form#readme",
+  "devDependencies": {
+    "@babel/cli": "7.6.4",
+    "@babel/core": "7.6.4",
+    "@babel/node": "7.6.3",
+    "@babel/preset-env": "7.6.3",
+    "babel-jest": "^24.9.0",
+    "babel-preset-minify": "^0.5.1",
+    "coveralls": "^3.0.7",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-nhsuk": "^1.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^23.0.3",
+    "eslint-plugin-json": "^2.0.1",
+    "jest": "^24.9.0",
+    "nodemon": "^1.19.4",
+    "supertest": "^4.0.2"
+  },
+  "dependencies": {
+    "activedirectory": "^0.7.2",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.4",
+    "core-js": "^3.4.1",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "pg": "^7.12.1",
+    "regenerator-runtime": "^0.13.3",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5"
+  }
+}

@@ -1,0 +1,27 @@
+<div id="banner-container">
+    <div id="banner">
+        <% if (typeof patient_mrn !== 'undefined') { %>
+        <strong>MRN:</strong> <%=patient_mrn%>
+        <%}%>
+
+        <% if (typeof patient_nhsNo !== 'undefined') { %>
+        | <strong>NHS No:</strong> <%=patient_nhsNo%>
+        <%}%>
+
+        <% if (typeof patient_surname !== 'undefined') { %>
+        | <strong>Surname:</strong> <%=patient_surname%>
+        <%}%>
+
+        <% if (typeof patient_dob !== 'undefined') { %>
+        | <strong>DoB:</strong> <%=patient_dob%>
+        <%}%>
+
+        <% if (typeof lastUpdate !== 'undefined') { %>
+        | <strong>Last Updated:</strong> <%=lastUpdate%>
+        <%}%>
+
+        <% if (typeof lastUpdatedBy !== 'undefined') { %>
+        | <strong>Last Updated By:</strong> <%=lastUpdatedBy%>
+        <%}%>
+    </div>
+</div>

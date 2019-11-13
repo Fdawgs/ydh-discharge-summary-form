@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+    <% include ../partials/head %>
+</head>
+
+<body>
+    <% include ../partials/header %>
+
+    <div class="container page-wrap" style="overflow: hidden; margin-bottom: 20px">
+        <div class="half-column">
+            <div class="block">This information has been retrieved from TrakCare,<br>
+                if incorrect please correct it in <a href="https://trakcare.ydh.nhs.uk/trakcare/">TrakCare</a> and then
+                refresh this page.
+            </div>
+            <br>
+            <form action="/patient" method="POST">
+                <div class="block">
+                    <label>NHS No:</label>
+                    <input class="input disabled" type="search" name="patient_nhsNo" value="<%= patient_nhsNo %>"
+                        readonly />
+                </div>
+
+                <div class="block">
+                    <label>Hospital No:</label>
+                    <input class="input disabled" type="search" name="patient_mrn" value="<%= patient_mrn %>"
+                        readonly />
+                </div>
+
+                <div class="block">
+                    <label>Surname:</label>
+                    <input class="input disabled" type="search" name="patient_surname" value="<%= patient_surname %>"
+                        readonly />
+                </div>
+
+                <div class="block">
+                    <label>Forename:</label>
+                    <input class="input disabled" type="search" name="patient_forename" value="<%= patient_forename %>"
+                        readonly />
+                </div>
+
+                <div class="block">
+                    <label>DoB:</label>
+                    <input class="input disabled" type="search" name="patient_dob" value="<%= patient_dob %>"
+                        readonly />
+                </div>
+
+                <div class="block">
+                    <label>Gender:</label>
+                    <input class="input disabled" type="search" name="patient_gender" value="<%= patient_gender %>"
+                        readonly />
+                </div>
+
+                <div class="block">
+                    <label>
+                        <h4>Address</h4>
+                    </label>
+                </div>
+
+                <% patient_address.forEach((element, index) => { %>
+                <div class="block">
+                    <label>Line <%= index + 1 %>:</label>
+                    <input class="input disabled" type="search" name="patient_addressLine<%= index + 1 %>"
+                        value="<%= element %>" readonly />
+                </div>
+                <% }) %>
+
+                <div class="block">
+                    <label>City:</label>
+                    <input type="search" name="patient_addressCity" value="<%= patient_addressCity %>"
+                        class="input disabled" readonly />
+                </div>
+
+                <div class="block">
+                    <label>County:</label>
+                    <input type="search" name="patient_addressDistrict" value="<%= patient_addressDistrict %>"
+                        class="input disabled" readonly />
+                </div>
+
+                <div class="block">
+                    <label>Postcode:</label>
+                    <input type="search" name="patient_addressPostalCode" value="<%= patient_addressPostalCode %>"
+                        class="input disabled" readonly />
+                </div>
+
+                <div class="block">
+                    <label>Is this the patient you were searching for?</label>
+                    <button class="input" onclick="history.back()" type="button">No, search again</button>
+                    <input class="input" type="submit" value="Yes, continue" />
+                </div>
+
+                <input type="hidden" name="gp_id" value="<%- typeof gp_id !== 'undefined' ? gp_id : '' %>" />
+                <input type="hidden" name="gp_name" value="<%- typeof gp_name !== 'undefined' ? gp_name : '' %>" />
+                <input type="hidden" name="gp_address" value="<%- typeof gp_address !== 'undefined' ? gp_address : '' %>" />
+
+                <input type="hidden" name="confirmed" value="true" />
+            </form>
+        </div>
+    </div>
+    <% include ../partials/footer %>
+</body>
+
+</html>
