@@ -1,6 +1,6 @@
 {
   "name": "ydh-discharge-summary-form",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "",
   "keywords": [
     "YDH",
@@ -11,7 +11,7 @@
   "main": "src/index.js",
   "scripts": {
     "lint": "eslint src/*/*/*.js --fix",
-    "jest": "jest src/server/ --detectOpenHandles",
+    "jest": "jest src/server/ --detectOpenHandles --coverage",
     "start": "nodemon --exec babel-node dist/index.js ",
     "copy": "@powershell Copy-Item src/* dist -force -recurse -verbose",
     "build": "babel src --out-dir dist",
@@ -35,10 +35,10 @@
   },
   "homepage": "https://github.com/Fdawgs/ydh-discharge-summary-form#readme",
   "devDependencies": {
-    "@babel/cli": "7.6.4",
-    "@babel/core": "7.6.4",
-    "@babel/node": "7.6.3",
-    "@babel/preset-env": "7.6.3",
+    "@babel/cli": "=7.6.4",
+    "@babel/core": "=7.6.4",
+    "@babel/node": "=7.6.3",
+    "@babel/preset-env": "=7.6.3",
     "babel-jest": "^24.9.0",
     "babel-preset-minify": "^0.5.1",
     "coveralls": "^3.0.7",
