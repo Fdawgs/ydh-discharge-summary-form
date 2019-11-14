@@ -112,8 +112,7 @@
 
                 <input class="binaryinput" type="checkbox" name="signoff_drCheckbox"
                     title="Confirm discharge summary correct" onclick="signOff(this);"
-                    <% if (typeof signoff_drCheckbox !== 'undefined' && signoff_drCheckbox === 'on') { %> checked
-                    disabled <% } else { %> <% } %> />
+                    <% if (typeof signoff_drCheckbox !== 'undefined' && signoff_drCheckbox === 'on') { %> checked <% } else { %> <% } %> />
 
                 <% if (typeof signoff_drCheckbox !== 'undefined' && signoff_drCheckbox === 'on') { %>
                 <input name="signoff_drCheckbox" type="hidden" value="on" />
