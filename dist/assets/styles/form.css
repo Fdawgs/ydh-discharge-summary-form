@@ -32,6 +32,7 @@ div.block .binaryinput {
     margin: 20px;
     padding: 20px;
     color: white;
+    background-color: lightblue;
 }
 
 .collapsible-div .form-block {
@@ -43,8 +44,9 @@ div.block .binaryinput {
 }
 
 #Medication .form-block {
-    background-color: darkolivegreen;
+    background-color: #6D944A;
 }
+
 
 .clinical-advancedcareplan-text, .clinical-aki-div, .discharge-different-address, .medication-tto-button, .medication-change-button {
     display: none;
