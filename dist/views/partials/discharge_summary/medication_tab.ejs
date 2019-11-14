@@ -350,24 +350,34 @@
                         value="<%=element.medication_ttoPharmacyAvailability%>" readonly />
                     <%} else {%>
                     <select class="input <%=ttoDisabled%>" name="medication_ttoPharmacyAvailability">
-                        <%  let medicationTtoPharmacyAvailability = ['', 'CD Prescription',
-                            'For Dispensing', 'Kitchen', 'Not Dispensed',
-                            'On Ward', 'Ordered from Pharmacy today', 'PODs (At Home)',
-                            'PODs (Blister Pack)', 'PODs (Patient Locker)', 'TTO pack on ward'];
+                        <%  let medicationTtoPharmacyAvailability = [
+                                { value: '', option: '', attributes: '' },
+                                { value: 'CD Prescription', option: 'CD Prescription', attributes: '' },
+                                { value: 'For Dispensing', option: 'For Dispensing', attributes: 'style="background-color: green;"' },
+                                { value: 'Kitchen', option: 'Kitchen', attributes: '' },
+                                { value: 'Not Dispensed', option: 'Not Dispensed', attributes: '' },
+                                { value: 'On Ward', option: 'On Ward', attributes: '' },
+                                { value: 'Ordered from Pharmacy today', option: 'Ordered from Pharmacy today', attributes: '' },
+                                { value: 'PODs (At Home)', option: 'PODs (At Home)', attributes: '' },
+                                { value: 'PODs (Blister Pack)', option: 'PODs (Blister Pack)', attributes: '' },
+                                { value: 'PODs (Patient Locker)', option: 'PODs (Patient Locker)', attributes: '' },
+                                { value: 'TTO pack on ward', option: 'TTO pack on ward', attributes: '' }
+                            ];
+
                                 for (let k = 0; k < medicationTtoPharmacyAvailability.length; k += 1) {
                                     let attributes;
 
-                                    if (typeof element.medication_ttoPharmacyAvailability !== 'undefined' && element.medication_ttoPharmacyAvailability === medicationTtoPharmacyAvailability[k]) {
-                                        attributes = 'selected';
+                                    if (typeof element.medication_ttoPharmacyAvailability !== 'undefined' && element.medication_ttoPharmacyAvailability === medicationTtoPharmacyAvailability[k].value) {
+                                        attributes = `${medicationTtoPharmacyAvailability[k].attributes} selected`;
                                     } else {
-                                        attributes = '';
+                                        attributes = medicationTtoPharmacyAvailability[k].attributes;
                                     }
 
-                                    attributes += ` ${useraccess.pharmacy.disabled}`;
+                                    attributes += `${useraccess.pharmacy.disabled}`;
 
                             %>
-                        <option value="<%=medicationTtoPharmacyAvailability[k]%>" <%-attributes%>>
-                            <%=medicationTtoPharmacyAvailability[k]%></option>
+                        <option value="<%=medicationTtoPharmacyAvailability[k].value%>" <%-attributes%>>
+                            <%=medicationTtoPharmacyAvailability[k].value%></option>
                         <%
                                 }
                             %>

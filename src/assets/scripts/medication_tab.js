@@ -198,7 +198,7 @@ function addMedicationBlock() {
 			<select class="input ${useraccess.pharmacy.disabled}" name="medication_ttoPharmacyAvailability">
 				<option value="" ${useraccess.pharmacy.disabled}></option>
 				<option value="CD Prescription" ${useraccess.pharmacy.disabled}>CD Prescription</option>
-				<option value="For Dispensing" ${useraccess.pharmacy.disabled}>For Dispensing</option>
+				<option value="For Dispensing" style="background-color: green;" ${useraccess.pharmacy.disabled}>For Dispensing</option>
 				<option value="Kitchen" ${useraccess.pharmacy.disabled}>Kitchen</option>
 				<option value="Not Dispensed" ${useraccess.pharmacy.disabled}>Not Dispensed</option>
 				<option value="On Ward" ${useraccess.pharmacy.disabled}>On Ward</option>
