@@ -1,6 +1,7 @@
 "use strict";/**
  * @param {String} name - cookie name.
- */function getCookie(a){var b="; ".concat(document.cookie),c=b.split("; ".concat(a,"="));if(2===c.length)return decodeURIComponent(decodeURI(c.pop().split(";").shift()))}/**
+ */ // eslint-disable-next-line consistent-return
+function getCookie(a){var b="; ".concat(document.cookie),c=b.split("; ".concat(a,"="));if(2===c.length)return decodeURIComponent(decodeURI(c.pop().split(";").shift()))}/**
  * @param {*} evt - event.
  * @param {*} tabName - id of element.
  * @description Switches the display of a tab.
