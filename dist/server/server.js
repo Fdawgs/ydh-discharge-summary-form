@@ -36,8 +36,9 @@ return this.app.get("/",gatherCustomParams(),retrieveAwaitSignOff(this.pool,"dr"
 	 */},{key:"listen",value:function listen(a,b){var c=this.config;// Update the express app to be an instance of createServer
 if(!0===c.https){var d={};// Attempt to use PFX file if present
 c.ssl.pfx.pfx?(d.pfx=fs.readFileSync(c.ssl.pfx.pfx),d.passphrase=c.ssl.pfx.passphrase):(d.cert=fs.readFileSync(c.ssl.cert),d.key=fs.readFileSync(c.ssl.key)),this.app=https.createServer(d,this.app),this.config.protocol="https"}else this.config.protocol="http",this.app=http.createServer(this.app);// Start the app
+// console.log(`${server.name} listening for requests at ${this.config.protocol}://127.0.0.1:${port}`);
 // return self for chaining
-return this.app.listen(a,b),console.log("".concat(c.name," listening for requests at ").concat(this.config.protocol,"://127.0.0.1:").concat(a)),this}/**
+return this.app.listen(a,b),this}/**
 	 * @author Frazer Smith
 	 * @description Shut down server (non-gracefully).
 	 */},{key:"close",value:function close(){// return self for chaining
