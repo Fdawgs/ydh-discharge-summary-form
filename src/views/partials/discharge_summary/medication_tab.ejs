@@ -17,9 +17,10 @@
         </div>
 
         <div class="block">
-            <label>Drug Allergies:</label>
-            <textarea class="input" name="medication_allergiesFreetext" cols="20" rows="4"
-                spellcheck="true" required><%- typeof medication_allergiesFreetext !== 'undefined' ? medication_allergiesFreetext : '' %></textarea>
+            <label>Drug Allergies<sup style="color: red; font-weight: bold; font-size: large;"
+                    title="Required">*</sup>:</label>
+            <textarea class="input" name="medication_allergiesFreetext" cols="20" rows="4" spellcheck="true"
+                required><%- typeof medication_allergiesFreetext !== 'undefined' ? medication_allergiesFreetext : '' %></textarea>
         </div>
 
         <div class="block">
@@ -350,24 +351,34 @@
                         value="<%=element.medication_ttoPharmacyAvailability%>" readonly />
                     <%} else {%>
                     <select class="input <%=ttoDisabled%>" name="medication_ttoPharmacyAvailability">
-                        <%  let medicationTtoPharmacyAvailability = ['', 'CD Prescription',
-                            'For Dispensing', 'Kitchen', 'Not Dispensed',
-                            'On Ward', 'Ordered from Pharmacy today', 'PODs (At Home)',
-                            'PODs (Blister Pack)', 'PODs (Patient Locker)', 'TTO pack on ward'];
+                        <%  let medicationTtoPharmacyAvailability = [
+                                { value: '', option: '', attributes: '' },
+                                { value: 'CD Prescription', option: 'CD Prescription', attributes: '' },
+                                { value: 'For Dispensing', option: 'For Dispensing', attributes: 'style="background-color: green;"' },
+                                { value: 'Kitchen', option: 'Kitchen', attributes: '' },
+                                { value: 'Not Dispensed', option: 'Not Dispensed', attributes: '' },
+                                { value: 'On Ward', option: 'On Ward', attributes: '' },
+                                { value: 'Ordered from Pharmacy today', option: 'Ordered from Pharmacy today', attributes: '' },
+                                { value: 'PODs (At Home)', option: 'PODs (At Home)', attributes: '' },
+                                { value: 'PODs (Blister Pack)', option: 'PODs (Blister Pack)', attributes: '' },
+                                { value: 'PODs (Patient Locker)', option: 'PODs (Patient Locker)', attributes: '' },
+                                { value: 'TTO pack on ward', option: 'TTO pack on ward', attributes: '' }
+                            ];
+
                                 for (let k = 0; k < medicationTtoPharmacyAvailability.length; k += 1) {
                                     let attributes;
 
-                                    if (typeof element.medication_ttoPharmacyAvailability !== 'undefined' && element.medication_ttoPharmacyAvailability === medicationTtoPharmacyAvailability[k]) {
-                                        attributes = 'selected';
+                                    if (typeof element.medication_ttoPharmacyAvailability !== 'undefined' && element.medication_ttoPharmacyAvailability === medicationTtoPharmacyAvailability[k].value) {
+                                        attributes = `${medicationTtoPharmacyAvailability[k].attributes} selected`;
                                     } else {
-                                        attributes = '';
+                                        attributes = medicationTtoPharmacyAvailability[k].attributes;
                                     }
 
-                                    attributes += ` ${useraccess.pharmacy.disabled}`;
+                                    attributes += `${useraccess.pharmacy.disabled}`;
 
                             %>
-                        <option value="<%=medicationTtoPharmacyAvailability[k]%>" <%-attributes%>>
-                            <%=medicationTtoPharmacyAvailability[k]%></option>
+                        <option value="<%=medicationTtoPharmacyAvailability[k].value%>" <%-attributes%>>
+                            <%=medicationTtoPharmacyAvailability[k].value%></option>
                         <%
                                 }
                             %>
@@ -436,33 +447,29 @@
 
             <input class="binaryinput" type="checkbox" name="medication_overallPharmacySignOffCheck"
                 title="Confirm discharge summary correct" onclick="signOff(this);"
-                <% if (typeof medication_overallPharmacySignOffCheck !== 'undefined' && medication_overallPharmacySignOffCheck === 'on') { %>
-                checked disabled
-                <% } else if (useraccess.nurse.disabled === '' || useraccess.transcribe.disabled === '') {%>
-                <%} else {%> disabled <%} %> />
-            <% if (typeof medication_overallPharmacySignOffCheck !== 'undefined' && medication_overallPharmacySignOffCheck === 'on') { %>
-            <input name="medication_overallPharmacySignOffCheck" type="hidden" value="on" />
-            <% } %>
+                <% if (typeof signoff_drCheckbox === 'undefined') { %> disabled
+                <% } else if (typeof medication_overallPharmacySignOffCheck !== 'undefined' && medication_overallPharmacySignOffCheck === 'on') { %>
+                checked <% } else { %> <% } %> />
         </div>
 
         <div class="block">
             <label>Name:</label>
             <input class="input disabled" type="text" name="medication_overallPharmacySignOffName"
-                value="<%- typeof medication_overallPharmacySignOffName !== 'undefined' ? medication_overallPharmacySignOffName : '' %>"
+                value="<%- typeof medication_overallPharmacySignOffName !== 'undefined' && typeof signoff_drCheckbox !== 'undefined' ? medication_overallPharmacySignOffName : '' %>"
                 readonly />
         </div>
 
         <div class="block">
             <label>Date:</label>
             <input class="input disabled" type="date" name="medication_overallPharmacySignOffDate"
-                value="<%- typeof medication_overallPharmacySignOffDate !== 'undefined' ? medication_overallPharmacySignOffDate : '' %>"
+                value="<%- typeof medication_overallPharmacySignOffDate !== 'undefined' && typeof signoff_drCheckbox !== 'undefined' ? medication_overallPharmacySignOffDate : '' %>"
                 readonly />
         </div>
 
         <div class="block">
             <label>Time:</label>
             <input class="input disabled" type="time" name="medication_overallPharmacySignOffTime"
-                value="<%- typeof medication_overallPharmacySignOffTime !== 'undefined' ? medication_overallPharmacySignOffTime : '' %>"
+                value="<%- typeof medication_overallPharmacySignOffTime !== 'undefined' && typeof signoff_drCheckbox !== 'undefined' ? medication_overallPharmacySignOffTime : '' %>"
                 readonly />
         </div>
     </div>

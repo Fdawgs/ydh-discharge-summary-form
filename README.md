@@ -75,7 +75,8 @@ CREATE ROLE app WITH
 
 GRANT CONNECT ON DATABASE discharge TO app;
 GRANT SELECT ON TABLE discharge_summary TO app;
-GRANT INSERT ON TABLE discharge_summary TO app; 
+GRANT INSERT ON TABLE discharge_summary TO app;
+GRANT USAGE, SELECT ON SEQUENCE discharge_summary_id_seq TO app;
 
 -- User used by SSIS/SSRS reporting
 CREATE ROLE reporting WITH
@@ -109,11 +110,11 @@ Site configuration options can be found in `src/config.js` (and `dist/config.js`
 7. Run `net stop was /y & net start w3svc` to restart WAS
 
 # FAQ
-## Why is the build quality of the application so poor?
+## Why is the build quality of the application subpar?
 
 A number of challenges have reduced the robustness of this project:
 
-- Disowned by its original project manager (and no successor appeared)
+- Disowned by its original project manager (and no successor appointed)
 - No technical lead/architect
 - No formal specification
 - No documentation of how the existing discharge summary SharePoint form works

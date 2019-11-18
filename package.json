@@ -1,6 +1,6 @@
 {
   "name": "ydh-discharge-summary-form",
-  "version": "0.10.1",
+  "version": "0.11.0",
   "description": "",
   "keywords": [
     "YDH",
@@ -46,7 +46,7 @@
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-nhsuk": "^1.0.0",
     "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^23.0.3",
+    "eslint-plugin-jest": "^23.0.4",
     "eslint-plugin-json": "^2.0.1",
     "jest": "^24.9.0",
     "nodemon": "^1.19.4",
@@ -58,7 +58,7 @@
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.4",
     "core-js": "^3.4.1",
-    "ejs": "^2.7.1",
+    "ejs": "^2.7.2",
     "express": "^4.17.1",
     "helmet": "^3.21.2",
     "pg": "^7.12.1",
