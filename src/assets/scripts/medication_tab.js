@@ -314,7 +314,6 @@ function confirmLock(that) {
 		const inputs = element.parentNode.querySelectorAll('input');
 		inputs.forEach((input) => {
 			if (input.type !== 'hidden' && input.classList.contains('input')) {
-				console.log(input.type);
 				input.setAttribute('readonly', '');
 				input.classList.add('disabled');
 			}

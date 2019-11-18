@@ -1,17 +1,12 @@
 # Roadmap
 
-## v0.11.0
+## v0.12.0
+
+### Sitewide
+- [ ] Resolve error that occurs on first load of site
 
 ### Discharge Summary
-- [X] Align tab and form colours
-
-#### Medication Tab
-- [X] Set the background-colour of 'For Dispensing' option in 'Availability' to green (Requested by )
-- [ ] Add visual indication that the drug allergies textarea is mandatory
-
-#### Sign Off Tab
-- [X] Allow for the Dr confirmation box to be unticked
-- [ ] Status of first and second nurse sign offs are reset when the dr confirmation box is unticked and saved
+- [ ] Resolve error that occurs when discharge_summary/continue is refreshed
 
 ## v0.*.*
 
