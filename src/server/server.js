@@ -184,7 +184,7 @@ class Server {
 
 		// Start the app
 		this.app.listen(port, callback);
-		console.log(`${server.name} listening for requests at ${this.config.protocol}://127.0.0.1:${port}`);
+		// console.log(`${server.name} listening for requests at ${this.config.protocol}://127.0.0.1:${port}`);
 
 		// return self for chaining
 		return this;

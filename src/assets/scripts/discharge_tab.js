@@ -2,7 +2,6 @@
 /* eslint-disable sort-keys */
 function populateDischargeDestination(that) {
 	const destination = that.value;
-	console.log(destination);
 
 	const destinations = [
 		{
