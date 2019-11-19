@@ -71,5 +71,5 @@ dist/test.config.js
 aspnet_client/
 
 # iisnode logs
-dist/iisnode/*
-src/iisnode/*
+dist/iisnode/*.txt
+src/iisnode/*.txt
