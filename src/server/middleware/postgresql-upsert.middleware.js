@@ -170,6 +170,7 @@ module.exports = function postgresqlUpsertMiddleware(pool) {
 				delete req.customparams.action;
 				query = `INSERT INTO public.discharge_summary(id, "lastUpdate", "raw", version)
 		VALUES('${id}', CURRENT_TIMESTAMP, '${JSON.stringify(req.customparams)}', ${version += 1})
+		ON CONFLICT (id, version) DO UPDATE SET id ='${id}', version = ${version}
 		RETURNING id, "lastUpdate", "raw", version;`;
 				break;
 		}

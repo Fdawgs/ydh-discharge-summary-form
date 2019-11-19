@@ -74,8 +74,7 @@ CREATE ROLE app WITH
 	ENCRYPTED PASSWORD 'password';
 
 GRANT CONNECT ON DATABASE discharge TO app;
-GRANT SELECT ON TABLE discharge_summary TO app;
-GRANT INSERT ON TABLE discharge_summary TO app;
+GRANT SELECT, INSERT, UPDATE ON TABLE discharge_summary TO app;
 GRANT USAGE, SELECT ON SEQUENCE discharge_summary_id_seq TO app;
 
 -- User used by SSIS/SSRS reporting
