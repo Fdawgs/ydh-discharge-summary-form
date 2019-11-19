@@ -107,14 +107,15 @@ Site configuration options can be found in `src/config.js` (and `dist/config.js`
 6. Navigate to IIS Manager > Home > Sites > dischargesum > IIS > Authentication settings 
    1. Set Windows Authentication to `Enabled`
    2. Set Anonymous Authentication to `Disabled`
-7. Run `net stop was /y & net start w3svc` to restart WAS
+7. Run `%systemdrive%\windows\system32\icacls.exe c:\inetpub\ydh-discharge-summary-form\dist\iisnode\ /grant IIS_IUSRS:(OI)(CI)F` in CMD to grant the default IIS user access to write log files for the site
+8. Run `net stop was /y & net start w3svc` to restart WAS
 
 # FAQ
 ## Why is the build quality of the application subpar?
 
 A number of challenges have reduced the robustness of this project:
 
-- Disowned by its original project manager (and no successor appointed)
+- Disowned by its original project manager (Solutions Development team manager stepped in)
 - No technical lead/architect
 - No formal specification
 - No documentation of how the existing discharge summary SharePoint form works

@@ -14,7 +14,7 @@ b.nextSibling&&b.nextSibling.style&&""===b.nextSibling.style["background-color"]
  * @todo Replace window.confirm with a custom confirmation UI element.
  * @todo Wipe the element.title as setting it to null doesn't work.
  */function confirmLock(a){var b=a,c=document.getElementById("user").innerHTML,d=new Date().toLocaleString(),e=window.confirm("Once locked this cannot be undone, are you sure you want to continue?");if(!0===e){b.previousElementSibling.remove(),b.innerHTML="Locked ".concat(d," by ").concat(c.toString()," <input type='hidden' name='medication_ttoLockDate' value='").concat(d,"' /> <input type='hidden' name='medication_ttoLockUser' value='").concat(c,"' />"),b.onclick=null,b.title=null,b.classList.remove("closebtn");// Change all inputs of TTO block to readonly
-var f=b.parentNode.querySelectorAll("input");f.forEach(function(a){"hidden"!==a.type&&a.classList.contains("input")&&(console.log(a.type),a.setAttribute("readonly",""),a.classList.add("disabled"))});var g=b.parentNode.querySelectorAll("textarea");g.forEach(function(a){a.setAttribute("readonly",""),a.classList.add("disabled")})}return b}/**
+var f=b.parentNode.querySelectorAll("input");f.forEach(function(a){"hidden"!==a.type&&a.classList.contains("input")&&(a.setAttribute("readonly",""),a.classList.add("disabled"))});var g=b.parentNode.querySelectorAll("textarea");g.forEach(function(a){a.setAttribute("readonly",""),a.classList.add("disabled")})}return b}/**
  * @author Frazer Smith
  * @param {*} that
  * @description Sets the comments automatically for a medication if it is considered high risk.

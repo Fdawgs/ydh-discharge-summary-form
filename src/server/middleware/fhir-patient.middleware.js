@@ -26,7 +26,7 @@ module.exports = function fhirPatientMiddleware(config) {
 				params.patient_gender = result.gender;
 				params.patient_dobIso = result.birthDate;
 
-				// Stupid way of getting it into DD/MM/YYYY because for some reason people can't read ISO,
+				// Inefficient way of getting it into DD/MM/YYYY because staff can't read ISO format,
 				// and localestring pushes it into American
 				const birthDate = new Date(result.birthDate);
 				params.patient_dob = [

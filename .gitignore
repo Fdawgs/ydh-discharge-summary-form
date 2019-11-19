@@ -67,8 +67,9 @@ ssl_certs/
 src/test.config.js
 dist/test.config.js
 
-# iisnode logs
-iisnode/
-
 # aspnet client logs
 aspnet_client/
+
+# iisnode logs
+dist/iisnode/*
+src/iisnode/*
