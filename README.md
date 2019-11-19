@@ -115,7 +115,7 @@ Site configuration options can be found in `src/config.js` (and `dist/config.js`
 
 A number of challenges have reduced the robustness of this project:
 
-- Disowned by its original project manager (and no successor appointed)
+- Disowned by its original project manager (Solutions Development team manager stepped in)
 - No technical lead/architect
 - No formal specification
 - No documentation of how the existing discharge summary SharePoint form works
