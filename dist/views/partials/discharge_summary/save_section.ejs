@@ -26,7 +26,7 @@ if (typeof ttos !== 'undefined') {
             && (typeof signoff_nurseSecondCheck !== 'undefined' && signoff_nurseSecondCheck === 'on')
             && (!pharmacyCheck.includes('unchecked'))) { %> <%} else {%> disabled <%}%> />
 
-            <input type="submit" name="action" value="Save and Send"
+            <input type="submit" name="action" value="Save and Send to GP"
             onclick="deactivateReloader(); changeFormAction('send')" <% if ((typeof row_id !== 'undefined')
             && (typeof signoff_drCheckbox !== 'undefined' && signoff_drCheckbox === 'on')
             && (typeof signoff_nurseFirstCheck !== 'undefined' && signoff_nurseFirstCheck === 'on')
