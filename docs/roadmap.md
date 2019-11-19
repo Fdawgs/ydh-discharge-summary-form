@@ -2,11 +2,7 @@
 
 ## v0.12.0
 
-### Sitewide
-- [ ] Resolve error that occurs on first load of site
 
-### Discharge Summary
-- [ ] Resolve error that occurs when discharge_summary/continue is refreshed
 
 ## v0.*.*
 
