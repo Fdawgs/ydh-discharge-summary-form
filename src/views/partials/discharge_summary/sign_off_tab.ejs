@@ -29,7 +29,7 @@
                     title="Confirm discharge summary correct" onclick="signOff(this);"
                     <% if (typeof signoff_drCheckbox === 'undefined') { %> disabled
                     <% } else if (typeof signoff_nurseFirstCheck !== 'undefined' && signoff_nurseFirstCheck === 'on') { %>
-                   checked <% } else { %> <% } %> />
+                   checked <% } %> />
 
             </div>
 
@@ -68,7 +68,7 @@
                     title="Confirm discharge summary correct" onclick="signOff(this);"
                     <% if (typeof signoff_drCheckbox === 'undefined') { %> disabled
                     <% } else if (typeof signoff_nurseSecondCheck !== 'undefined' && signoff_nurseSecondCheck === 'on') { %>
-                   checked <% } else { %> <% } %> />
+                   checked <% } %> />
                 <% if (typeof signoff_nurseSecondCheck !== 'undefined' && signoff_nurseSecondCheck === 'on') { %>
                 <input name="signoff_nurseSecondCheck" type="hidden" value="on" />
                 <% } %>
@@ -114,7 +114,7 @@
                 <input class="binaryinput" type="checkbox" name="signoff_drCheckbox"
                     title="Confirm discharge summary correct" onclick="signOff(this);"
                     <% if (typeof signoff_drCheckbox !== 'undefined' && signoff_drCheckbox === 'on') { %> checked
-                    <% } else { %> <% } %> />
+                    <% } %> />
 
             </div>
 
