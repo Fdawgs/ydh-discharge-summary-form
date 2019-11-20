@@ -69,6 +69,32 @@
                 spellcheck="true"><%- typeof clinical_adverseIncidents !== 'undefined' ? clinical_adverseIncidents : '' %></textarea>
         </div>
 
+        <div class="block">
+            <label>
+                <h4>Falls</h4>
+            </label>
+        </div>
+
+        <div class="block">
+            <label>Has a falls assessment for the patient taken place?:</label>
+            <select class="binaryinput" name="clinical_fallsAssessment">
+                <%  const clinicalFallsAssessmentOption = ['', 'No', 'Yes'];
+                    for (let i = 0; i < clinicalFallsAssessmentOption.length; i += 1) {
+                        let attributes;
+                    
+                        if (typeof clinical_fallsAssessment !== 'undefined' && clinical_fallsAssessment === clinicalFallsAssessmentOption[i]) {
+                            attributes = 'selected';
+                        } else {
+                            attributes = '';
+                        }
+                %>
+                <option value="<%=clinicalFallsAssessmentOption[i]%>" <%-attributes%>><%=clinicalFallsAssessmentOption[i]%>
+                </option>
+                <%
+                    }
+                %>
+            </select>
+        </div>
 
         <div class="block">
             <label>
