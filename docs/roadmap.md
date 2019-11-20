@@ -17,9 +17,6 @@
 #### Clinical Tab
 - [ ] Add Falls Assessment check drop-down menu
 
-#### Preview Page
-- [ ] Add 'Send to GP Button'
-
 ### Home page
 - [ ] Only show patients that require pharmacy sign off to users who are part of the 'pharmacy' user group
 - [ ] Only show patients that require nurse sign off to users who are part of the 'nurse' and 'transcribe' user group
