@@ -12,7 +12,7 @@ if (typeof ttos !== 'undefined') {
 }
 %>
 
-<div style="align-self: flex-end; width: 50%; margin: 0 auto;">
+<div style="align-self: flex-end; width: 65%; margin: 0 auto;">
     <div class="block">
         <input type="submit" name="action" onclick="deactivateReloader(); changeFormAction('createnew')"
             value="<%- typeof row_id !== 'undefined' ? 'Save and Exit' : 'Create New Form and Exit' %>" />
@@ -27,7 +27,7 @@ if (typeof ttos !== 'undefined') {
             && (!pharmacyCheck.includes('unchecked'))) { %> <%} else {%> disabled <%}%> />
 
             <input type="submit" name="action" value="Save and Send to GP"
-            onclick="deactivateReloader(); changeFormAction('send')" <% if ((typeof row_id !== 'undefined')
+            onclick="changeFormAction('send')" <% if ((typeof row_id !== 'undefined')
             && (typeof signoff_drCheckbox !== 'undefined' && signoff_drCheckbox === 'on')
             && (typeof signoff_nurseFirstCheck !== 'undefined' && signoff_nurseFirstCheck === 'on')
             && (typeof signoff_nurseSecondCheck !== 'undefined' && signoff_nurseSecondCheck === 'on')
