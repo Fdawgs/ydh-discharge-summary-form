@@ -41,7 +41,7 @@
     "@babel/preset-env": "=7.6.3",
     "babel-jest": "^24.9.0",
     "babel-preset-minify": "^0.5.1",
-    "coveralls": "^3.0.7",
+    "coveralls": "^3.0.8",
     "eslint": "^6.6.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-nhsuk": "^1.0.0",
@@ -49,7 +49,7 @@
     "eslint-plugin-jest": "^23.0.4",
     "eslint-plugin-json": "^2.0.1",
     "jest": "^24.9.0",
-    "nodemon": "^1.19.4",
+    "nodemon": "^2.0.0",
     "supertest": "^4.0.2"
   },
   "dependencies": {
@@ -58,10 +58,10 @@
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.4",
     "core-js": "^3.4.1",
-    "ejs": "^2.7.3",
+    "ejs": "^2.7.4",
     "express": "^4.17.1",
     "helmet": "^3.21.2",
-    "pg": "^7.12.1",
+    "pg": "^7.14.0",
     "regenerator-runtime": "^0.13.3",
     "request": "^2.88.0",
     "request-promise": "^4.2.5"
