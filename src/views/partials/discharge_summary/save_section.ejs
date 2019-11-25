@@ -1,6 +1,13 @@
 <% const pharmacyCheck = [];
 if (typeof ttos !== 'undefined') {
-    ttos.forEach((tto) => {
+    let parsedTtos;
+    if (typeof ttos === 'string') {
+        parsedTtos = JSON.parse(ttos);
+    } else {
+        parsedTtos = ttos;
+    }
+
+    parsedTtos.forEach((tto) => {
         if (typeof tto.medication_finalPharmacySignOffCheck !== 'undefined' && tto.medication_finalPharmacySignOffCheck === 'on') {
             pharmacyCheck.push('checked');
         } else {
