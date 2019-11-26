@@ -3,7 +3,7 @@ Yeovil District Hospital (YDH) - Inpatient Discharge Summary Site
 [![GitHub Release](https://img.shields.io/github/release/Fdawgs/ydh-discharge-summary-form.svg)](https://github.com/Fdawgs/ydh-discharge-summary-form/releases/latest/) [![Build Status](https://travis-ci.org/Fdawgs/ydh-discharge-summary-form.svg?branch=master)](https://travis-ci.org/Fdawgs/ydh-discharge-summary-form) [![Coverage Status](https://coveralls.io/repos/github/Fdawgs/ydh-discharge-summary-form/badge.svg?branch=master)](https://coveralls.io/github/Fdawgs/ydh-discharge-summary-form?branch=master) [![Greenkeeper badge](https://badges.greenkeeper.io/Fdawgs/ydh-discharge-summary-form.svg)](https://greenkeeper.io/)
 
 # Intro
-Yeovil District Hospital NHS Foundation Trust's intranet site 'YCloud', which is built on a dated edition of Microsoft SharePoint, hosts a large amount of files and pages used by a range of departments within the trust. Inpatient discharge summary forms are one of the many pages on the site. Unfortunately the SharePoint deployment at the trust is sporadic in its uptime.
+Yeovil District Hospital NHS Foundation Trust's intranet site 'YCloud', which is built on a dated edition of Microsoft SharePoint, hosts a large amount of files and pages used by a range of departments within the trust. Inpatient discharge summary forms are one of the many pages on the site. Unfortunately, the SharePoint deployment at the trust is sporadic in its uptime.
 
 Inpatient discharge summaries are important documents and to have them inaccessible stops patients from being discharged; the plan was to implement them as questionnaires into TrakCare, the PAS (Patient Administration System) used by the hospital, but this cannot be done until EPMA (Electronic Prescribing and Medicines Administration) functionality is integrated into the PAS. It is unknown when or if InterSystems will ever add this to TrakCare.
 
@@ -126,7 +126,7 @@ As it stands, it will require significant refactoring in the future to make it v
 
 ## Will additional features be added? 
 
-Due to hardships faced during its intial development as documented in the previous question, the initial release only attempts to mimic the original Inpatient Discharge Summary SharePoint form.
+Due to hardships faced during its initial development as documented in the previous question, the initial release only attempts to mimic the original Inpatient Discharge Summary SharePoint form.
 
 Any further changes or additions that need to be made after the release of v1.0.0 will require a high-quality formal specification, and oversight from a digitally fluent project manager.
 
