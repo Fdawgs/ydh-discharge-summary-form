@@ -9,10 +9,19 @@
     <script src="/javascripts/discharge_tab.js"> async</script>
 </head>
 
-<!-- TODO: Tidy this god-awful code up in the body onload -->
+<% const onloadArray = [];
+if (typeof discharge_destination !== 'undefined' && discharge_destination !== 'Usual place of residence') {
+    onloadArray.push('showClass(\'discharge-different-address\')');
+};
+if (typeof clinical_aki !== 'undefined' && clinical_aki === 'Yes') {
+    onloadArray.push('showClass(\'clinical-aki-div\');');
+};
+
+const onload = onloadArray.join(' ; ');
+%>
 
 <body
-    onload="<%- typeof clinical_aki !== 'undefined' && clinical_aki === 'Yes' ? 'showClass(\'clinical-aki-div\');' : ''%> <%- typeof discharge_destination !== 'undefined' && discharge_destination !== 'Usual place of residence' ? 'showClass(\'discharge-different-address\');' : ''%>">
+    onload="<%=onload%>">
     <% include ../partials/header %>
 
     <% include ../partials/banner %>
