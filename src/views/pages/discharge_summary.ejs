@@ -30,15 +30,12 @@ const onload = onloadArray.join(' ; ');
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
         <%
             let text;
-            switch (query.command) {
-                case 'INSERT':
-                case 'UPDATE':
-                    text = 'Discharge summary updated';
-                break;
-            } 
+            if (query.result === 'INSERT' || query.command === 'UPDATE') {
+                text = 'Discharge summary updated';
+            };
             if (query.result === 'warning') {
                 text = 'Action failed, please raise a ticket with IT services';
-            }
+            };
         %>
         <strong><%=query.result.toUpperCase()%></strong>: <%-text%>
     </div>
