@@ -49,6 +49,7 @@
 .alert {
     margin-top: -20px;
     padding: 20px;
+    margin-bottom: 20px;
     background-color: green;
     color: white;
 }
