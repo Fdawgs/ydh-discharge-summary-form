@@ -4,18 +4,43 @@
 
 <head>
     <% include ../partials/head %>
-    <script src="/scripts/discharge_summary.js" async></script>
-    <script src="/scripts/medication_tab.js"> async</script>
-    <script src="/scripts/discharge_tab.js"> async</script>
+    <script src="/javascripts/discharge_summary.js" async></script>
+    <script src="/javascripts/medication_tab.js"> async</script>
+    <script src="/javascripts/discharge_tab.js"> async</script>
 </head>
 
-<!-- TODO: Tidy this god-awful code up in the body onload -->
+<% const onloadArray = [];
+if (typeof discharge_destination !== 'undefined' && discharge_destination !== 'Usual place of residence') {
+    onloadArray.push('showClass(\'discharge-different-address\')');
+};
+if (typeof clinical_aki !== 'undefined' && clinical_aki === 'Yes') {
+    onloadArray.push('showClass(\'clinical-aki-div\');');
+};
 
-<body
-    onload="<%- typeof clinical_aki !== 'undefined' && clinical_aki === 'Yes' ? 'showClass(\'clinical-aki-div\');' : ''%> <%- typeof discharge_destination !== 'undefined' && discharge_destination !== 'Usual place of residence' ? 'showClass(\'discharge-different-address\');' : ''%>">
+const onload = onloadArray.join(' ; ');
+%>
+
+<body onload="<%=onload%>">
     <% include ../partials/header %>
 
     <% include ../partials/banner %>
+
+    <% if (typeof query !== 'undefined' && query.result !== 'undefined') { %>
+    <div class="alert <%= query.result %>">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <%
+            let text;
+            if (query.result === 'INSERT' || query.command === 'UPDATE') {
+                text = 'Discharge summary updated';
+            };
+            if (query.result === 'warning') {
+                text = 'Action failed, please raise a ticket with IT services';
+            };
+        %>
+        <strong><%=query.result.toUpperCase()%></strong>: <%-text%>
+    </div>
+    <% } %>
+
 
     <div class="container page-wrap">
 
