@@ -2,7 +2,7 @@
  * header.css
  *
  * Styles for headers and alerts across all pages,
- * and the banner that sits under the header 
+ * and the banner that sits under the header
  * in the discharge_summary pages.
  */
 
@@ -49,6 +49,7 @@
 .alert {
     margin-top: -20px;
     padding: 20px;
+    margin-bottom: 20px;
     background-color: green;
     color: white;
 }

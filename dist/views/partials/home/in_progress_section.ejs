@@ -18,17 +18,17 @@
         <% if (typeof element.raw.patient_nhsNo !== 'undefined' && element.raw.patient_nhsNo !== '') { %>
         | <strong>NHS No:</strong> <%=element.raw.patient_nhsNo%>
         <%}%>
-            
+
           <% if (typeof element.raw.patient_surname !== 'undefined' && element.raw.patient_surname !== '') { %>
         | <strong>Surname:</strong> <%=element.raw.patient_surname%>
         <%}%>
-            
+
           <% if (typeof element.raw.patient_dob !== 'undefined' && element.raw.patient_dob !== '') { %>
         | <strong>DoB:</strong> <%=element.raw.patient_dob%>
         <%}%>
           <button type="submit" class="btn-link" style="float: right">Continue Form</button>
-  
-          
+
+
           <!-- Build up inputs to pass through to continue form -->
           <% /**
           * Stupid way of getting it into DD/MM/YYYY because for some

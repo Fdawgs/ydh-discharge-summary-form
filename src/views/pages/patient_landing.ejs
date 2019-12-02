@@ -13,18 +13,15 @@
     <div class="alert <%= query.result %>">
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
         <%
-        let text;
-        switch (query.command) {
-            case 'UPDATE':
-                text = 'Discharge summary update';
-            break;
-            case 'INSERT':
-                text = 'New discharge summary creation'
-            break;
-        } %>
-
+            let text;
+            if (query.result === 'INSERT' || query.command === 'UPDATE') {
+                text = 'Discharge summary created';
+            };
+            if (query.result === 'warning') {
+                text = 'Action failed, please raise a ticket with IT services';
+            };
+        %>
         <strong><%=query.result.toUpperCase()%></strong>: <%-text%>
-        <%-query.result === 'warning' ? 'failed, please raise a ticket with IT services' : 'completed'%>
     </div>
     <% } %>
     <div class="container page-wrap" style="overflow: hidden; margin-bottom: 20px">
