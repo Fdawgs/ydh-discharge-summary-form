@@ -48,7 +48,7 @@
             } else {
                 parsedChangedMeds = changedmeds;
             }
-        
+
             parsedChangedMeds.forEach((element) => { %>
         <div class="block form-block"><span title="Remove medication item" class="closebtn"
                 onclick="this.parentElement.remove();">×</span>
@@ -115,13 +115,13 @@
             } else {
                 parsedTtos = ttos;
             }
-        
+
             parsedTtos.forEach((element) => {
                 let ttoDisabled = '';
                 let ttoReadonly = ''; %>
         <div class="block form-block">
 
-            <% if (element.medication_ttoLockDate !== '') { 
+            <% if (element.medication_ttoLockDate !== '') {
                 ttoDisabled = 'disabled';
                 ttoReadonly = 'readonly';
                 %>

@@ -41,7 +41,7 @@
                         'UROLOGY'];
                     for (let j = 0; j < admissionSpecialtyOption.length; j += 1) {
                         let attributes;
-                    
+
                         if (typeof admission_specialty !== 'undefined' && admission_specialty === admissionSpecialtyOption[j]) {
                             attributes = 'selected';
                         } else {
@@ -81,10 +81,10 @@
                         'Maternity - Admitted ante partum', 'Maternity - Admitted post partum', 'Other - Baby born in hospital',
                         'Other - Baby born outside of hospital except when at home as intended',
                         'Other - Transfer of admitted patient from ANOTHER provider other than in emergency'];
-                    
+
                     for (let k = 0; k < admissionMethodOption.length; k += 1) {
                         let attributes;
-                    
+
                         if (typeof admission_method !== 'undefined' && admission_method === admissionMethodOption[k]) {
                             attributes = 'selected';
                         } else {
@@ -112,7 +112,7 @@
                         'GYNAE THEATRES', 'ICU', 'JASMINE', 'KW', 'MAIN THEATRES', 'QDH', 'QUEENSWAY'];
                     for (let l = 0; l < admissionWardOption.length; l += 1) {
                         let attributes;
-                    
+
                         if (typeof admission_ward !== 'undefined' && admission_ward === admissionWardOption[l]) {
                             attributes = 'selected';
                         } else {
@@ -208,7 +208,7 @@
                             option: 'Usual place of residence'
                         }
                     ];
-                    
+
                     for (let m = 0; m < admissionSourceOption.length; m += 1) {
                         let attributes;
                         if (typeof admission_source !== 'undefined' && admission_source === admissionSourceOption[m].value) {
