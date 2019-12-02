@@ -14,7 +14,7 @@
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
         <%
             let text;
-            if (query.result === 'INSERT' || query.command === 'UPDATE') {
+            if (query.command === 'INSERT' || query.command === 'UPDATE') {
                 text = 'Discharge summary created';
             };
             if (query.result === 'warning') {
