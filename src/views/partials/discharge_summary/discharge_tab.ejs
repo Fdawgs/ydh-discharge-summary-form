@@ -153,7 +153,7 @@
                     'Discharged Pathway Two – West Mendip', 'Discharged Pathway Three – Sherborne House'];
                     for (let o = 0; o < dischargePathwayOption.length; o += 1) {
                         let attributes;
-                    
+
                         if (typeof discharge_pathway !== 'undefined' && discharge_pathway === dischargePathwayOption[o]) {
                             attributes = 'selected';
                         } else {
@@ -202,10 +202,10 @@
                         { value: 'Wincanton Community Hospital', option: 'Wincanton Community Hospital', attributes: 'onclick="populateDischargeDestination(this);"' },
                         { value: 'Yeatman Hospital - Sherborne', option: 'Yeatman Hospital - Sherborne', attributes: 'onclick="populateDischargeDestination(this);"' }
                     ];
-                    
+
                     for (let p = 0; p < dischargeDestinationOption.length; p += 1) {
                         let attributes;
-                    
+
                         if (typeof discharge_destination !== 'undefined' && discharge_destination === dischargeDestinationOption[p].value) {
                             attributes = `${dischargeDestinationOption[p].attributes} selected`;
                         } else {

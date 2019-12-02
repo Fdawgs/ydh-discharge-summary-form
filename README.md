@@ -22,7 +22,7 @@ This Node.js web application has been built using the [Express framework](https:
 
 Internet Explorer 11 is used at YDH due to legacy web applications being unable to run on anything other than IE. The site is transcompiled to be backwards compatible with IE using [Babel](https://babeljs.io/).
 
-To make further additions in a deployment: 
+To make further additions in a deployment:
 
 1. Alter files in /src
 2. Run `npm run copy` to migrate files to /dist
@@ -40,11 +40,11 @@ Run the following SQL once connected to the instance to set up the database, tab
 ```sql
 
 CREATE DATABASE discharge
-    WITH 
+    WITH
     OWNER = postgres
     ENCODING = 'UTF8'
     CONNECTION LIMIT = -1;
-    
+
 DROP TABLE IF EXISTS public.discharge_summary;
 
 CREATE TABLE public.discharge_summary
@@ -103,7 +103,7 @@ Site configuration options can be found in `src/config.js` (and `dist/config.js`
 5. Navigate to IIS Manager > Home > Management > Feature Delegation
    1. Set Handler Mappings to `Read/Write`
    2. Set Authentication - Windows to `Read/Write`
-6. Navigate to IIS Manager > Home > Sites > dischargesum > IIS > Authentication settings 
+6. Navigate to IIS Manager > Home > Sites > dischargesum > IIS > Authentication settings
    1. Set Windows Authentication to `Enabled`
    2. Set Anonymous Authentication to `Disabled`
 7. Run `%systemdrive%\windows\system32\icacls.exe c:\inetpub\ydh-discharge-summary-form\dist\iisnode\ /grant IIS_IUSRS:(OI)(CI)F` in CMD to grant the default IIS user access to write log files for the site
@@ -124,7 +124,7 @@ A number of challenges have reduced the robustness of this project:
 
 As it stands, it will require significant refactoring in the future to make it viable for use long-term and to improve code quality.
 
-## Will additional features be added? 
+## Will additional features be added?
 
 Due to hardships faced during its initial development as documented in the previous question, the initial release only attempts to mimic the original Inpatient Discharge Summary SharePoint form.
 

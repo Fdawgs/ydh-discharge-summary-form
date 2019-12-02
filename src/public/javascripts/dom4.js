@@ -418,7 +418,7 @@ THE SOFTWARE.
             window[prefixes[i] + 'CancelRequestAnimationFrame'];
     }
     if (!cAF) {
-      // some FF apparently implemented rAF but no cAF 
+      // some FF apparently implemented rAF but no cAF
       if (rAF) {
         raf = rAF;
         rAF = function (callback) {
