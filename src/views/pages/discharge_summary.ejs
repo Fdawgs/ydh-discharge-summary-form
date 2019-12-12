@@ -51,6 +51,8 @@ const onload = onloadArray.join(' ; ');
                 style="border-color: #29327E;">Admission</button>
             <button class="tab-button" onclick="openTab(event, 'Clinical')"
                 title="Clinical details - Diagnoses and conditions" style="border-color: #BE1824;">Clinical</button>
+            <button class="tab-button" onclick="openTab(event, 'Allied-Health')"
+            title="Allied Health Professional - Needs and Care" style="border-color: #005EB8;">AHP</button>
             <button class="tab-button" onclick="openTab(event, 'Medication')"
                 title="Medication details - Changes and TTOs" style="border-color: #6D944A;">Medication</button>
             <button class="tab-button" onclick="openTab(event, 'Discharge')" title="Discharge details"
@@ -67,6 +69,7 @@ const onload = onloadArray.join(' ; ');
             <% include ../partials/discharge_summary/patient_tab.ejs %>
             <% include ../partials/discharge_summary/admission_tab.ejs %>
             <% include ../partials/discharge_summary/clinical_tab.ejs %>
+            <% include ../partials/discharge_summary/AHP_tab.ejs %>
             <% include ../partials/discharge_summary/medication_tab.ejs %>
             <% include ../partials/discharge_summary/discharge_tab.ejs %>
             <% include ../partials/discharge_summary/follow_up_tab.ejs %>
