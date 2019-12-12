@@ -126,21 +126,6 @@
             <textarea class="input" name="gp_address" cols="20" rows="3" spellcheck="true"></textarea>
             <% } %>
         </div>
-
-        <div class="block">
-            <label>
-                <h3>Individual Requirements</h3>
-            </label>
-        </div>
-
-        <div class="block">
-            <label><a href="#" class="info"
-                    title="These may be communication, cultural, cognitive, or mobility needs">&#9072; Individual
-                    requirements:</a></label>
-            <textarea class="input" name="patient_individualRequirements" cols="20" rows="3"
-                spellcheck="true"><%- typeof patient_individualRequirements !== 'undefined' ? patient_individualRequirements : '' %></textarea>
-
-        </div>
     </div>
     <% include save_section.ejs %>
 </div>

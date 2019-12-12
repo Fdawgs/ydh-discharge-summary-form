@@ -1,0 +1,124 @@
+<div id="Allied-Health" class="tab-div">
+    <div class="full-column">
+
+        <div class="block">
+            <label>
+                <h3>Allied Health Professional Input</h3>
+            </label>
+        </div>
+
+        <div class="block">
+            <label><a href="#" class="info"
+                    title="These may be communication, cultural, cognitive, or mobility needs">&#9072; Individual
+                    requirements:</a></label>
+            <textarea class="input" name="ahp_individualRequirements" cols="20" rows="3"
+                spellcheck="true"><%- typeof ahp_individualRequirements !== 'undefined' ? ahp_individualRequirements : '' %></textarea>
+        </div>
+
+        <div class="block">
+            <label>Does the patient have any equipment needs?:</label>
+            <select class="binaryinput" name="ahp_equipmentNeeds">
+                <%  const ahpEquipmentOption = [
+                            {
+                                value: '',
+                                option: '',
+                                attributes: 'onclick="hideClass(\'ahp-equipment-div\'); clearValue(\'ahp-equipment-textarea\');"'
+                            },
+                            {
+                                value: 'No',
+                                option: 'No',
+                                attributes: 'onclick="hideClass(\'ahp-equipment-div\'); clearValue(\'ahp-equipment-textarea\');"'
+                            },
+                            {
+                                value: 'Yes',
+                                option: 'Yes',
+                                attributes: 'onclick="showClass(\'ahp-equipment-div\');"'
+                            }
+                        ];
+    
+                        for (let q = 0; q < ahpEquipmentOption.length; q += 1) {
+                            let attributes;
+    
+                            if (typeof ahp_equipmentNeeds !== 'undefined' && ahp_equipmentNeeds === ahpEquipmentOption[q].value) {
+                                attributes = `${ahpEquipmentOption[q].attributes} selected`;
+                            } else {
+                                attributes = ahpEquipmentOption[q].attributes;
+                            }
+                    %>
+                <option value="<%=ahpEquipmentOption[q].value%>" <%-attributes%>><%=ahpEquipmentOption[q].option%>
+                </option>
+                <%
+                        }
+                    %>
+            </select>
+        </div>
+
+        <div class="ahp-equipment-div block">
+            <label>Equipment Needs:</label>
+            <textarea class="ahp-equipment-textarea input" name="ahp_equipmentText" cols="20" rows="4"
+                spellcheck="true"><%- typeof ahp_equipmentText !== 'undefined' ? ahp_equipmentText : '' %></textarea>
+        </div>
+
+        <div class="block">
+            <label>Does the patient have a Package of Care/Social Support?:</label>
+            <select class="binaryinput" name="ahp_socialNeeds">
+                <%  const ahpSocialCareOption = [
+                                {
+                                    value: '',
+                                    option: '',
+                                    attributes: 'onclick="hideClass(\'ahp-social-care-div\'); clearValue(\'ahp-social-care-textarea\');"'
+                                },
+                                {
+                                    value: 'No',
+                                    option: 'No',
+                                    attributes: 'onclick="hideClass(\'ahp-social-care-div\'); clearValue(\'ahp-social-care-textarea\');"'
+                                },
+                                {
+                                    value: 'Yes',
+                                    option: 'Yes',
+                                    attributes: 'onclick="showClass(\'ahp-social-care-div\');"'
+                                }
+                            ];
+        
+                            for (let q = 0; q < ahpSocialCareOption.length; q += 1) {
+                                let attributes;
+        
+                                if (typeof ahp_socialNeeds !== 'undefined' && ahp_socialNeeds === ahpSocialCareOption[q].value) {
+                                    attributes = `${ahpSocialCareOption[q].attributes} selected`;
+                                } else {
+                                    attributes = ahpSocialCareOption[q].attributes;
+                                }
+                        %>
+                <option value="<%=ahpSocialCareOption[q].value%>" <%-attributes%>><%=ahpSocialCareOption[q].option%>
+                </option>
+                <%
+                            }
+                        %>
+            </select>
+        </div>
+
+        <div class="ahp-social-care-div block">
+            <label>Social Care Details:</label>
+            <textarea class="ahp-social-care-textarea input" name="ahp_socialText" cols="20" rows="4"
+                spellcheck="true"><%- typeof ahp_socialText !== 'undefined' ? ahp_socialText : '' %></textarea>
+        </div>
+
+        <div class="block">
+            <label>Household Composition:</label>
+            <input class="input" list="ahpHouseholdComposition" name="ahp_householdComposition"
+                value="<%- typeof ahp_householdComposition !== 'undefined' ? ahp_householdComposition : '' %>">
+            <datalist id="ahpHouseholdComposition">
+                <option value=""></option>
+                <option value="Alone">Alone</option>
+                <option value="In sheltered accommodation">In sheltered accommodation</option>
+                <option value="Shared accommodation (housemates/lodgers)">Shared accommodation (housemates/lodgers)
+                </option>
+                <option value="With family">With family</option>
+                <option value="With live-in carer">With live-in carer</option>
+                <option value="With spouse">With spouse</option>
+            </datalist>
+        </div>
+
+    </div>
+    <% include save_section.ejs %>
+</div>

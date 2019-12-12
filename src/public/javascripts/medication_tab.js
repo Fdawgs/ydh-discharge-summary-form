@@ -10,13 +10,6 @@ function addMedicationBlock() {
 
 	newNode.innerHTML = `<span title="Remove medication item" class="closebtn" onclick="this.parentElement.remove();">&times;</span>
 
-	<span title="Lock medication" class="closebtn" style="float: left; margin-left: 0px; margin-right: 15px"
-		onclick="confirmLock(this);">
-		&#9919;
-		<input type='hidden' name='medication_ttoLockDate' value='' />
-		<input type='hidden' name='medication_ttoLockUser' value='' />
-	</span>
-	
 	<br><br>
 	<div class="half-column">
 		<div class="block">
@@ -239,14 +232,6 @@ function addMedicationBlock() {
 	</div>`;
 
 	const referenceNode = document.querySelector('#ttos-header');
-
-	// Alternate follow-up block colours
-	if (referenceNode.nextSibling && referenceNode.nextSibling.style) {
-		if (referenceNode.nextSibling.style['background-color'] === '') {
-			newNode.style['background-color'] = 'lightgrey';
-		}
-	}
-
 	referenceNode.after(newNode);
 }
 
@@ -286,45 +271,7 @@ function addMedicationChangeBlock() {
 	</div>`;
 
 	const referenceNode = document.querySelector('#medchange-header');
-
 	referenceNode.after(newNode);
-}
-
-/**
- * @author Frazer Smith
- * @param {*} that - TTO HTML element.
- * @description Locks the TTO record which has been passed to it.
- * @todo Replace window.confirm with a custom confirmation UI element.
- * @todo Wipe the element.title as setting it to null doesn't work.
- */
-function confirmLock(that) {
-	const element = that;
-	const user = document.getElementById('user').innerHTML;
-	const date = new Date().toLocaleString();
-	// eslint-disable-next-line no-alert
-	const result = window.confirm('Once locked this cannot be undone, are you sure you want to continue?');
-	if (result === true) {
-		element.previousElementSibling.remove(); // Remove the close button
-		element.innerHTML = `Locked ${date} by ${user.toString()} <input type='hidden' name='medication_ttoLockDate' value='${date}' /> <input type='hidden' name='medication_ttoLockUser' value='${user}' />`;
-		element.onclick = null;
-		element.title = null;
-		element.classList.remove('closebtn');
-
-		// Change all inputs of TTO block to readonly
-		const inputs = element.parentNode.querySelectorAll('input');
-		inputs.forEach((input) => {
-			if (input.type !== 'hidden' && input.classList.contains('input')) {
-				input.setAttribute('readonly', '');
-				input.classList.add('disabled');
-			}
-		});
-		const textareas = element.parentNode.querySelectorAll('textarea');
-		textareas.forEach((textarea) => {
-			textarea.setAttribute('readonly', '');
-			textarea.classList.add('disabled');
-		});
-	}
-	return element;
 }
 
 /**

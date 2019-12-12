@@ -15,12 +15,6 @@
         "jest"
     ],
     "rules": {
-        "no-tabs": [
-            "error",
-            {
-                "allowIndentationTabs": true
-            }
-        ],
         "comma-dangle": [
             "error",
             "never"
@@ -40,16 +34,19 @@
             "error",
             "always"
         ],
+        "no-console": [
+            "off"
+        ],
+        "no-tabs": [
+            "error",
+            {
+                "allowIndentationTabs": true
+            }
+        ],
         "no-undef": [
             "off"
         ],
         "no-unused-vars": [
-            "off"
-        ],
-        "no-console": [
-            "off"
-        ],
-        "prefer-destructuring": [
             "off"
         ]
     }
