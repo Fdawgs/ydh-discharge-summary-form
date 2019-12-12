@@ -53,9 +53,9 @@
             </select>
         </div>
 
-        <div class="ahp-social-care-div block">
+        <div class="ahp-equipment-div block">
             <label>Equipment Needs:</label>
-            <textarea class="ahp-social-care-textarea input" name="ahp_equipmentText" cols="20" rows="4"
+            <textarea class="ahp-equipment-textarea input" name="ahp_equipmentText" cols="20" rows="4"
                 spellcheck="true"><%- typeof ahp_equipmentText !== 'undefined' ? ahp_equipmentText : '' %></textarea>
         </div>
 
@@ -103,7 +103,21 @@
                 spellcheck="true"><%- typeof ahp_socialText !== 'undefined' ? ahp_socialText : '' %></textarea>
         </div>
 
-
+        <div class="block">
+            <label>Household Composition:</label>
+            <input class="input" list="ahpHouseholdComposition" name="ahp_householdComposition"
+                value="<%- typeof ahp_householdComposition !== 'undefined' ? ahp_householdComposition : '' %>">
+            <datalist id="ahpHouseholdComposition">
+                <option value=""></option>
+                <option value="Alone">Alone</option>
+                <option value="In sheltered accommodation">In sheltered accommodation</option>
+                <option value="Shared accommodation (housemates/lodgers)">Shared accommodation (housemates/lodgers)
+                </option>
+                <option value="With family">With family</option>
+                <option value="With live-in carer">With live-in carer</option>
+                <option value="With spouse">With spouse</option>
+            </datalist>
+        </div>
 
     </div>
     <% include save_section.ejs %>
