@@ -70,10 +70,24 @@
         </div>
 
         <div class="block">
-                <label>Final Observations:</label>
-                <textarea class="input" name="clinical_finalObservations" cols="20" rows="4"
-                    spellcheck="true"><%- typeof clinical_finalObservations !== 'undefined' ? clinical_finalObservations : '' %></textarea>
+            <label>Final Observations:</label>
+            <textarea class="input" name="clinical_finalObservations" cols="20" rows="4"
+                spellcheck="true"><%- typeof clinical_finalObservations !== 'undefined' ? clinical_finalObservations : '' %></textarea>
         </div>
+
+        <div class="block">
+            <label>NEWS2 Score:</label>
+            <input class="input" name="clinical_news2_score" style="width: 10%" type="number" min="0" max="20"
+                value="<%- typeof element.clinical_news2_score !== 'undefined' ? element.clinical_news2_score : '1' %>">
+
+        </div>
+
+        <div class="block">
+            <label>Rockwood Frailty Score:</label>
+            <input class="input" name="clinical_rfs_score" style="width: 10%" type="number" min="1" max="9"
+                value="<%- typeof element.clinical_rfs_score !== 'undefined' ? element.clinical_rfs_score : '1' %>">
+        </div>
+
 
         <div class="block">
             <label>
@@ -94,7 +108,8 @@
                             attributes = '';
                         }
                 %>
-                <option value="<%=clinicalFallsAssessmentOption[i]%>" <%-attributes%>><%=clinicalFallsAssessmentOption[i]%>
+                <option value="<%=clinicalFallsAssessmentOption[i]%>" <%-attributes%>>
+                    <%=clinicalFallsAssessmentOption[i]%>
                 </option>
                 <%
                     }
