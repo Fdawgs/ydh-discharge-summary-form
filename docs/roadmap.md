@@ -1,43 +1,14 @@
 # Roadmap
 
-## v0.14.0
-### Discharge Summary
-- Move Discharge Tab before Follow-Up Tab
+## v0.15.0
 
+### Discharge Summary
 #### Admission Tab
 - Revise Admitting Specialty list
-
-#### Allied Health Professionals (AHP) Tab
-- Create new Allied Health Professionals Tab
-- Move 'Individual Requirements' textbox input from Patient Tab to AHP Tab
-- Add 'Does the patient have any equipment needs?' field name
-  - Add select input with options of '', 'No', 'Yes'
-  - If 'Yes' selected then present textbox input
-- Add 'Does the patient have a package of care/social support?' field name
-  - Add select input with options of '', 'No', 'Yes'
-  - If 'Yes' selected then present textbox input
-- Add 'Household Composition' field name
-  - Add datalist input with options of 'Alone', 'With Friends', 'With Family', 'Live-in Carer'
-
-#### Clinical Tab
-- Add 'Final Observations' field name after the 'Adverse Incidents' field
-  - Add textarea input
-- Add 'NEWS2 Score' field name
-  - Add number input
-- Add 'Rockwood Frailty Score' field name
-  - Add number input
 
 #### Discharge Tab
 - Revise Discharge Specialty list
 
-
-#### Medication Tab
-- Remove locking functionality of TTOs
-
-
-## v0.15.0
-
-### Discharge Summary
 #### Medication Tab
 - Add OOH switches for pharmacy sign off
 
