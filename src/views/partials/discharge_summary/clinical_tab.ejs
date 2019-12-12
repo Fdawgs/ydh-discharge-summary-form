@@ -330,7 +330,7 @@
                     for (let q = 0; q < clinicalAdvancedCarePlanOption.length; q += 1) {
                         let attributes;
 
-                        if (typeof clinical_aki !== 'undefined' && clinical_aki === clinicalAdvancedCarePlanOption[q].value) {
+                        if (typeof clinical_advancedCarePlan !== 'undefined' && clinical_advancedCarePlan === clinicalAdvancedCarePlanOption[q].value) {
                             attributes = `${clinicalAdvancedCarePlanOption[q].attributes} selected`;
                         } else {
                             attributes = clinicalAdvancedCarePlanOption[q].attributes;
