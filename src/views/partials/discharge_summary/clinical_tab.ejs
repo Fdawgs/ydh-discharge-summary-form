@@ -70,6 +70,26 @@
         </div>
 
         <div class="block">
+            <label>Final Observations:</label>
+            <textarea class="input" name="clinical_finalObservations" cols="20" rows="4"
+                spellcheck="true"><%- typeof clinical_finalObservations !== 'undefined' ? clinical_finalObservations : '' %></textarea>
+        </div>
+
+        <div class="block">
+            <label>NEWS2 Score:</label>
+            <input class="input" name="clinical_news2_score" style="width: 10%" type="number" min="0" max="20"
+                value="<%- typeof clinical_news2_score !== 'undefined' ? clinical_news2_score : '' %>">
+
+        </div>
+
+        <div class="block">
+            <label>Rockwood Frailty Score:</label>
+            <input class="input" name="clinical_rfs_score" style="width: 10%" type="number" min="1" max="9"
+                value="<%- typeof clinical_rfs_score !== 'undefined' ? clinical_rfs_score : '' %>">
+        </div>
+
+
+        <div class="block">
             <label>
                 <h4>Falls</h4>
             </label>
@@ -88,7 +108,8 @@
                             attributes = '';
                         }
                 %>
-                <option value="<%=clinicalFallsAssessmentOption[i]%>" <%-attributes%>><%=clinicalFallsAssessmentOption[i]%>
+                <option value="<%=clinicalFallsAssessmentOption[i]%>" <%-attributes%>>
+                    <%=clinicalFallsAssessmentOption[i]%>
                 </option>
                 <%
                     }
@@ -288,13 +309,40 @@
         <div class="block">
             <label>Have discussions occurred regarding Advanced Care Planning?:</label>
             <select class="binaryinput" name="clinical_advancedCarePlan">
-                <option value=""
-                    onclick="hideClass('clinical-advancedcareplan-text'); uncheckRadio('clinical-advancedcareplan-input')">
+                <%  const clinicalAdvancedCarePlanOption = [
+                        {
+                            value: '',
+                            option: '',
+                            attributes: 'onclick="hideClass(\'clinical-advancedcareplan-text\'); uncheckRadio(\'clinical-advancedcareplan-input\');"'
+                        },
+                        {
+                            value: 'No',
+                            option: 'No',
+                            attributes: 'onclick="hideClass(\'clinical-advancedcareplan-text\'); uncheckRadio(\'clinical-advancedcareplan-input\');"'
+                        },
+                        {
+                            value: 'Yes',
+                            option: 'Yes',
+                            attributes: 'onclick="showClass(\'clinical-advancedcareplan-text\');"'
+                        }
+                    ];
+
+                    for (let q = 0; q < clinicalAdvancedCarePlanOption.length; q += 1) {
+                        let attributes;
+
+                        if (typeof clinical_aki !== 'undefined' && clinical_aki === clinicalAdvancedCarePlanOption[q].value) {
+                            attributes = `${clinicalAdvancedCarePlanOption[q].attributes} selected`;
+                        } else {
+                            attributes = clinicalAdvancedCarePlanOption[q].attributes;
+                        }
+                %>
+                <option value="<%=clinicalAdvancedCarePlanOption[q].value%>" <%-attributes%>>
+                    <%=clinicalAdvancedCarePlanOption[q].option%>
                 </option>
-                <option value="No"
-                    onclick="hideClass('clinical-advancedcareplan-text'); uncheckRadio('clinical-advancedcareplan-input')">
-                    No</option>
-                <option value="Yes" onclick="showClass('clinical-advancedcareplan-text')">Yes</option>
+                <%
+                    }
+                %>
+
             </select>
         </div>
 
@@ -310,51 +358,53 @@
                 We would be most grateful if you could <strong>begin the process of advance care
                     planning.</strong></label>
             <input class="binaryinput clinical-advancedcareplan-input" type="radio" name="clinical_advancedCarePlanText"
-                value="begin">
+                value="begin"
+                <% if (typeof clinical_advancedCarePlanText !== 'undefined' && clinical_advancedCarePlanText === 'begin') { %>
+                checked <% } else {%> <%}%>>
         </div>
 
         <div class="clinical-advancedcareplan-text block">
-            <label>The hospital team felt that <%= patient_forename %> has severe, advanced
-                progressive illness.
-                Because of this, we have begun discussions about advance care planning.
-                <strong>They have been given the Planning Ahead document.</strong>
-                We would be grateful if you could continue this discussion with the patient
-                with a view to making decisions on their future care.
-                Once this is done, this information should go
-                on to the electronic palliative care coordination system or special patient notes, having obtained
-                consent from the patient.</label>
+            <label>The hospital team felt that <%= patient_forename %> has severe, advanced progressive illness.
+                Because of this, we have begun discussions about advance care planning. <strong>They have been given the
+            Planning Ahead document.</strong>
+            We would be grateful if you could continue this discussion with the patient
+            with a view to making decisions on their future care.
+            Once this is done, this information should go
+            on to the electronic palliative care coordination system or special patient notes, having obtained
+            consent from the patient.</label>
             <input class="binaryinput clinical-advancedcareplan-input" type="radio" name="clinical_advancedCarePlanText"
-                value="given">
+                value="given"
+                <% if (typeof clinical_advancedCarePlanText !== 'undefined' && clinical_advancedCarePlanText === 'given') { %>
+                checked <% } else {%> <%}%>>
         </div>
 
         <div class="clinical-advancedcareplan-text block">
-            <label>The hospital team felt that <%= patient_forename %> has severe, advanced
-                progressive illness.
-                Because of this, we have begun
-                discussions about advance care planning.
-                <strong>They have <em>not</em> been given the Planning Ahead
-                    document.</strong> We
-                would be grateful if you could continue this discussion with the patient with a view to making
-                decisions on their future care. Once this is done, this information should go on to the
-                electronic
-                palliative care coordination system or special patient notes, having obtained consent from the
-                patient.</label>
+            <label>The hospital team felt that <%= patient_forename %> has severe, advanced progressive illness.
+                Because of this, we have begun discussions about advance care planning. <strong>They have <em>not</em>
+            been given the Planning Ahead
+            document.</strong> We
+            would be grateful if you could continue this discussion with the patient with a view to making
+            decisions on their future care. Once this is done, this information should go on to the
+            electronic
+            palliative care coordination system or special patient notes, having obtained consent from the
+            patient.</label>
             <input class="binaryinput clinical-advancedcareplan-input" type="radio" name="clinical_advancedCarePlanText"
-                value="notgiven">
+                value="notgiven"
+                <% if (typeof clinical_advancedCarePlanText !== 'undefined' && clinical_advancedCarePlanText === 'notgiven') { %>
+                checked <% } else {%> <%}%>>
         </div>
 
         <div class="clinical-advancedcareplan-text block">
-            <label>The hospital team felt that <%= patient_forename %> has severe, advanced
-                progressive disease.
-                We began discussions with the
-                patient about the care they would like to receive in the future and they have completed advance care
-                planning. This has been recorded on the Planning Ahead document. <strong>The outcome of these
-                    discussions
-                    has been placed on the electronic palliative care coordination system/special patient notes, with
-                    the patient’s consent.</strong></label>
+            <label>The hospital team felt that <%= patient_forename %> has severe, advanced progressive disease. We
+                began discussions with the patient about the care they would like to receive in the future and they have
+                completed advance care planning. This has been recorded on the Planning Ahead document. <strong>The
+            outcome of these discussions
+            has been placed on the electronic palliative care coordination system/special patient notes, with
+            the patient’s consent.</strong></label>
             <input class="binaryinput clinical-advancedcareplan-input" type="radio" name="clinical_advancedCarePlanText"
-                value="epaccs">
+                value="epaccs"
+                <% if (typeof clinical_advancedCarePlanText !== 'undefined' && clinical_advancedCarePlanText === 'epaccs') { %>
+                checked <% } else {%> <%}%>>
         </div>
     </div>
-    <% include save_section.ejs %>
-</div>
+    <% include save_section.ejs %> </div>

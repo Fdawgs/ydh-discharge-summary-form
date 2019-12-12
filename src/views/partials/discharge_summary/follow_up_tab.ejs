@@ -17,7 +17,7 @@
                     title="This section has appeared because 'yes' has been selected for the question ‘Has the patient suffered an Acute Kidney Injury (AKI)?’ in the Clinical tab">&#9072;
                     Serum Creatinine at discharge?:</a></label>
             <textarea class="clinical-aki-textarea input" name="followup_akiText" cols="20" rows="4"
-                spellcheck="true"></textarea>
+                spellcheck="true"><%- typeof followup_akiText !== 'undefined' ? followup_akiText : '' %></textarea>
         </div>
 
         <div class="clinical-aki-div block">
