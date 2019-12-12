@@ -17,6 +17,18 @@ if (typeof clinical_aki !== 'undefined' && clinical_aki === 'Yes') {
     onloadArray.push('showClass(\'clinical-aki-div\');');
 };
 
+if (typeof clinical_advancedCarePlan !== 'undefined' && clinical_advancedCarePlan === 'Yes') {
+    onloadArray.push('showClass(\'clinical-advancedcareplan-text\');');
+};
+
+if (typeof ahp_equipmentNeeds !== 'undefined' && ahp_equipmentNeeds === 'Yes') {
+    onloadArray.push('showClass(\'ahp-equipment-div\');');
+};
+
+if (typeof ahp_socialNeeds !== 'undefined' && ahp_socialNeeds === 'Yes') {
+    onloadArray.push('showClass(\'ahp-social-care-div\');');
+};
+
 const onload = onloadArray.join(' ; ');
 %>
 
