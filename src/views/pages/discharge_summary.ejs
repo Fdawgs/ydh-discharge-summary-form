@@ -49,12 +49,12 @@ const onload = onloadArray.join(' ; ');
                 title="Patient details - Demographics and GP" style="border-color: #BFD730;">Patient</button>
             <button class="tab-button" onclick="openTab(event, 'Admission')" title="Admission details"
                 style="border-color: #29327E;">Admission</button>
-            <button class="tab-button" onclick="openTab(event, 'Discharge')" title="Discharge details"
-                style="border-color: #35A8DF;">Discharge</button>
             <button class="tab-button" onclick="openTab(event, 'Clinical')"
                 title="Clinical details - Diagnoses and conditions" style="border-color: #BE1824;">Clinical</button>
             <button class="tab-button" onclick="openTab(event, 'Medication')"
                 title="Medication details - Changes and TTOs" style="border-color: #6D944A;">Medication</button>
+            <button class="tab-button" onclick="openTab(event, 'Discharge')" title="Discharge details"
+                style="border-color: #35A8DF;">Discharge</button>
             <button class="tab-button" onclick="openTab(event, 'Follow-Up')" title="Follow-up appointment details"
                 style="border-color: #F59409;">Follow-Up</button>
             <button class="tab-button" onclick="openTab(event, 'Sign-Off')" title="Sign off details"
@@ -66,9 +66,9 @@ const onload = onloadArray.join(' ; ');
             <input type="hidden" name="version" value="<%- typeof version !== 'undefined' ? version : '' %>" />
             <% include ../partials/discharge_summary/patient_tab.ejs %>
             <% include ../partials/discharge_summary/admission_tab.ejs %>
-            <% include ../partials/discharge_summary/discharge_tab.ejs %>
             <% include ../partials/discharge_summary/clinical_tab.ejs %>
             <% include ../partials/discharge_summary/medication_tab.ejs %>
+            <% include ../partials/discharge_summary/discharge_tab.ejs %>
             <% include ../partials/discharge_summary/follow_up_tab.ejs %>
             <% include ../partials/discharge_summary/sign_off_tab.ejs %>
         </form>
