@@ -55,6 +55,12 @@
                 "allowIndentationTabs": true
             }
         ],
+        "no-undef": [
+            "off"
+        ],
+        "no-unused-vars": [
+            "off"
+        ],
         "prefer-destructuring": [
             "off"
         ],
