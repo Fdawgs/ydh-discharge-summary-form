@@ -4,7 +4,7 @@
         "node": true
     },
     "extends": [
-        "nhsuk",
+        "airbnb-base",
         "plugin:jest/recommended"
     ],
     "parserOptions": {
@@ -12,12 +12,23 @@
         "sourceType": "module"
     },
     "plugins": [
-        "jest"
+        "import",
+        "jest",
+        "json"
     ],
     "rules": {
         "comma-dangle": [
             "error",
             "never"
+        ],
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+                "devDependencies": true
+            }
+        ],
+        "import/no-unresolved": [
+            "off"
         ],
         "indent": [
             "error",
@@ -26,16 +37,20 @@
                 "SwitchCase": 1
             }
         ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
+        "lines-between-class-members": [
             "error",
             "always"
         ],
         "no-console": [
             "off"
+        ],
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 1,
+                "maxBOF": 0,
+                "maxEOF": 0
+            }
         ],
         "no-tabs": [
             "error",
@@ -48,6 +63,17 @@
         ],
         "no-unused-vars": [
             "off"
+        ],
+        "prefer-destructuring": [
+            "off"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
         ]
     }
 }

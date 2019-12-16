@@ -14,8 +14,9 @@ To ensure the longevity and security of the discharge summaries it has been deci
 - IIS 7 or greater with IIS Management Tools, ASP.NET, and Windows Authentication features enabled
 - Latest version of [URL Rewrite](https://www.iis.net/downloads/microsoft/url-rewrite)
 - Latest version of [iisnode](https://github.com/Azure/iisnode)
-- Latest Current version of [Node.js](https://nodejs.org/en/)
+- Latest Current version of [Node.js](https://nodejs.org)
 - Latest release of [PostgreSQL DB](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads) 12
+- [Yarn](https://yarnpkg.com) (optional)
 
 # Development
 This Node.js web application has been built using the [Express framework](https://expressjs.com/), with [Embedded JavaScript](https://ejs.co/) templating providing front-end rendering.
@@ -98,7 +99,7 @@ Site configuration options can be found in `src/config.js` (and `dist/config.js`
 ## Setting up site on IIS
 1. Ensure all prerequisites have been met
 2. Deploy this repo to its own folder in the IIS root directory (usually C:\inetpub\)
-3. Navigate to the repo directory using a CLI and run `npm install` to install all node dependencies
+3. Navigate to the repo directory using a CLI and run `yarn install` or `npm install` (if using `npm install` then delete the yarn.lock file to stop conflicting lock files) to install dependencies
 4. Add the repo as a website within IIS
 5. Navigate to IIS Manager > Home > Management > Feature Delegation
    1. Set Handler Mappings to `Read/Write`
