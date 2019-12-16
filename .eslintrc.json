@@ -27,6 +27,9 @@
                 "devDependencies": true
             }
         ],
+        "import/no-unresolved": [
+            "off"
+        ],
         "indent": [
             "error",
             "tab",
