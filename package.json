@@ -13,13 +13,13 @@
     "build": "babel src --out-dir dist",
     "copy": "@powershell Copy-Item src/* dist -force -recurse -verbose",
     "dupe-check": "yarn jsinspect ./src",
-    "lint": "eslint src/.",
+    "lint": "eslint ./src",
     "serve": "node dist/index.js",
     "start": "node --exec babel-node dist/index.js ",
     "test": "yarn lint",
     "test-coverage": "jest --coverage --verbose",
     "test-only": "jest --verbose",
-    "tidy": "eslint src/. --fix"
+    "tidy": "eslint ./src --fix"
   },
   "jest": {
     "clearMocks": true,
