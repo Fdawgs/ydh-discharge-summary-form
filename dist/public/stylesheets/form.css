@@ -47,7 +47,7 @@ div.block .binaryinput {
     background-color: #6D944A;
 }
 
-.clinical-advancedcareplan-text, .clinical-aki-div, .discharge-different-address, .medication-tto-button, .medication-change-button, .ahp-social-care-div, .ahp-equipment-div {
+.clinical-advancedcareplan-text, .clinical-aki-div, .discharge-different-address, .medication-tto-button, .medication-change-button, .therapycare-social-care-div, .therapycare-equipment-div {
     display: none;
 }
 
