@@ -22,8 +22,13 @@
   },
   "jest": {
     "clearMocks": true,
-    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/*/*/*.js"
+    ],
     "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "dist/"
+    ],
     "verbose": true
   },
   "repository": "git+https://github.com/Fdawgs/ydh-discharge-summary-form.git",
