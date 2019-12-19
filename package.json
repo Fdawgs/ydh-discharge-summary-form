@@ -10,18 +10,26 @@
   ],
   "main": "src/index.js",
   "scripts": {
-    "lint": "eslint src/*/*/*.js --fix",
-    "jest": "jest src/server/ --detectOpenHandles --coverage",
-    "start": "nodemon --exec babel-node dist/index.js ",
-    "copy": "@powershell Copy-Item src/* dist -force -recurse -verbose",
     "build": "babel src --out-dir dist",
+    "copy": "@powershell Copy-Item src/* dist -force -recurse -verbose",
+    "dupe-check": "yarn jsinspect ./src",
+    "lint": "eslint src/.",
     "serve": "node dist/index.js",
-    "test": "npm run lint"
+    "start": "node --exec babel-node dist/index.js ",
+    "test": "yarn lint",
+    "test-coverage": "jest --coverage --verbose",
+    "test-only": "jest --verbose",
+    "tidy": "eslint src/. --fix"
   },
   "jest": {
     "clearMocks": true,
-    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/*/*/*.js"
+    ],
     "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "dist/"
+    ],
     "verbose": true
   },
   "repository": "git+https://github.com/Fdawgs/ydh-discharge-summary-form.git",
@@ -45,6 +53,7 @@
     "eslint-plugin-jest": "^23.1.1",
     "eslint-plugin-json": "^2.0.1",
     "jest": "^24.9.0",
+    "jsinspect": "^0.12.7",
     "supertest": "^4.0.2",
     "typescript": "^3.7.3"
   },
