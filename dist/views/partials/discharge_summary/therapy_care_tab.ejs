@@ -1,0 +1,124 @@
+<div id="Therapy-Care" class="tab-div">
+    <div class="full-column">
+
+        <div class="block">
+            <label>
+                <h3>Therapy and Care Arrangements</h3>
+            </label>
+        </div>
+
+        <div class="block">
+            <label><a href="#" class="info"
+                    title="These may be communication, cultural, cognitive, or mobility needs">&#9072; Individual
+                    requirements:</a></label>
+            <textarea class="input" name="therapycare_individualRequirements" cols="20" rows="3"
+                spellcheck="true"><%- typeof therapycare_individualRequirements !== 'undefined' ? therapycare_individualRequirements : '' %></textarea>
+        </div>
+
+        <div class="block">
+            <label>Does the patient have any equipment needs?:</label>
+            <select class="binaryinput" name="therapycare_equipmentNeeds">
+                <%  const therapycareEquipmentOption = [
+                            {
+                                value: '',
+                                option: '',
+                                attributes: 'onclick="hideClass(\'therapycare-equipment-div\'); clearValue(\'therapycare-equipment-textarea\');"'
+                            },
+                            {
+                                value: 'No',
+                                option: 'No',
+                                attributes: 'onclick="hideClass(\'therapycare-equipment-div\'); clearValue(\'therapycare-equipment-textarea\');"'
+                            },
+                            {
+                                value: 'Yes',
+                                option: 'Yes',
+                                attributes: 'onclick="showClass(\'therapycare-equipment-div\');"'
+                            }
+                        ];
+    
+                        for (let q = 0; q < therapycareEquipmentOption.length; q += 1) {
+                            let attributes;
+    
+                            if (typeof therapycare_equipmentNeeds !== 'undefined' && therapycare_equipmentNeeds === therapycareEquipmentOption[q].value) {
+                                attributes = `${therapycareEquipmentOption[q].attributes} selected`;
+                            } else {
+                                attributes = therapycareEquipmentOption[q].attributes;
+                            }
+                    %>
+                <option value="<%=therapycareEquipmentOption[q].value%>" <%-attributes%>><%=therapycareEquipmentOption[q].option%>
+                </option>
+                <%
+                        }
+                    %>
+            </select>
+        </div>
+
+        <div class="therapycare-equipment-div block">
+            <label>Equipment Needs:</label>
+            <textarea class="therapycare-equipment-textarea input" name="therapycare_equipmentText" cols="20" rows="4"
+                spellcheck="true"><%- typeof therapycare_equipmentText !== 'undefined' ? therapycare_equipmentText : '' %></textarea>
+        </div>
+
+        <div class="block">
+            <label>Does the patient have a Package of Care/Social Support?:</label>
+            <select class="binaryinput" name="therapycare_socialNeeds">
+                <%  const therapycareSocialCareOption = [
+                                {
+                                    value: '',
+                                    option: '',
+                                    attributes: 'onclick="hideClass(\'therapycare-social-care-div\'); clearValue(\'therapycare-social-care-textarea\');"'
+                                },
+                                {
+                                    value: 'No',
+                                    option: 'No',
+                                    attributes: 'onclick="hideClass(\'therapycare-social-care-div\'); clearValue(\'therapycare-social-care-textarea\');"'
+                                },
+                                {
+                                    value: 'Yes',
+                                    option: 'Yes',
+                                    attributes: 'onclick="showClass(\'therapycare-social-care-div\');"'
+                                }
+                            ];
+        
+                            for (let q = 0; q < therapycareSocialCareOption.length; q += 1) {
+                                let attributes;
+        
+                                if (typeof therapycare_socialNeeds !== 'undefined' && therapycare_socialNeeds === therapycareSocialCareOption[q].value) {
+                                    attributes = `${therapycareSocialCareOption[q].attributes} selected`;
+                                } else {
+                                    attributes = therapycareSocialCareOption[q].attributes;
+                                }
+                        %>
+                <option value="<%=therapycareSocialCareOption[q].value%>" <%-attributes%>><%=therapycareSocialCareOption[q].option%>
+                </option>
+                <%
+                            }
+                        %>
+            </select>
+        </div>
+
+        <div class="therapycare-social-care-div block">
+            <label>Social Care Details:</label>
+            <textarea class="therapycare-social-care-textarea input" name="therapycare_socialText" cols="20" rows="4"
+                spellcheck="true"><%- typeof therapycare_socialText !== 'undefined' ? therapycare_socialText : '' %></textarea>
+        </div>
+
+        <div class="block">
+            <label>Household Composition:</label>
+            <input class="input" list="therapycareHouseholdComposition" name="therapycare_householdComposition"
+                value="<%- typeof therapycare_householdComposition !== 'undefined' ? therapycare_householdComposition : '' %>">
+            <datalist id="therapycareHouseholdComposition">
+                <option value=""></option>
+                <option value="Alone">Alone</option>
+                <option value="In sheltered accommodation">In sheltered accommodation</option>
+                <option value="Shared accommodation (housemates/lodgers)">Shared accommodation (housemates/lodgers)
+                </option>
+                <option value="With family">With family</option>
+                <option value="With live-in carer">With live-in carer</option>
+                <option value="With spouse">With spouse</option>
+            </datalist>
+        </div>
+
+    </div>
+    <% include save_section.ejs %>
+</div>

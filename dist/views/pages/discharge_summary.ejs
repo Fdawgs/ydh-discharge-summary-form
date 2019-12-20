@@ -21,12 +21,12 @@ if (typeof clinical_advancedCarePlan !== 'undefined' && clinical_advancedCarePla
     onloadArray.push('showClass(\'clinical-advancedcareplan-text\');');
 };
 
-if (typeof ahp_equipmentNeeds !== 'undefined' && ahp_equipmentNeeds === 'Yes') {
-    onloadArray.push('showClass(\'ahp-equipment-div\');');
+if (typeof therapycare_equipmentNeeds !== 'undefined' && therapycare_equipmentNeeds === 'Yes') {
+    onloadArray.push('showClass(\'therapycare-equipment-div\');');
 };
 
-if (typeof ahp_socialNeeds !== 'undefined' && ahp_socialNeeds === 'Yes') {
-    onloadArray.push('showClass(\'ahp-social-care-div\');');
+if (typeof therapycare_socialNeeds !== 'undefined' && therapycare_socialNeeds === 'Yes') {
+    onloadArray.push('showClass(\'therapycare-social-care-div\');');
 };
 
 const onload = onloadArray.join(' ; ');
@@ -63,8 +63,8 @@ const onload = onloadArray.join(' ; ');
                 style="border-color: #29327E;">Admission</button>
             <button class="tab-button" onclick="openTab(event, 'Clinical')"
                 title="Clinical details - Diagnoses and conditions" style="border-color: #BE1824;">Clinical</button>
-            <button class="tab-button" onclick="openTab(event, 'Allied-Health')"
-            title="Allied Health Professional - Needs and Care" style="border-color: #005EB8;">AHP</button>
+            <button class="tab-button" onclick="openTab(event, 'Therapy-Care')"
+            title="Therapy and Care" style="border-color: #005EB8;">Therapy and Care</button>
             <button class="tab-button" onclick="openTab(event, 'Medication')"
                 title="Medication details - Changes and TTOs" style="border-color: #6D944A;">Medication</button>
             <button class="tab-button" onclick="openTab(event, 'Discharge')" title="Discharge details"
@@ -81,7 +81,7 @@ const onload = onloadArray.join(' ; ');
             <% include ../partials/discharge_summary/patient_tab.ejs %>
             <% include ../partials/discharge_summary/admission_tab.ejs %>
             <% include ../partials/discharge_summary/clinical_tab.ejs %>
-            <% include ../partials/discharge_summary/AHP_tab.ejs %>
+            <% include ../partials/discharge_summary/therapy_care_tab.ejs %>
             <% include ../partials/discharge_summary/medication_tab.ejs %>
             <% include ../partials/discharge_summary/discharge_tab.ejs %>
             <% include ../partials/discharge_summary/follow_up_tab.ejs %>
