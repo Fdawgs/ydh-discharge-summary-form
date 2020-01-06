@@ -3,14 +3,27 @@
 ## v0.15.0
 
 ### Discharge Summary
+- Add Safeguarding Section to a tab
+  - Add Risk to Self question
+  - Add Risk to Others question
+  - Add Risk from Others question
+- Add Mental Capacity Section to a tab
+- Add Lasting Power of Attorney Section to a tab
+
 #### Admission Tab
 - Revise Admitting Specialty list
 
+#### Clinical Tab
+- Revise Advanced Care Section
+
+#### Therapy and Care Arrangements Tab
+- Add Care Arrangements Section
+- Add Mobility Section
+- Add Continence Section
+- Add Dressings Section
+
 #### Discharge Tab
 - Revise Discharge Specialty list
-
-#### Medication Tab
-- Add OOH switches for pharmacy sign off
 
 ### Patient Landing Page
 - Add 'Recently Sent' section
@@ -20,6 +33,10 @@
 - Only show patients that require pharmacy sign off to users who are part of the 'pharmacy' user group
 - Only show patients that require nurse sign off to users who are part of the 'nurse' and 'transcribe' user group
 - Only show patients that require doctor sign off to users who are part of the 'doctor' user group
+
+#### Medication Tab
+- Add OOH switches for pharmacy sign off
+- Add 'Transcribed By' item to TTOs if transcribed
 
 ## v2.0.0
 
