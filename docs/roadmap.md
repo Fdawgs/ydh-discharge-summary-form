@@ -14,10 +14,10 @@
 - Revise Admitting Specialty list
 
 #### Clinical Tab
-- Revise Advanced Care Section
+- Revise Advanced Care Section (with input from Palliative Care Nurse Consultant)
 
 #### Therapy and Care Arrangements Tab
-- Add Care Arrangements Section
+- Add Care Arrangements Section (with input from Therapy Lead)
 - Add Mobility Section
 - Add Continence Section
 - Add Dressings Section
