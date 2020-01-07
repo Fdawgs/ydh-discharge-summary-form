@@ -24,6 +24,13 @@
 
 #### Discharge Tab
 - Revise Discharge Specialty list
+- 'Discharge Pathway' select input
+  - Add '' option
+  - Add 'Discharged Palliative Pathway' option
+  - Add 'Discharged Stroke Pathway' option
+
+#### Follow-Up Tab
+- Remove 'Community Rehab Team' option from 'Follow-Up With' select input
 
 ### Patient Landing Page
 - Add 'Recently Sent' section
@@ -33,6 +40,7 @@
 - Only show patients that require pharmacy sign off to users who are part of the 'pharmacy' user group
 - Only show patients that require nurse sign off to users who are part of the 'nurse' and 'transcribe' user group
 - Only show patients that require doctor sign off to users who are part of the 'doctor' user group
+- Add ability to search by ward
 
 #### Medication Tab
 - Add OOH switches for pharmacy sign off
