@@ -32,6 +32,9 @@
 #### Follow-Up Tab
 - Remove 'Community Rehab Team' option from 'Follow-Up With' select input
 
+#### Sign Off Tab
+- Remove requirement for Dr. sign off to be present before nurses can sign off the document; issue was raised that palliative care discharge without Dr. sign off
+
 ### Patient Landing Page
 - Add 'Recently Sent' section
 
