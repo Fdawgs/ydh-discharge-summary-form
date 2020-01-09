@@ -5,8 +5,8 @@
     },
     "extends": [
         "eslint:recommended",
-        "prettier",
-        "plugin:jest/recommended"
+        "plugin:jest/recommended",
+        "prettier"
     ],
     "parserOptions": {
         "ecmaVersion": 2020,
