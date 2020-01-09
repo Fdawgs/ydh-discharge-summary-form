@@ -6,7 +6,14 @@ function getCookie(name) {
 	const value = `; ${document.cookie}`;
 	const parts = value.split(`; ${name}=`);
 	if (parts.length === 2) {
-		return decodeURIComponent(decodeURI(parts.pop().split(';').shift()));
+		return decodeURIComponent(
+			decodeURI(
+				parts
+					.pop()
+					.split(';')
+					.shift()
+			)
+		);
 	}
 }
 
@@ -25,7 +32,10 @@ function openTab(evt, tabName) {
 	}
 
 	for (let i = 0; i < tabButtons.length; i += 1) {
-		tabButtons[i].className = tabButtons[i].className.replace(' active', '');
+		tabButtons[i].className = tabButtons[i].className.replace(
+			' active',
+			''
+		);
 	}
 	document.getElementById(tabName).style.display = 'flex';
 	event.currentTarget.className += ' active';
@@ -192,18 +202,29 @@ function signOff(that) {
 
 			for (let index2 = 0; index2 < block.length; index2 += 1) {
 				const element = block[index2];
-				if (element.tagName === 'INPUT' && element.type !== 'checkbox') {
+				if (
+					element.tagName === 'INPUT' &&
+					element.type !== 'checkbox'
+				) {
 					if (element.value === '') {
 						// Internet explorer doesn't support date or time inputs
 						// Have to switch based on name of element rather than type
-						switch (element.name.substring(element.name.length - 4, element.name.length)
-							.toLowerCase()) {
+						switch (
+							element.name
+								.substring(
+									element.name.length - 4,
+									element.name.length
+								)
+								.toLowerCase()
+						) {
 							case 'date':
 								element.value = signOffDate;
 								break;
 							case 'text':
 							case 'name':
-								element.value = document.getElementById('user').innerHTML;
+								element.value = document.getElementById(
+									'user'
+								).innerHTML;
 								break;
 							case 'time':
 								element.value = signOffTime;

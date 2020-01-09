@@ -11,9 +11,14 @@ module.exports = function fhirAllergyIntoleranceMiddleware(config) {
 	return async (req, res, next) => {
 		// Retrieve data from AllergyIntolerance FHIR endpoint
 		let searchPath = '';
-		if (req.customparams.patient_mrn !== '' && req.customparams.admission_date !== '' && req.customparams.discharge_date !== '') {
+		if (
+			req.customparams.patient_mrn !== '' &&
+			req.customparams.admission_date !== '' &&
+			req.customparams.discharge_date !== ''
+		) {
 			searchPath = `${config.url}AllergyIntolerance?patient=${req.customparams.patient_mrn}&date=ge${req.customparams.admission_date}&date=le${req.customparams.discharge_date}`;
-			await request.get(searchPath, config.options)
+			await request
+				.get(searchPath, config.options)
 				.then((body) => {
 					if (body.resourceType === 'Bundle') {
 						// If no allergies present, move on

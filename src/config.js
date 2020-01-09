@@ -18,7 +18,6 @@ const fhirConConfig = {
 		},
 		json: true,
 		rejectUnauthorized: false
-
 	},
 	url: ''
 };
@@ -37,8 +36,8 @@ const helmetConfig = {
 	contentSecurityPolicy: {
 		directives: {
 			// defaultSrc: ['\'self\''],
-			scriptSrc: ['\'self\'', '\'unsafe-inline\''],
-			styleSrc: ['\'self\'', '\'unsafe-inline\'']
+			scriptSrc: ["'self'", "'unsafe-inline'"],
+			styleSrc: ["'self'", "'unsafe-inline'"]
 		}
 	},
 	hidePoweredBy: true,
@@ -60,9 +59,7 @@ const serverConfig = {
 	ssl: {
 		cert: 'ssl_certs/ydhclientcert.cer',
 		key: 'ssl_certs/ydhclientcert.key',
-		pfx: {
-
-		}
+		pfx: {}
 	}
 };
 

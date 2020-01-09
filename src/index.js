@@ -1,5 +1,9 @@
 const {
-	activeDirectoryConfig, fhirConConfig, helmetConfig, postgresqlConfig, serverConfig
+	activeDirectoryConfig,
+	fhirConConfig,
+	helmetConfig,
+	postgresqlConfig,
+	serverConfig
 } = require('./test.config');
 const Server = require('./server/server');
 require('regenerator-runtime');

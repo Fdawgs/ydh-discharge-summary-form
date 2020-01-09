@@ -230,11 +230,21 @@ function populateDischargeDestination(that) {
 		}
 	];
 
-	const discharge_differentAddressLine1 = document.querySelector('[name="discharge_differentAddressLine1"]');
-	const discharge_differentAddressLine2 = document.querySelector('[name="discharge_differentAddressLine2"]');
-	const discharge_differentAddressCity = document.querySelector('[name="discharge_differentAddressCity"]');
-	const discharge_differentAddressDistrict = document.querySelector('[name="discharge_differentAddressDistrict"]');
-	const discharge_differentAddressPostalCode = document.querySelector('[name="discharge_differentAddressPostalCode"]');
+	const discharge_differentAddressLine1 = document.querySelector(
+		'[name="discharge_differentAddressLine1"]'
+	);
+	const discharge_differentAddressLine2 = document.querySelector(
+		'[name="discharge_differentAddressLine2"]'
+	);
+	const discharge_differentAddressCity = document.querySelector(
+		'[name="discharge_differentAddressCity"]'
+	);
+	const discharge_differentAddressDistrict = document.querySelector(
+		'[name="discharge_differentAddressDistrict"]'
+	);
+	const discharge_differentAddressPostalCode = document.querySelector(
+		'[name="discharge_differentAddressPostalCode"]'
+	);
 
 	destinations.forEach((option) => {
 		if (option.name === destination) {

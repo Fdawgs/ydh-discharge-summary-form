@@ -45,14 +45,15 @@ describe('FHIR Patient middleware', () => {
 	test('Should fail to populate req custom parameter if patient mrn param is missing', async () => {
 		const middleware = fhirPatientMiddleware(fhirConConfig);
 		const req = {
-			query: {
-			}
+			query: {}
 		};
 		const res = {};
 		const next = jest.fn();
 
 		await middleware(req, res, next);
-		expect(next.mock.calls[0][0].message).toBe('Error: options.uri is a required argument');
+		expect(next.mock.calls[0][0].message).toBe(
+			'Error: options.uri is a required argument'
+		);
 		expect(next).toHaveBeenCalledTimes(1);
 	});
 });

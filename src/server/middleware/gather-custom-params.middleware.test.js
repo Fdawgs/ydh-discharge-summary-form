@@ -40,7 +40,8 @@ describe('Gather Custom Params middleware', () => {
 				discharge_date: '',
 				discharge_time: '',
 				discharge_estimatedDate: '',
-				discharge_method: 'PATIENT discharged on clinical advice or with clinical consent',
+				discharge_method:
+					'PATIENT discharged on clinical advice or with clinical consent',
 				discharge_careProvider: '',
 				discharge_ward: '',
 				discharge_destination: '',
@@ -82,7 +83,6 @@ describe('Gather Custom Params middleware', () => {
 				signoff_drContactNo: '',
 				signoff_drGrade: ''
 			}
-
 		};
 		const res = {};
 		const next = jest.fn();
