@@ -5,6 +5,7 @@
     },
     "extends": [
         "airbnb-base",
+        "prettier",
         "plugin:jest/recommended"
     ],
     "parserOptions": {
@@ -17,33 +18,18 @@
         "json"
     ],
     "rules": {
-        "comma-dangle": [
-            "error",
-            "never"
-        ],
         "import/no-extraneous-dependencies": [
             "error",
             {
                 "devDependencies": true
             }
         ],
-        "import/no-unresolved": [
-            "off"
-        ],
-        "indent": [
-            "error",
-            "tab",
-            {
-                "SwitchCase": 1
-            }
-        ],
+        "import/no-unresolved": "off",
         "lines-between-class-members": [
             "error",
             "always"
         ],
-        "no-console": [
-            "off"
-        ],
+        "no-console": "off",
         "no-multiple-empty-lines": [
             "error",
             {
@@ -52,28 +38,8 @@
                 "maxEOF": 0
             }
         ],
-        "no-tabs": [
-            "error",
-            {
-                "allowIndentationTabs": true
-            }
-        ],
-        "no-undef": [
-            "off"
-        ],
-        "no-unused-vars": [
-            "off"
-        ],
-        "prefer-destructuring": [
-            "off"
-        ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ]
+        "no-undef": "off",
+        "no-unused-vars": "off",
+        "prefer-destructuring": "off"
     }
 }

@@ -1,74 +1,86 @@
 {
-  "name": "ydh-discharge-summary-form",
-  "version": "0.14.2",
-  "description": "",
-  "keywords": [
-    "YDH",
-    "NHS",
-    "FHIR",
-    "Discharge"
-  ],
-  "main": "src/index.js",
-  "scripts": {
-    "build": "babel src --out-dir dist",
-    "copy": "@powershell Copy-Item src/* dist -force -recurse -verbose",
-    "dupe-check": "yarn jsinspect ./src",
-    "lint": "eslint ./src",
-    "serve": "node dist/index.js",
-    "start": "node --exec babel-node dist/index.js ",
-    "test": "yarn lint",
-    "test-coverage": "jest --coverage --verbose",
-    "test-only": "jest --verbose",
-    "tidy": "eslint ./src --fix"
-  },
-  "jest": {
-    "clearMocks": true,
-    "collectCoverageFrom": [
-      "src/*/*/*.js"
-    ],
-    "testEnvironment": "node",
-    "testPathIgnorePatterns": [
-      "dist/"
-    ],
-    "verbose": true
-  },
-  "repository": "git+https://github.com/Fdawgs/ydh-discharge-summary-form.git",
-  "author": "Frazer Smith <frazer.smith@ydh.nhs.uk>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Fdawgs/ydh-discharge-summary-form/issues"
-  },
-  "homepage": "https://github.com/Fdawgs/ydh-discharge-summary-form#readme",
-  "devDependencies": {
-    "@babel/cli": "^7.7.7",
-    "@babel/core": "^7.7.7",
-    "@babel/node": "^7.7.7",
-    "@babel/preset-env": "^7.7.7",
-    "babel-jest": "^24.9.0",
-    "babel-preset-minify": "^0.5.1",
-    "coveralls": "^3.0.9",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.19.1",
-    "eslint-plugin-jest": "^23.3.0",
-    "eslint-plugin-json": "^2.0.1",
-    "jest": "^24.9.0",
-    "jsinspect": "^0.12.7",
-    "supertest": "^4.0.2",
-    "typescript": "^3.7.4"
-  },
-  "dependencies": {
-    "activedirectory": "^0.7.2",
-    "body-parser": "^1.19.0",
-    "compression": "^1.7.4",
-    "cookie-parser": "^1.4.4",
-    "core-js": "^3.6.2",
-    "ejs": "=2.7.4",
-    "express": "^4.17.1",
-    "helmet": "^3.21.2",
-    "pg": "^7.17.0",
-    "regenerator-runtime": "^0.13.3",
-    "request": "^2.88.0",
-    "request-promise": "^4.2.5"
-  }
+	"name": "ydh-discharge-summary-form",
+	"version": "0.14.2",
+	"description": "",
+	"keywords": [
+		"YDH",
+		"NHS",
+		"FHIR",
+		"Discharge"
+	],
+	"main": "src/index.js",
+	"scripts": {
+		"build": "babel src --out-dir dist",
+		"copy": "@powershell Copy-Item src/* dist -force -recurse -verbose",
+		"dupe-check": "yarn jsinspect ./src",
+		"lint": "eslint ./src",
+		"prettier": "prettier src/**.js --write",
+		"serve": "node dist/index.js",
+		"start": "node --exec babel-node dist/index.js ",
+		"test": "yarn lint",
+		"test-coverage": "jest --coverage --verbose",
+		"test-only": "jest --verbose",
+		"tidy": "eslint ./src --fix"
+	},
+	"jest": {
+		"clearMocks": true,
+		"collectCoverageFrom": [
+			"src/*/*/*.js"
+		],
+		"testEnvironment": "node",
+		"testPathIgnorePatterns": [
+			"dist/"
+		],
+		"verbose": true
+	},
+	"repository": "git+https://github.com/Fdawgs/ydh-discharge-summary-form.git",
+	"author": "Frazer Smith <frazer.smith@ydh.nhs.uk>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/Fdawgs/ydh-discharge-summary-form/issues"
+	},
+	"homepage": "https://github.com/Fdawgs/ydh-discharge-summary-form#readme",
+	"prettier": {
+		"arrowParens": "always",
+		"bracketSpacing": true,
+		"endOfLine": "lf",
+		"semi": true,
+		"singleQuote": true,
+		"tabWidth": 4,
+		"trailingComma": "none",
+		"useTabs": true
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.7.7",
+		"@babel/core": "^7.7.7",
+		"@babel/node": "^7.7.7",
+		"@babel/preset-env": "^7.7.7",
+		"babel-jest": "^24.9.0",
+		"babel-preset-minify": "^0.5.1",
+		"coveralls": "^3.0.9",
+		"eslint": "^6.8.0",
+		"eslint-config-prettier": "^6.9.0",
+		"eslint-plugin-import": "^2.19.1",
+		"eslint-plugin-jest": "^23.3.0",
+		"eslint-plugin-json": "^2.0.1",
+		"jest": "^24.9.0",
+		"jsinspect": "^0.12.7",
+		"prettier": "1.19.1",
+		"supertest": "^4.0.2",
+		"typescript": "^3.7.4"
+	},
+	"dependencies": {
+		"activedirectory": "^0.7.2",
+		"body-parser": "^1.19.0",
+		"compression": "^1.7.4",
+		"cookie-parser": "^1.4.4",
+		"core-js": "^3.6.2",
+		"ejs": "=2.7.4",
+		"express": "^4.17.1",
+		"helmet": "^3.21.2",
+		"pg": "^7.17.0",
+		"regenerator-runtime": "^0.13.3",
+		"request": "^2.88.0",
+		"request-promise": "^4.2.5"
+	}
 }
