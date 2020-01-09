@@ -287,11 +287,13 @@ function highRiskDrugCheck(that) {
 		},
 		{
 			name: 'methotrexate',
-			text: 'GUIDANCE: Ensure and comment that arrangements have been made for regular blood tests. CAUTION: interaction with Spetrin and Trimethoprin. Should only be prescribed weekly'
+			text:
+				'GUIDANCE: Ensure and comment that arrangements have been made for regular blood tests. CAUTION: interaction with Spetrin and Trimethoprin. Should only be prescribed weekly'
 		},
 		{
 			name: 'warfarin',
-			text: 'GUIDANCE: Ensure and comment that arrangements for INR checks have been made'
+			text:
+				'GUIDANCE: Ensure and comment that arrangements for INR checks have been made'
 		}
 	];
 
@@ -306,10 +308,19 @@ function highRiskDrugCheck(that) {
 				// columns
 				for (let j = 0; j < ttoDiv.children.length; j += 1) {
 					// blocks
-					for (let k = 0; k < ttoDiv.children[j].children.length; k += 1) {
+					for (
+						let k = 0;
+						k < ttoDiv.children[j].children.length;
+						k += 1
+					) {
 						// inputs
-						for (let l = 0; l < ttoDiv.children[j].children[k].children.length; l += 1) {
-							const element = ttoDiv.children[j].children[k].children[l];
+						for (
+							let l = 0;
+							l < ttoDiv.children[j].children[k].children.length;
+							l += 1
+						) {
+							const element =
+								ttoDiv.children[j].children[k].children[l];
 							if (element.name === 'medication_ttoComments') {
 								element.value += drugList[i].text;
 							}

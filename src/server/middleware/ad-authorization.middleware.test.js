@@ -12,7 +12,9 @@ describe('Active Directory authentication middleware', () => {
 	test('Should remove YDH domain from name and store in locals', () => {
 		const ad = new ActiveDirectory(activeDirectoryConfig);
 		const middleware = adAuthorizationMiddleware(ad);
-		const req = { headers: { 'x-iisnode-logon_user': 'YDH\\frazer.smith' } };
+		const req = {
+			headers: { 'x-iisnode-logon_user': 'YDH\\frazer.smith' }
+		};
 		const res = { locals: {} };
 		const next = jest.fn();
 

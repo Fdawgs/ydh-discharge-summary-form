@@ -11,7 +11,9 @@ describe('PostgreSQL DB upsert middleware', () => {
 	});
 
 	test('Should insert a new discharge summary record into DB', async () => {
-		const middleware = postgresqlUpsertMiddleware(new Pool(postgresqlConfig));
+		const middleware = postgresqlUpsertMiddleware(
+			new Pool(postgresqlConfig)
+		);
 		const req = {
 			customparams: {
 				action: 'Create New Form and Exit',
@@ -42,7 +44,8 @@ describe('PostgreSQL DB upsert middleware', () => {
 				discharge_date: '',
 				discharge_time: '',
 				discharge_estimatedDate: '',
-				discharge_method: 'PATIENT discharged on clinical advice or with clinical consent',
+				discharge_method:
+					'PATIENT discharged on clinical advice or with clinical consent',
 				discharge_careProvider: '',
 				discharge_ward: '',
 				discharge_destination: '',
@@ -98,7 +101,9 @@ describe('PostgreSQL DB upsert middleware', () => {
 	});
 
 	test('Should convert follow-up and medication arrays into arrays of objects before inserting', async () => {
-		const middleware = postgresqlUpsertMiddleware(new Pool(postgresqlConfig));
+		const middleware = postgresqlUpsertMiddleware(
+			new Pool(postgresqlConfig)
+		);
 		const req = {
 			customparams: {
 				action: 'Create New Form and Exit',
@@ -129,7 +134,8 @@ describe('PostgreSQL DB upsert middleware', () => {
 				discharge_date: '',
 				discharge_time: '',
 				discharge_estimatedDate: '',
-				discharge_method: 'PATIENT discharged on clinical advice or with clinical consent',
+				discharge_method:
+					'PATIENT discharged on clinical advice or with clinical consent',
 				discharge_careProvider: '',
 				discharge_ward: '',
 				discharge_destination: '',
@@ -163,83 +169,32 @@ describe('PostgreSQL DB upsert middleware', () => {
 					'Medication change test 2',
 					'Medication change test 1'
 				],
-				medication_changedReason: [
-					'2',
-					'1'
-				],
+				medication_changedReason: ['2', '1'],
 				medication_changedPlan: [
 					'Continue as prescribed',
 					'Complete the prescribed course'
 				],
 				medication_tto: 'Yes',
-				medication_ttoLockDate: [
-					'',
-					''
-				],
-				medication_ttoLockUser: [
-					'',
-					''
-				],
+				medication_ttoLockDate: ['', ''],
+				medication_ttoLockUser: ['', ''],
 				medication_ttoMedication: [
 					'Test medication 2',
 					'Test medication 1'
 				],
-				medication_ttoDose: [
-					'2',
-					'1'
-				],
-				medication_ttoUnit: [
-					'applicatorful',
-					'application'
-				],
-				medication_ttoRoute: [
-					'',
-					'BUC - Buccal'
-				],
-				medication_ttoStartDate: [
-					'',
-					''
-				],
-				medication_ttoFrequency: [
-					'2',
-					'1'
-				],
-				medication_ttoLengthOfCourse: [
-					'weeks',
-					'day'
-				],
-				medication_ttoComments: [
-					'',
-					''
-				],
-				medication_ttoPharmacySignOffName: [
-					'',
-					'frazer.smith'
-				],
-				medication_ttoPharmacySignOffDate: [
-					'',
-					'2019-10-02'
-				],
-				medication_ttoPharmacySignOffTime: [
-					'',
-					'09: 19: 11'
-				],
-				medication_ttoPharmacyAvailability: [
-					'',
-					'CD Prescription'
-				],
-				medication_finalPharmacySignOffName: [
-					'',
-					'frazer.smith'
-				],
-				medication_finalPharmacySignOffDate: [
-					'',
-					'2019-10-02'
-				],
-				medication_finalPharmacySignOffTime: [
-					'',
-					'09: 19: 12'
-				],
+				medication_ttoDose: ['2', '1'],
+				medication_ttoUnit: ['applicatorful', 'application'],
+				medication_ttoRoute: ['', 'BUC - Buccal'],
+				medication_ttoStartDate: ['', ''],
+				medication_ttoFrequency: ['2', '1'],
+				medication_ttoLengthOfCourse: ['weeks', 'day'],
+				medication_ttoComments: ['', ''],
+				medication_ttoPharmacySignOffName: ['', 'frazer.smith'],
+				medication_ttoPharmacySignOffDate: ['', '2019-10-02'],
+				medication_ttoPharmacySignOffTime: ['', '09: 19: 11'],
+				medication_ttoPharmacyAvailability: ['', 'CD Prescription'],
+				medication_finalPharmacySignOffName: ['', 'frazer.smith'],
+				medication_finalPharmacySignOffDate: ['', '2019-10-02'],
+				medication_finalPharmacySignOffTime: ['', '09: 19: 12'],
 				medication_ttoPharmacySignOffCheck: 'on',
 				medication_finalPharmacySignOffCheck: 'on',
 				followup_akiText: '',
@@ -276,7 +231,9 @@ describe('PostgreSQL DB upsert middleware', () => {
 	});
 
 	test('Should update an existing discharge summary record in the DB', async () => {
-		const middleware = postgresqlUpsertMiddleware(new Pool(postgresqlConfig));
+		const middleware = postgresqlUpsertMiddleware(
+			new Pool(postgresqlConfig)
+		);
 		const req = {
 			customparams: {
 				version: 420,
@@ -308,7 +265,8 @@ describe('PostgreSQL DB upsert middleware', () => {
 				discharge_date: '',
 				discharge_time: '',
 				discharge_estimatedDate: '',
-				discharge_method: 'PATIENT discharged on clinical advice or with clinical consent',
+				discharge_method:
+					'PATIENT discharged on clinical advice or with clinical consent',
 				discharge_careProvider: '',
 				discharge_ward: '',
 				discharge_destination: '',
@@ -374,7 +332,9 @@ describe('PostgreSQL DB upsert middleware', () => {
 		const next = jest.fn();
 
 		await middleware(req, res, next);
-		expect(next.mock.calls[0][0].message.substring(0, 30)).toMatch(/^password authentication failed|read ECONNRESET/i);
+		expect(next.mock.calls[0][0].message.substring(0, 30)).toMatch(
+			/^password authentication failed|read ECONNRESET/i
+		);
 		expect(next).toHaveBeenCalledTimes(1);
 	});
 });

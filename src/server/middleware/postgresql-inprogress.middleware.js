@@ -6,7 +6,10 @@
  */
 module.exports = function postgresqlInprogressMiddleware(pool) {
 	return async (req, res, next) => {
-		const getInProgress = () => pool.query(`WITH CTE
+		const getInProgress = () =>
+			pool
+				.query(
+					`WITH CTE
 												  AS (SELECT *,
 															 ROW_NUMBER() OVER (PARTITION BY ID ORDER BY VERSION DESC) AS rn
 														FROM public.discharge_summary)
@@ -14,8 +17,10 @@ module.exports = function postgresqlInprogressMiddleware(pool) {
 												FROM CTE
 											   WHERE rn = 1
 												 AND raw->>'patient_mrn' = $1
-											ORDER BY id DESC`, [req.customparams.patient_mrn])
-			.then((response) => response.rows);
+											ORDER BY id DESC`,
+					[req.customparams.patient_mrn]
+				)
+				.then((response) => response.rows);
 
 		await getInProgress()
 			.then((results) => {

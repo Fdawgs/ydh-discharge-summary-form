@@ -42,13 +42,24 @@ class Server {
 	 */
 	configureFhirRouting(fhirConconfig) {
 		// search for patient details on FHIR endpoint to attempt to auto-populate fields in forms
-		this.app.get('/searchpatient', fhirPatientRecord(fhirConconfig), (req, res) => {
-			res.render('./pages/patient_confirmation', req.patientresource);
-		});
+		this.app.get(
+			'/searchpatient',
+			fhirPatientRecord(fhirConconfig),
+			(req, res) => {
+				res.render('./pages/patient_confirmation', req.patientresource);
+			}
+		);
 
-		this.app.post('/createnew', gatherCustomParams(), fhirAllergyRecord(fhirConconfig), insertUpdateRecord(this.pool), retrieveInProgress(this.pool), async (req, res) => {
-			res.render('./pages/patient_landing', req.customparams);
-		});
+		this.app.post(
+			'/createnew',
+			gatherCustomParams(),
+			fhirAllergyRecord(fhirConconfig),
+			insertUpdateRecord(this.pool),
+			retrieveInProgress(this.pool),
+			async (req, res) => {
+				res.render('./pages/patient_landing', req.customparams);
+			}
+		);
 
 		// return self for chaining
 		return this;
@@ -114,11 +125,16 @@ class Server {
 	 * in order to mask passed parameters in the URI from users.
 	 */
 	configureRouting() {
-		this.app.get('/', gatherCustomParams(), retrieveAwaitSignOff(this.pool, 'dr'),
-			retrieveAwaitSignOff(this.pool, 'nurse'), retrieveAwaitSignOff(this.pool, 'pharmacy'),
+		this.app.get(
+			'/',
+			gatherCustomParams(),
+			retrieveAwaitSignOff(this.pool, 'dr'),
+			retrieveAwaitSignOff(this.pool, 'nurse'),
+			retrieveAwaitSignOff(this.pool, 'pharmacy'),
 			(req, res) => {
 				res.render('./pages/home', req);
-			});
+			}
+		);
 
 		this.app.get('/contributors', (req, res) => {
 			res.render('./pages/contributors');
@@ -132,25 +148,47 @@ class Server {
 			res.redirect('/');
 		});
 
-		this.app.post('/discharge_summary', gatherCustomParams(), (req, res) => {
-			res.render('./pages/discharge_summary', req.customparams);
-		});
-		this.app.post('/patient', gatherCustomParams(), retrieveInProgress(this.pool), (req, res) => {
-			res.render('./pages/patient_landing', req.customparams);
-		});
+		this.app.post(
+			'/discharge_summary',
+			gatherCustomParams(),
+			(req, res) => {
+				res.render('./pages/discharge_summary', req.customparams);
+			}
+		);
+		this.app.post(
+			'/patient',
+			gatherCustomParams(),
+			retrieveInProgress(this.pool),
+			(req, res) => {
+				res.render('./pages/patient_landing', req.customparams);
+			}
+		);
 
 		// Result of posting discharge summary form
-		this.app.post('/continue', gatherCustomParams(), insertUpdateRecord(this.pool), (req, res) => {
-			res.render('./pages/discharge_summary', req.customparams);
-		});
-		this.app.post('/preview', gatherCustomParams(),
+		this.app.post(
+			'/continue',
+			gatherCustomParams(),
+			insertUpdateRecord(this.pool),
+			(req, res) => {
+				res.render('./pages/discharge_summary', req.customparams);
+			}
+		);
+		this.app.post(
+			'/preview',
+			gatherCustomParams(),
 			(req, res, next) => {
-				const powerBi = { id: req.customparams.row_id, version: req.customparams.version };
-				req.powerbi = powerBi; next();
+				const powerBi = {
+					id: req.customparams.row_id,
+					version: req.customparams.version
+				};
+				req.powerbi = powerBi;
+				next();
 			},
-			insertUpdateRecord(this.pool), (req, res) => {
+			insertUpdateRecord(this.pool),
+			(req, res) => {
 				res.render('./pages/preview', req.powerbi);
-			});
+			}
+		);
 
 		// return self for chaining
 		return this;

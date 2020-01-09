@@ -10,7 +10,9 @@ describe('PostgreSQL DB in-progress summaries middleware', () => {
 	});
 
 	test('Should return list of in-progress discharge summaries', async () => {
-		const middleware = postgresqlInprogressMiddleware(new Pool(postgresqlConfig));
+		const middleware = postgresqlInprogressMiddleware(
+			new Pool(postgresqlConfig)
+		);
 		const req = {
 			customparams: {
 				patient_mrn: '5484125'
@@ -20,7 +22,9 @@ describe('PostgreSQL DB in-progress summaries middleware', () => {
 		const next = jest.fn();
 
 		await middleware(req, res, next);
-		expect(req.customparams.in_progress_discharge_summaries).not.toBeUndefined();
+		expect(
+			req.customparams.in_progress_discharge_summaries
+		).not.toBeUndefined();
 		expect(next).toHaveBeenCalledTimes(1);
 	});
 
@@ -35,7 +39,9 @@ describe('PostgreSQL DB in-progress summaries middleware', () => {
 		const next = jest.fn();
 
 		await middleware(req, res, next);
-		expect(next.mock.calls[0][0].message.substring(0, 30)).toMatch(/^password authentication failed|read ECONNRESET/i);
+		expect(next.mock.calls[0][0].message.substring(0, 30)).toMatch(
+			/^password authentication failed|read ECONNRESET/i
+		);
 		expect(next).toHaveBeenCalledTimes(1);
 	});
 });

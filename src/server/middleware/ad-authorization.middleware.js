@@ -23,7 +23,13 @@ module.exports = function adAuthorizationMiddleware(activedirectory) {
 			}
 
 			// Remove groups that aren't discharge summary related
-			const commonName = ['inpatdis_doc', 'inpatdis_nurse', 'inpatdis_pharm', 'inpatdis_transcribe', 'Solutions Development'];
+			const commonName = [
+				'inpatdis_doc',
+				'inpatdis_nurse',
+				'inpatdis_pharm',
+				'inpatdis_transcribe',
+				'Solutions Development'
+			];
 			const inpatGroups = [];
 			for (let index = 0; index < groups.length; index += 1) {
 				const element = groups[index];
@@ -54,7 +60,6 @@ module.exports = function adAuthorizationMiddleware(activedirectory) {
 					disabled: 'disabled',
 					readonly: 'readonly'
 				}
-
 			};
 			if (inpatGroups.includes('doctor')) {
 				access.doctor.disabled = '';
@@ -89,7 +94,11 @@ module.exports = function adAuthorizationMiddleware(activedirectory) {
 			res.locals.useraccess = access;
 			// Cookie used to set limitations on dynamically created sections like the TTOs
 			// Not signed as final sign off relies on server-side usergroup
-			res.cookie('useraccess', encodeURIComponent(JSON.stringify(access)), { sameSite: true });
+			res.cookie(
+				'useraccess',
+				encodeURIComponent(JSON.stringify(access)),
+				{ sameSite: true }
+			);
 
 			next();
 		});

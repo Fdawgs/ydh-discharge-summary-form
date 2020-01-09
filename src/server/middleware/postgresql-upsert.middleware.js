@@ -15,11 +15,17 @@ module.exports = function postgresqlUpsertMiddleware(pool) {
 			req.customparams.followups = [];
 
 			if (typeof req.customparams.followup_with === 'object') {
-				for (let i = 0; i < req.customparams.followup_with.length; i += 1) {
+				for (
+					let i = 0;
+					i < req.customparams.followup_with.length;
+					i += 1
+				) {
 					const followUpObject = {
 						followup_details: req.customparams.followup_details[i],
-						followup_interval: req.customparams.followup_interval[i],
-						followup_intervalNumber: req.customparams.followup_intervalNumber[i],
+						followup_interval:
+							req.customparams.followup_interval[i],
+						followup_intervalNumber:
+							req.customparams.followup_intervalNumber[i],
 						followup_notes: req.customparams.followup_notes[i],
 						followup_with: req.customparams.followup_with[i]
 					};
@@ -29,7 +35,8 @@ module.exports = function postgresqlUpsertMiddleware(pool) {
 				const followUpObject = {
 					followup_details: req.customparams.followup_details,
 					followup_interval: req.customparams.followup_interval,
-					followup_intervalNumber: req.customparams.followup_intervalNumber,
+					followup_intervalNumber:
+						req.customparams.followup_intervalNumber,
 					followup_notes: req.customparams.followup_notes,
 					followup_with: req.customparams.followup_with
 				};
@@ -45,19 +52,29 @@ module.exports = function postgresqlUpsertMiddleware(pool) {
 		if (typeof req.customparams.medication_changedMed !== 'undefined') {
 			req.customparams.changedmeds = [];
 			if (typeof req.customparams.medication_changedMed === 'object') {
-				for (let j = 0; j < req.customparams.medication_changedMed.length; j += 1) {
+				for (
+					let j = 0;
+					j < req.customparams.medication_changedMed.length;
+					j += 1
+				) {
 					const changedMedObject = {
-						medication_changedMed: req.customparams.medication_changedMed[j],
-						medication_changedPlan: req.customparams.medication_changedPlan[j],
-						medication_changedReason: req.customparams.medication_changedReason[j]
+						medication_changedMed:
+							req.customparams.medication_changedMed[j],
+						medication_changedPlan:
+							req.customparams.medication_changedPlan[j],
+						medication_changedReason:
+							req.customparams.medication_changedReason[j]
 					};
 					req.customparams.changedmeds.push(changedMedObject);
 				}
 			} else {
 				const changedMedObject = {
-					medication_changedMed: req.customparams.medication_changedMed,
-					medication_changedPlan: req.customparams.medication_changedPlan,
-					medication_changedReason: req.customparams.medication_changedReason
+					medication_changedMed:
+						req.customparams.medication_changedMed,
+					medication_changedPlan:
+						req.customparams.medication_changedPlan,
+					medication_changedReason:
+						req.customparams.medication_changedReason
 				};
 				req.customparams.changedmeds.push(changedMedObject);
 			}
@@ -69,55 +86,100 @@ module.exports = function postgresqlUpsertMiddleware(pool) {
 		if (typeof req.customparams.medication_ttoMedication !== 'undefined') {
 			req.customparams.ttos = [];
 			if (typeof req.customparams.medication_ttoMedication === 'object') {
-				for (let k = 0; k < req.customparams.medication_ttoMedication.length; k += 1) {
+				for (
+					let k = 0;
+					k < req.customparams.medication_ttoMedication.length;
+					k += 1
+				) {
 					const ttoObject = {
 						medication_finalPharmacySignOffCheck:
-							req.customparams.medication_finalPharmacySignOffCheck[k],
+							req.customparams
+								.medication_finalPharmacySignOffCheck[k],
 						medication_finalPharmacySignOffDate:
-							req.customparams.medication_finalPharmacySignOffDate[k],
+							req.customparams
+								.medication_finalPharmacySignOffDate[k],
 						medication_finalPharmacySignOffName:
-							req.customparams.medication_finalPharmacySignOffName[k],
+							req.customparams
+								.medication_finalPharmacySignOffName[k],
 						medication_finalPharmacySignOffTime:
-							req.customparams.medication_finalPharmacySignOffTime[k],
-						medication_ttoComments: req.customparams.medication_ttoComments[k],
-						medication_ttoDose: req.customparams.medication_ttoDose[k],
-						medication_ttoFrequency: req.customparams.medication_ttoFrequency[k],
-						medication_ttoLengthOfCourse: req.customparams.medication_ttoLengthOfCourse[k],
-						medication_ttoLockDate: req.customparams.medication_ttoLockDate[k],
-						medication_ttoLockUser: req.customparams.medication_ttoLockUser[k],
-						medication_ttoMedication: req.customparams.medication_ttoMedication[k],
+							req.customparams
+								.medication_finalPharmacySignOffTime[k],
+						medication_ttoComments:
+							req.customparams.medication_ttoComments[k],
+						medication_ttoDose:
+							req.customparams.medication_ttoDose[k],
+						medication_ttoFrequency:
+							req.customparams.medication_ttoFrequency[k],
+						medication_ttoLengthOfCourse:
+							req.customparams.medication_ttoLengthOfCourse[k],
+						medication_ttoLockDate:
+							req.customparams.medication_ttoLockDate[k],
+						medication_ttoLockUser:
+							req.customparams.medication_ttoLockUser[k],
+						medication_ttoMedication:
+							req.customparams.medication_ttoMedication[k],
 						medication_ttoPharmacyAvailability:
-							req.customparams.medication_ttoPharmacyAvailability[k],
+							req.customparams.medication_ttoPharmacyAvailability[
+								k
+							],
 						medication_ttoPharmacySignOffCheck:
-							req.customparams.medication_ttoPharmacySignOffCheck[k],
-						medication_ttoPharmacySignOffDate: req.customparams.medication_ttoPharmacySignOffDate[k],
-						medication_ttoPharmacySignOffName: req.customparams.medication_ttoPharmacySignOffName[k],
-						medication_ttoPharmacySignOffTime: req.customparams.medication_ttoPharmacySignOffTime[k],
-						medication_ttoRoute: req.customparams.medication_ttoRoute[k],
-						medication_ttoStartDate: req.customparams.medication_ttoStartDate[k],
-						medication_ttoUnit: req.customparams.medication_ttoUnit[k]
+							req.customparams.medication_ttoPharmacySignOffCheck[
+								k
+							],
+						medication_ttoPharmacySignOffDate:
+							req.customparams.medication_ttoPharmacySignOffDate[
+								k
+							],
+						medication_ttoPharmacySignOffName:
+							req.customparams.medication_ttoPharmacySignOffName[
+								k
+							],
+						medication_ttoPharmacySignOffTime:
+							req.customparams.medication_ttoPharmacySignOffTime[
+								k
+							],
+						medication_ttoRoute:
+							req.customparams.medication_ttoRoute[k],
+						medication_ttoStartDate:
+							req.customparams.medication_ttoStartDate[k],
+						medication_ttoUnit:
+							req.customparams.medication_ttoUnit[k]
 					};
 					req.customparams.ttos.push(ttoObject);
 				}
 			} else {
 				const ttoObject = {
-
-					medication_finalPharmacySignOffCheck: req.customparams.medication_finalPharmacySignOffCheck,
-					medication_finalPharmacySignOffDate: req.customparams.medication_finalPharmacySignOffDate,
-					medication_finalPharmacySignOffName: req.customparams.medication_finalPharmacySignOffName,
-					medication_finalPharmacySignOffTime: req.customparams.medication_finalPharmacySignOffTime,
-					medication_ttoComments: req.customparams.medication_ttoComments,
+					medication_finalPharmacySignOffCheck:
+						req.customparams.medication_finalPharmacySignOffCheck,
+					medication_finalPharmacySignOffDate:
+						req.customparams.medication_finalPharmacySignOffDate,
+					medication_finalPharmacySignOffName:
+						req.customparams.medication_finalPharmacySignOffName,
+					medication_finalPharmacySignOffTime:
+						req.customparams.medication_finalPharmacySignOffTime,
+					medication_ttoComments:
+						req.customparams.medication_ttoComments,
 					medication_ttoDose: req.customparams.medication_ttoDose,
-					medication_ttoFrequency: req.customparams.medication_ttoFrequency,
-					medication_ttoLengthOfCourse: req.customparams.medication_ttoLengthOfCourse,
-					medication_ttoLockDate: req.customparams.medication_ttoLockDate,
-					medication_ttoLockUser: req.customparams.medication_ttoLockUser,
-					medication_ttoMedication: req.customparams.medication_ttoMedication,
-					medication_ttoPharmacyAvailability: req.customparams.medication_ttoPharmacyAvailability,
-					medication_ttoPharmacySignOffCheck: req.customparams.medication_ttoPharmacySignOffCheck,
-					medication_ttoPharmacySignOffDate: req.customparams.medication_ttoPharmacySignOffDate,
-					medication_ttoPharmacySignOffName: req.customparams.medication_ttoPharmacySignOffName,
-					medication_ttoPharmacySignOffTime: req.customparams.medication_ttoPharmacySignOffTime,
+					medication_ttoFrequency:
+						req.customparams.medication_ttoFrequency,
+					medication_ttoLengthOfCourse:
+						req.customparams.medication_ttoLengthOfCourse,
+					medication_ttoLockDate:
+						req.customparams.medication_ttoLockDate,
+					medication_ttoLockUser:
+						req.customparams.medication_ttoLockUser,
+					medication_ttoMedication:
+						req.customparams.medication_ttoMedication,
+					medication_ttoPharmacyAvailability:
+						req.customparams.medication_ttoPharmacyAvailability,
+					medication_ttoPharmacySignOffCheck:
+						req.customparams.medication_ttoPharmacySignOffCheck,
+					medication_ttoPharmacySignOffDate:
+						req.customparams.medication_ttoPharmacySignOffDate,
+					medication_ttoPharmacySignOffName:
+						req.customparams.medication_ttoPharmacySignOffName,
+					medication_ttoPharmacySignOffTime:
+						req.customparams.medication_ttoPharmacySignOffTime,
 					medication_ttoRoute: req.customparams.medication_ttoRoute,
 					medication_ttoUnit: req.customparams.medication_ttoUnit
 				};
@@ -169,13 +231,16 @@ module.exports = function postgresqlUpsertMiddleware(pool) {
 			case 'Save and Preview':
 				delete req.customparams.action;
 				query = `INSERT INTO public.discharge_summary(id, "lastUpdate", "raw", version)
-		VALUES('${id}', CURRENT_TIMESTAMP, '${JSON.stringify(req.customparams)}', ${version += 1})
+		VALUES('${id}', CURRENT_TIMESTAMP, '${JSON.stringify(
+					req.customparams
+				)}', ${(version += 1)})
 		ON CONFLICT (id, version) DO UPDATE SET id ='${id}', version = ${version}
 		RETURNING id, "lastUpdate", "raw", version;`;
 				break;
 		}
 
-		await pool.query(query)
+		await pool
+			.query(query)
 			.then((response) => {
 				req.customparams.query = {
 					command: response.command
@@ -186,11 +251,15 @@ module.exports = function postgresqlUpsertMiddleware(pool) {
 				const lastUpdated = new Date(response.rows[0].lastUpdate);
 				const lastUpdatedString = [
 					lastUpdated.getDate(),
-					((lastUpdated.getMonth() + 1) < 10 ? `0${lastUpdated.getMonth() + 1}` : (lastUpdated.getMonth() + 1)),
+					lastUpdated.getMonth() + 1 < 10
+						? `0${lastUpdated.getMonth() + 1}`
+						: lastUpdated.getMonth() + 1,
 					lastUpdated.getFullYear()
 				].join('/');
 
-				req.customparams.lastUpdate = `${lastUpdatedString} ${new Date(response.rows[0].lastUpdate).toLocaleTimeString()}`;
+				req.customparams.lastUpdate = `${lastUpdatedString} ${new Date(
+					response.rows[0].lastUpdate
+				).toLocaleTimeString()}`;
 				req.customparams.version = response.rows[0].version;
 
 				if (response.rowCount === 1) {
@@ -200,7 +269,8 @@ module.exports = function postgresqlUpsertMiddleware(pool) {
 					req.customparams.query.result = 'warning';
 					next();
 				}
-			}).catch((err) => {
+			})
+			.catch((err) => {
 				next(err);
 			});
 	};
