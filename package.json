@@ -14,7 +14,7 @@
 		"copy": "@powershell Copy-Item src/* dist -force -recurse -verbose",
 		"dupe-check": "yarn jsinspect ./src",
 		"lint": "eslint ./src",
-		"prettier": "prettier src/**.js --write",
+		"prettier": "prettier src/**/*.js --write",
 		"serve": "node dist/index.js",
 		"start": "node --exec babel-node dist/index.js ",
 		"test": "yarn lint",
