@@ -1,7 +1,7 @@
 /**
  * @author Frazer Smith
  * @param {Object} pool - Pool object.
- * @param {('dr'|'nurse'|'pharmacy')} signOffType - String specifying type
+ * @param {('Dr'|'Nurse'|'Pharmacy')} signOffType - String specifying type
  * of sign-off that is still needed.
  * @return {Function} express middleware
  * @description Query PostgreSQL DB for discharge summaries awaiting sign-offs.
@@ -14,15 +14,15 @@ module.exports = function postgresqlAwaitingSignOffMiddleware(
 		// Build WHERE clause predicates
 		let predicateParts;
 		switch (signOffType) {
-			case 'nurse':
+			case 'Nurse':
 				predicateParts =
 					"AND (raw::jsonb ? 'signoff_nurseFirstCheck' = FALSE OR raw::jsonb ? 'signoff_nurseSecondCheck' = FALSE)";
 				break;
-			case 'dr':
+			case 'Dr':
 				predicateParts =
 					"AND (raw::jsonb ? 'signoff_drCheckbox' = FALSE)";
 				break;
-			case 'pharmacy':
+			case 'Pharmacy':
 				predicateParts =
 					"AND (raw::jsonb ? 'medication_overallPharmacySignOffCheck' = FALSE) AND (json_array_length(raw->'ttos') IS NOT NULL)";
 				break;
