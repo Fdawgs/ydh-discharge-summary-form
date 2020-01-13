@@ -46,7 +46,7 @@ class Server {
 		this.app.get(
 			'/searchpatient',
 			fhirPatientRecord(fhirConconfig),
-			fhirEncounterRecord(fhirConconfig),
+			fhirEncounterRecord(fhirConconfig), // Only fetch patient data once
 			(req, res) => {
 				res.render('./pages/patient_confirmation', req.patientresource);
 			}
