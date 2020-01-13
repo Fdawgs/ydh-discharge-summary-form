@@ -13,6 +13,7 @@ const retrieveInProgress = require('./middleware/postgresql-inprogress.middlewar
 const retrieveAwaitSignOff = require('./middleware/postgresql-awaitingsignoff.middleware');
 const fhirPatientRecord = require('./middleware/fhir-patient.middleware');
 const fhirAllergyRecord = require('./middleware/fhir-allergyintolerance.middleware');
+const fhirEncounterRecord = require('./middleware/fhir-encounter.middleware');
 const adGroupMembership = require('./middleware/ad-authorization.middleware');
 const insertUpdateRecord = require('./middleware/postgresql-upsert.middleware');
 const gatherCustomParams = require('./middleware/gather-custom-params.middleware');
@@ -45,6 +46,7 @@ class Server {
 		this.app.get(
 			'/searchpatient',
 			fhirPatientRecord(fhirConconfig),
+			fhirEncounterRecord(fhirConconfig),
 			(req, res) => {
 				res.render('./pages/patient_confirmation', req.patientresource);
 			}

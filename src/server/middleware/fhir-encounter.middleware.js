@@ -1,0 +1,117 @@
+const request = require('request-promise');
+
+/**
+ * @author Frazer Smith
+ * @param {Object} config - FHIR API endpoint access config values.
+ * @return {Function} express middleware
+ * @description Queries FHIR API endpoints for Patient Resource using MRN or NHS No. provided.
+ */
+module.exports = function fhirEncounterMiddleware(config) {
+	return async (req, res, next) => {
+		// Retrieve data from Encounter FHIR endpoint
+		let searchPath = '';
+		if (req.query.nhsno !== '' && typeof req.query.nhsno !== 'undefined') {
+			searchPath = `${config.url}Encounter?identifier=https://fhir.nhs.uk/Id/nhs-number|${req.query.nhsno}`;
+		} else if (
+			req.query.mrn !== '' &&
+			typeof req.query.mrn !== 'undefined'
+		) {
+			searchPath = `${config.url}Encounter?identifier=https://fhir.ydh.nhs.uk/Id/local-patient-identifier|${req.query.mrn}`;
+		}
+
+		await request
+			.get(searchPath, config.options)
+			.then((body) => {
+				const params = [];
+
+				const results = body.entry;
+
+				results.forEach((element) => {
+					const inpatEncounter = {};
+
+					// Only parse inpatient encounter resources
+					if (element.resource.class.code === 'IMP') {
+						// Retrieve admitting specialty
+						element.resource.type.forEach((specialtyType) => {
+							specialtyType.coding.forEach(
+								(specialtyTypeCode) => {
+									if (
+										specialtyTypeCode.system ===
+										'https://fhir.nhs.uk/STU3/CodeSystem/DCH-Specialty-1'
+									) {
+										inpatEncounter.admission_specialty =
+											specialtyTypeCode.display;
+									}
+								}
+							);
+						});
+
+						inpatEncounter.admission_date =
+							element.resource.period.start;
+                        inpatEncounter.discharge_date =
+                            element.resource.period.end;
+						// Retrieve admission and discharge method
+						element.resource.hospitalization.extension.forEach(
+							(hospitalizationExtension) => {
+								if (
+									hospitalizationExtension.url ===
+									'https://fhir.hl7.org.uk/STU3/StructureDefinition/Extension-CareConnect-AdmissionMethod-1'
+								) {
+									inpatEncounter.admission_method =
+										hospitalizationExtension.valueCodeableConcept.coding[0].display;
+                                }
+                                
+								if (
+									hospitalizationExtension.url ===
+									'https://fhir.hl7.org.uk/STU3/StructureDefinition/Extension-CareConnect-DischargeMethod-1'
+								) {
+									inpatEncounter.discharge_method =
+										hospitalizationExtension.valueCodeableConcept.coding[0].display;
+                                }
+							}
+						);
+
+						// Retrieve admitting and discharging consultant
+						element.resource.participant.forEach(
+							(participation) => {
+								participation.type.forEach(
+									(participationType) => {
+										participationType.coding.forEach(
+											(participationTypeCode) => {
+												if (
+													participationTypeCode.code ===
+													'ADM'
+												) {
+													inpatEncounter.admission_careProvider =
+														participation.individual.display;
+                                                }
+                                                
+                                                if (
+													participationTypeCode.code ===
+													'DIS'
+												) {
+													inpatEncounter.discharge_careProvider =
+														participation.individual.display;
+												}
+											}
+										);
+									}
+								);
+							}
+						);
+
+						inpatEncounter.admission_source =
+							element.resource.hospitalization.admitSource.coding[0].display;
+
+						params.push(inpatEncounter);
+					}
+				});
+
+				req.encounterresources = params;
+				next();
+			})
+			.catch((err) => {
+				next(err);
+			});
+	};
+};
