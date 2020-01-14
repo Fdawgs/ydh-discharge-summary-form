@@ -75,7 +75,7 @@
 		"body-parser": "^1.19.0",
 		"compression": "^1.7.4",
 		"cookie-parser": "^1.4.4",
-		"core-js": "^3.6.3",
+		"core-js": "^3.6.4",
 		"ejs": "=2.7.4",
 		"express": "^4.17.1",
 		"helmet": "^3.21.2",
