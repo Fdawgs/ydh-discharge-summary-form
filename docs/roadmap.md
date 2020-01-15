@@ -1,6 +1,6 @@
 # Roadmap
 
-## v0.15.0
+## v0.16.0
 
 ### Discharge Summary
 
@@ -29,18 +29,6 @@
 #### Discharge Tab
 
 -   Revise Discharge Specialty list
--   'Discharge Pathway' select input
-    -   Add '' option
-    -   Add 'Discharged Palliative Pathway' option
-    -   Add 'Discharged Stroke Pathway' option
-
-#### Follow-Up Tab
-
--   Remove 'Community Rehab Team' option from 'Follow-Up With' select input
-
-#### Sign Off Tab
-
--   Remove requirement for Dr. sign off to be present before nurses can sign off the document; issue was raised that palliative care discharge without Dr. sign off
 
 ### Patient Landing Page
 
