@@ -11,12 +11,12 @@ module.exports = function fhirEncounterMiddleware(config) {
 		// Retrieve data from Encounter FHIR endpoint
 		let searchPath = '';
 		if (req.patient_nhsNo !== '' && typeof req.patient_nhsNo !== 'undefined') {
-			searchPath = `${config.url}Encounter?identifier=https://fhir.nhs.uk/Id/nhs-number|${req.patient_nhsNo}&class=inpatient`;
+			searchPath = `${config.url}Encounter?patient.identifier=https://fhir.nhs.uk/Id/nhs-number|${req.patient_nhsNo}&class=inpatient`;
 		} else if (
 			req.customparams.patient_mrn !== '' &&
 			typeof req.customparams.patient_mrn !== 'undefined'
 		) {
-			searchPath = `${config.url}Encounter?identifier=https://fhir.ydh.nhs.uk/Id/local-patient-identifier|${req.customparams.patient_mrn}&class=inpatient`;
+			searchPath = `${config.url}Encounter?patient.identifier=https://fhir.ydh.nhs.uk/Id/local-patient-identifier|${req.customparams.patient_mrn}&class=inpatient`;
 		}
 
 		await request
