@@ -6,7 +6,7 @@ return _classCallCheck(this,a),this.config=b,this.app=express(),this.app.set("vi
 	 * @description Handles FHIR API calls.
 	 * @param {Object} fhirConconfig
 	 */return _createClass(a,[{key:"configureFhirRouting",value:function configureFhirRouting(a){// return self for chaining
-return this.app.get("/searchpatient",fhirPatientRecord(a),fhirEncounterRecord(a),// Only fetch patient data once
+return this.app.get("/searchpatient",fhirPatientRecord(a),// Only fetch patient data once
 function(a,b){b.render("./pages/patient_confirmation",a.patientresource)}),this.app.post("/createnew",gatherCustomParams(),fhirAllergyRecord(a),insertUpdateRecord(this.pool),retrieveInProgress(this.pool),/*#__PURE__*/function(){var a=_asyncToGenerator(/*#__PURE__*/regeneratorRuntime.mark(function a(b,c){return regeneratorRuntime.wrap(function(a){for(;;)switch(a.prev=a.next){case 0:c.render("./pages/patient_landing",b.customparams);case 1:case"end":return a.stop();}},a)}));return function(){return a.apply(this,arguments)}}()),this}/**
 	 * @author Frazer Smith
 	 * @description Sets Helmet options for server.
@@ -29,8 +29,8 @@ return this.pool=new Pool(a),this}/**
 	 * @description Sets routing options for navigation through server.
 	 * POST requests are used as opposed to GET when requesting new pages
 	 * in order to mask passed parameters in the URI from users.
-	 */},{key:"configureRouting",value:function configureRouting(){// return self for chaining
-return this.app.get("/",gatherCustomParams(),retrieveAwaitSignOff(this.pool,"dr"),retrieveAwaitSignOff(this.pool,"nurse"),retrieveAwaitSignOff(this.pool,"pharmacy"),function(a,b){b.render("./pages/home",a)}),this.app.get("/contributors",function(a,b){b.render("./pages/contributors")}),this.app.get("*",function(a,b){b.redirect("/")}),this.app.post("/discharge_summary",gatherCustomParams(),function(a,b){b.render("./pages/discharge_summary",a.customparams)}),this.app.post("/patient",gatherCustomParams(),retrieveInProgress(this.pool),function(a,b){b.render("./pages/patient_landing",a.customparams)}),this.app.post("/continue",gatherCustomParams(),insertUpdateRecord(this.pool),function(a,b){b.render("./pages/discharge_summary",a.customparams)}),this.app.post("/preview",gatherCustomParams(),function(a,b,c){var d={id:a.customparams.row_id,version:a.customparams.version};a.powerbi=d,c()},insertUpdateRecord(this.pool),function(a,b){b.render("./pages/preview",a.powerbi)}),this}/**
+	 */},{key:"configureRouting",value:function configureRouting(a){// return self for chaining
+return this.app.get("/",gatherCustomParams(),retrieveAwaitSignOff(this.pool,"dr"),retrieveAwaitSignOff(this.pool,"nurse"),retrieveAwaitSignOff(this.pool,"pharmacy"),function(a,b){b.render("./pages/home",a)}),this.app.get("/contributors",function(a,b){b.render("./pages/contributors")}),this.app.get("*",function(a,b){b.redirect("/")}),this.app.post("/discharge_summary",gatherCustomParams(),fhirEncounterRecord(a),function(a,b){b.render("./pages/discharge_summary",a.customparams)}),this.app.post("/patient",gatherCustomParams(),retrieveInProgress(this.pool),function(a,b){b.render("./pages/patient_landing",a.customparams)}),this.app.post("/continue",gatherCustomParams(),insertUpdateRecord(this.pool),function(a,b){b.render("./pages/discharge_summary",a.customparams)}),this.app.post("/preview",gatherCustomParams(),function(a,b,c){var d={id:a.customparams.row_id,version:a.customparams.version};a.powerbi=d,c()},insertUpdateRecord(this.pool),function(a,b){b.render("./pages/preview",a.powerbi)}),this}/**
 	 * @author Frazer Smith
 	 * @description Start the server.
 	 * @param {string} port - Port for server to listen on.

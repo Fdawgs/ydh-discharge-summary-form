@@ -45,8 +45,7 @@ class Server {
 		// search for patient details on FHIR endpoint to attempt to auto-populate fields in forms
 		this.app.get(
 			'/searchpatient',
-			fhirPatientRecord(fhirConconfig),
-			fhirEncounterRecord(fhirConconfig), // Only fetch patient data once
+			fhirPatientRecord(fhirConconfig), // Only fetch patient data once
 			(req, res) => {
 				res.render('./pages/patient_confirmation', req.patientresource);
 			}
@@ -126,7 +125,7 @@ class Server {
 	 * POST requests are used as opposed to GET when requesting new pages
 	 * in order to mask passed parameters in the URI from users.
 	 */
-	configureRouting() {
+	configureRouting(fhirConconfig) {
 		this.app.get(
 			'/',
 			gatherCustomParams(),
@@ -153,6 +152,7 @@ class Server {
 		this.app.post(
 			'/discharge_summary',
 			gatherCustomParams(),
+			fhirEncounterRecord(fhirConconfig),
 			(req, res) => {
 				res.render('./pages/discharge_summary', req.customparams);
 			}
