@@ -17,7 +17,7 @@
                     discharge_date: ''
                 };
         
-                admissionDates[encounter.admission_date] = Object.assign(defaultObject, encounter);
+                admissionDates[encounter.admission_date.replace('T', ' ')] = Object.assign(defaultObject, encounter);
         
             }
         });%>
