@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 // Open patient tab on page load/refresh
 window.addEventListener('load', () => {
 	document.getElementById('defaultOpen').click();
@@ -32,3 +33,26 @@ function deactivateReloader() {
 }
 
 activateReloader();
+
+function changeAdmission(admissionSpecialty, admissionMethod, admissionCareProvider, admissionSource) {
+
+	const admission_specialty = document.querySelector(
+		'[name="admission_specialty"]'
+	);
+	admission_specialty.value = admissionSpecialty;
+
+	const admission_method = document.querySelector(
+		'[name="admission_method"]'
+	);
+	admission_method.value = admissionMethod;
+
+	const admission_careProvider = document.querySelector(
+		'[name="admission_careProvider"]'
+	);
+	admission_careProvider.value = admissionCareProvider;
+
+	const admission_source = document.querySelector(
+		'[name="admission_source"]'
+	);
+	admission_source.value = admissionSource;
+}
