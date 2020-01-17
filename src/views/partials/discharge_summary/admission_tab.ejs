@@ -1,6 +1,26 @@
 <div id="Admission" class="tab-div">
     <div class="full-column">
 
+        <% const encounterList = JSON.parse(encounterresources);
+        const admissionDates = {}; 
+        
+        encounterList.forEach((encounter) => {
+            if (encounter.admission_date) {
+                const defaultObject = {
+                    admission_specialty: '',
+                    admission_careProvider: '',
+                    admission_method: '',
+                    admission_source: '',
+                    discharge_specialty: '',
+                    discharge_careProvider: '',
+                    discharge_method: '',
+                    discharge_date: ''
+                };
+        
+                admissionDates[encounter.admission_date] = Object.assign(defaultObject, encounter);
+        
+            }
+        });%>
         <div class="block">
             <label>
                 <h3>Admission Details</h3>
@@ -58,8 +78,21 @@
 
         <div class="block">
             <label>Admission Date:</label>
-            <input class="input" type="date" name="admission_date"
-                value="<%- typeof admission_date !== 'undefined' ? admission_date : '' %>" />
+            <select class="input" name="admission_date">
+                <%
+                Object.keys(admissionDates).sort().forEach((admission) => {
+
+                    if (typeof admission_date !== 'undefined' && admission_date === admission) {
+                        attributes = 'selected';
+                    } else {
+                        attributes = '';
+                    }
+                %>
+                    <option value="<%=admission%>" <%-attributes%>><%=admission%>
+                    </option>
+               <% })
+                %>
+            </select>
         </div>
 
         <div class="block">
