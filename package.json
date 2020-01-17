@@ -1,6 +1,6 @@
 {
 	"name": "ydh-discharge-summary-form",
-	"version": "0.14.2",
+	"version": "0.15.0",
 	"description": "",
 	"keywords": [
 		"YDH",
@@ -68,7 +68,7 @@
 		"jsinspect": "^0.12.7",
 		"prettier": "1.19.1",
 		"supertest": "^4.0.2",
-		"typescript": "^3.7.4"
+		"typescript": "^3.7.5"
 	},
 	"dependencies": {
 		"activedirectory": "^0.7.2",
