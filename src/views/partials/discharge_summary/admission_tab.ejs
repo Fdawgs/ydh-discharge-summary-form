@@ -32,8 +32,10 @@
             <select class="input" name="admission_date">
                 <%
                 Object.keys(admissionDates).sort().forEach((admission) => {
-                    let attributes = `onclick="changeAdmission('${admissionDates[admission].admission_specialty}', '${admissionDates[admission].admission_method}',
-                        '${admissionDates[admission].admission_careProvider}', '${admissionDates[admission].admission_source}');"`;
+                    let attributes = `onclick="changeAdmission('${admissionDates[admission].admission_specialty}',
+                        '${admissionDates[admission].admission_method}', '${admissionDates[admission].admission_careProvider}',
+                        '${admissionDates[admission].admission_source}', '${admissionDates[admission].discharge_date}',
+                        '${admissionDates[admission].discharge_method}', '${admissionDates[admission].discharge_careProvider}');"`;
 
                     if (typeof admission_date !== 'undefined' && admission_date === admission) {
                         attributes += ' selected';

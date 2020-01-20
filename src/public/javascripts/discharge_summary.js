@@ -34,8 +34,20 @@ function deactivateReloader() {
 
 activateReloader();
 
-function changeAdmission(admissionSpecialty, admissionMethod, admissionCareProvider, admissionSource) {
-
+/**
+ * @author Frazer Smith
+ * @description
+ * 
+ * @param {*} admissionSpecialty 
+ * @param {*} admissionMethod 
+ * @param {*} admissionCareProvider 
+ * @param {*} admissionSource 
+ * @param {*} dischargeDate 
+ * @param {*} dischargeMethod 
+ * @param {*} dischargeCareProvider 
+ */
+function changeAdmission(admissionSpecialty, admissionMethod, admissionCareProvider, admissionSource, dischargeDate, dischargeMethod, dischargeCareProvider) {
+	// Set Admission tab values
 	const admission_specialty = document.querySelector(
 		'[name="admission_specialty"]'
 	);
@@ -55,4 +67,20 @@ function changeAdmission(admissionSpecialty, admissionMethod, admissionCareProvi
 		'[name="admission_source"]'
 	);
 	admission_source.value = admissionSource;
+
+	// Set Discharge tab values
+	const discharge_date = document.querySelector(
+		'[name="discharge_date"]'
+	);
+	discharge_date.value = dischargeDate.replace('T', ' ');
+
+	const discharge_method = document.querySelector(
+		'[name="discharge_method"]'
+	);
+	discharge_method.value = dischargeMethod;
+
+	const discharge_careProvider = document.querySelector(
+		'[name="discharge_careProvider"]'
+	);
+	discharge_careProvider.value = dischargeCareProvider;
 }
