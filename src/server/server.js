@@ -170,6 +170,7 @@ class Server {
 		this.app.post(
 			'/continue',
 			gatherCustomParams(),
+			fhirEncounterRecord(fhirConconfig),
 			insertUpdateRecord(this.pool),
 			(req, res) => {
 				res.render('./pages/discharge_summary', req.customparams);
