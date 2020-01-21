@@ -10,15 +10,14 @@
 	],
 	"main": "src/index.js",
 	"scripts": {
-		"build": "babel src --out-dir dist",
+		"build": "babel src --out-dir dist --copy-files --ignore \"src/**/*.test.js\"",
 		"changelog": "conventional-changelog -p @commitlint/config-conventional -s -i CHANGELOG.md",
-		"copy": "@powershell Copy-Item src/* dist -force -recurse -verbose",
-		"dupe-check": "yarn jsinspect ./src",
+		"dupe-check": "yarn jsinspect src/**/*.js",
 		"lint": "eslint src/**/*.js",
 		"prettier": "prettier src/**/*.js --write",
 		"serve": "node dist/index.js",
 		"start": "node --exec babel-node dist/index.js",
-		"test": "yarn lint",
+		"test": "yarn lint && yarn test-coverage",
 		"test-coverage": "jest --coverage --verbose",
 		"test-only": "jest --verbose",
 		"tidy": "eslint ./src --fix"
