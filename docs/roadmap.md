@@ -53,8 +53,5 @@
 
 # Known Issues
 
--   Date and Time input types are not supported in Internet Explorer
-    -   Discharge Date and Discharge Time revert to text inputs
-    -   Admission Date and Admission Time revert to text inputs
 -   OOH switching to allow discharges to be sent between 17:15 and 33:00 (Monday - Friday) without patient sign off not in place
     -   Will break with BST/GMT changes
