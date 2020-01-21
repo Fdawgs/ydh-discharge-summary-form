@@ -33,7 +33,10 @@ module.exports = function fhirEncounterMiddleware(config) {
 					const inpatEncounter = {};
 
 					// Only parse inpatient encounter resources
-					if (element.resource.class.code === 'IMP' && element.resource.status !== 'cancelled') {
+					if (
+						element.resource.class.code === 'IMP' &&
+						element.resource.status !== 'cancelled'
+					) {
 						// Retrieve admitting specialty
 						if (element.resource.type) {
 							element.resource.type.forEach((specialtyType) => {

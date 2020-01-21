@@ -1,45 +1,34 @@
 {
-    "env": {
-        "es6": true,
-        "node": true
-    },
-    "extends": [
-        "airbnb-base",
-        "plugin:jest/recommended",
-        "prettier"
-    ],
-    "parserOptions": {
-        "ecmaVersion": 2020,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "import",
-        "jest",
-        "json"
-    ],
-    "rules": {
-        "import/no-extraneous-dependencies": [
-            "error",
-            {
-                "devDependencies": true
-            }
-        ],
-        "import/no-unresolved": "off",
-        "lines-between-class-members": [
-            "error",
-            "always"
-        ],
-        "no-console": "off",
-        "no-multiple-empty-lines": [
-            "error",
-            {
-                "max": 1,
-                "maxBOF": 0,
-                "maxEOF": 0
-            }
-        ],
-        "no-undef": "off",
-        "no-unused-vars": "off",
-        "prefer-destructuring": "off"
-    }
+	"env": {
+		"es6": true,
+		"node": true
+	},
+	"extends": ["airbnb-base", "plugin:jest/recommended", "prettier"],
+	"parserOptions": {
+		"ecmaVersion": 2020,
+		"sourceType": "module"
+	},
+	"plugins": ["import", "jest", "json"],
+	"rules": {
+		"import/no-extraneous-dependencies": [
+			"error",
+			{
+				"devDependencies": true
+			}
+		],
+		"import/no-unresolved": "off",
+		"lines-between-class-members": ["error", "always"],
+		"no-console": "off",
+		"no-multiple-empty-lines": [
+			"error",
+			{
+				"max": 1,
+				"maxBOF": 0,
+				"maxEOF": 0
+			}
+		],
+		"no-undef": "off",
+		"no-unused-vars": "off",
+		"prefer-destructuring": "off"
+	}
 }
