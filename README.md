@@ -18,7 +18,7 @@ To ensure the longevity and security of the discharge summaries it has been deci
 -   Latest version of [iisnode](https://github.com/Azure/iisnode)
 -   Latest Current version of [Node.js](https://nodejs.org)
 -   Latest release of [PostgreSQL DB](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads) 12
--   [Yarn](https://yarnpkg.com) (optional)
+-   [Yarn](https://yarnpkg.com)
 
 # Development
 
