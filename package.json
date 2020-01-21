@@ -11,6 +11,7 @@
 	"main": "src/index.js",
 	"scripts": {
 		"build": "babel src --out-dir dist",
+		"changelog": "conventional-changelog -p @commitlint/config-conventional -s -i CHANGELOG.md",
 		"copy": "@powershell Copy-Item src/* dist -force -recurse -verbose",
 		"dupe-check": "yarn jsinspect ./src",
 		"lint": "eslint src/**/*.js",
@@ -55,8 +56,10 @@
 		"@babel/core": "^7.8.3",
 		"@babel/node": "^7.8.3",
 		"@babel/preset-env": "^7.8.3",
+		"@commitlint/config-conventional": "^8.3.4",
 		"babel-jest": "^24.9.0",
 		"babel-preset-minify": "^0.5.1",
+		"conventional-changelog-cli": "^2.0.31",
 		"coveralls": "^3.0.9",
 		"eslint": "^6.8.0",
 		"eslint-config-airbnb-base": "^14.0.0",
