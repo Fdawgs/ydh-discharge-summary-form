@@ -13,6 +13,7 @@ const retrieveInProgress = require('./middleware/postgresql-inprogress.middlewar
 const retrieveAwaitSignOff = require('./middleware/postgresql-awaitingsignoff.middleware');
 const fhirPatientRecord = require('./middleware/fhir-patient.middleware');
 const fhirAllergyRecord = require('./middleware/fhir-allergyintolerance.middleware');
+const fhirEncounterRecord = require('./middleware/fhir-encounter.middleware');
 const adGroupMembership = require('./middleware/ad-authorization.middleware');
 const insertUpdateRecord = require('./middleware/postgresql-upsert.middleware');
 const gatherCustomParams = require('./middleware/gather-custom-params.middleware');
@@ -44,7 +45,7 @@ class Server {
 		// search for patient details on FHIR endpoint to attempt to auto-populate fields in forms
 		this.app.get(
 			'/searchpatient',
-			fhirPatientRecord(fhirConconfig),
+			fhirPatientRecord(fhirConconfig), // Only fetch patient data once
 			(req, res) => {
 				res.render('./pages/patient_confirmation', req.patientresource);
 			}
@@ -124,7 +125,7 @@ class Server {
 	 * POST requests are used as opposed to GET when requesting new pages
 	 * in order to mask passed parameters in the URI from users.
 	 */
-	configureRouting() {
+	configureRouting(fhirConconfig) {
 		this.app.get(
 			'/',
 			gatherCustomParams(),
@@ -151,6 +152,7 @@ class Server {
 		this.app.post(
 			'/discharge_summary',
 			gatherCustomParams(),
+			fhirEncounterRecord(fhirConconfig),
 			(req, res) => {
 				res.render('./pages/discharge_summary', req.customparams);
 			}
@@ -168,6 +170,7 @@ class Server {
 		this.app.post(
 			'/continue',
 			gatherCustomParams(),
+			fhirEncounterRecord(fhirConconfig),
 			insertUpdateRecord(this.pool),
 			(req, res) => {
 				res.render('./pages/discharge_summary', req.customparams);

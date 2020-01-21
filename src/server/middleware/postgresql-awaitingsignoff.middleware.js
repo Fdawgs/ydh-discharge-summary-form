@@ -13,7 +13,7 @@ module.exports = function postgresqlAwaitingSignOffMiddleware(
 	return async (req, res, next) => {
 		// Build WHERE clause predicates
 		let predicateParts;
-		switch (signOffType) {
+		switch (signOffType.toLocaleLowerCase()) {
 			case 'nurse':
 				predicateParts =
 					"AND (raw::jsonb ? 'signoff_nurseFirstCheck' = FALSE OR raw::jsonb ? 'signoff_nurseSecondCheck' = FALSE)";

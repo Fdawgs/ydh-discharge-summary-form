@@ -14,5 +14,5 @@ new Server(serverConfig)
 	.configureActiveDirectory(activeDirectoryConfig)
 	.configureMiddleware()
 	.configureFhirRouting(fhirConConfig)
-	.configureRouting()
+	.configureRouting(fhirConConfig)
 	.listen(serverConfig.port);

@@ -8,6 +8,18 @@
         </div>
 
         <div class="block">
+            <label>Discharge Date:</label>
+            <input class="input disabled" type="text" name="discharge_date"
+                value="<%- typeof discharge_date !== 'undefined' ? discharge_date : '' %>" readonly />
+        </div>
+
+        <div class="block">
+            <label>Estimated Discharge Date:</label>
+            <input class="input" type="date" name="discharge_estimatedDate"
+                value="<%- typeof discharge_estimatedDate !== 'undefined' ? discharge_estimatedDate : '' %>" />
+        </div>
+
+        <div class="block">
             <label>Discharging Specialty:</label>
             <!-- Refer to https://www.datadictionary.nhs.uk/data_dictionary/attributes/m/main_specialty_code_de.asp -->
             <select class="input" name="discharge_specialty">
@@ -57,71 +69,15 @@
         </div>
 
         <div class="block">
-            <label>Discharge Date:</label>
-            <input class="input" type="date" name="discharge_date"
-                value="<%- typeof discharge_date !== 'undefined' ? discharge_date : '' %>" />
-        </div>
-
-        <div class="block">
-            <label>Discharge Time:</label>
-            <input class="input" type="time" name="discharge_time"
-                value="<%- typeof discharge_time !== 'undefined' ? discharge_time : '' %>" />
-        </div>
-
-        <div class="block">
-            <label>Estimated Discharge Date:</label>
-            <input class="input" type="date" name="discharge_estimatedDate"
-                value="<%- typeof discharge_estimatedDate !== 'undefined' ? discharge_estimatedDate : '' %>" />
-        </div>
-
-        <div class="block">
             <label>Discharge Method:</label>
-            <!-- Refer to https://www.datadictionary.nhs.uk/data_dictionary/attributes/d/disc/discharge_method_de.asp -->
-            <select class="input" name="discharge_method">
-                <%  const dischargeMethodOption = [
-                    {
-                        value: 'PATIENT discharged on clinical advice or with clinical consent',
-                        option: 'Discharged on clinical advice or with clinical consent'
-                    },
-                    {
-                        value: 'PATIENT discharged him/herself or was discharged by a relative or advocate',
-                        option: 'Discharged him/herself or was discharged by a relative or advocate'
-                    },
-                    {
-                        value: 'PATIENT discharged by mental health review tribunal, Home Secretary or Court',
-                        option: 'Discharged by mental health review tribunal, Home Secretary or Court'
-                    },
-                    {
-                        value: 'PATIENT died',
-                        option: 'Died'
-                    },
-                    {
-                        value: 'Stillbirth',
-                        option: 'Stillbirth'
-                    }
-                ];
-
-                for (let n = 0; n < dischargeMethodOption.length; n += 1) {
-                    let attributes;
-
-                    if (typeof discharge_method !== 'undefined' && discharge_method === dischargeMethodOption[n].value) {
-                        attributes = 'selected';
-                    } else {
-                        attributes = '';
-                    }
-                %>
-                <option value="<%=dischargeMethodOption[n].value%>" <%-attributes%>><%=dischargeMethodOption[n].option%>
-                </option>
-                <%
-                    }
-                %>
-            </select>
+            <input class="input disabled" type="text" name="discharge_method"
+            value="<%- typeof discharge_method !== 'undefined' ? discharge_method : '' %>" readonly />
         </div>
 
         <div class="block">
             <label>Discharging Consultant:</label>
-            <input class="input" type="text" name="discharge_careProvider"
-                value="<%- typeof discharge_careProvider !== 'undefined' ? discharge_careProvider : '' %>" />
+            <input class="input disabled" type="text" name="discharge_careProvider"
+                value="<%- typeof discharge_careProvider !== 'undefined' ? discharge_careProvider : '' %>" readonly />
         </div>
 
         <div class="block">
