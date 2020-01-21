@@ -1,6 +1,6 @@
 # Roadmap
 
-## v0.16.0
+## v0.*.0
 
 ### Discharge Summary
 
@@ -10,10 +10,6 @@
     -   Add Risk from Others question
 -   Add Mental Capacity Section to a tab
 -   Add Lasting Power of Attorney Section to a tab
-
-#### Admission Tab
-
--   Revise Admitting Specialty list
 
 #### Clinical Tab
 
