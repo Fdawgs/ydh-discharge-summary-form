@@ -10,6 +10,20 @@ Inpatient discharge summaries are important documents and to have them inaccessi
 
 To ensure the longevity and security of the discharge summaries it has been decided that the forms and surrounding processes will be moved to a standalone web app.
 
+A number of challenges have reduced the robustness of this project:
+
+-   Disowned by its original project manager (Solutions Development team manager stepped in)
+-   No technical lead/architect
+-   No formal specification
+-   No documentation of how the existing discharge summary SharePoint form works
+-   Built rapidly under pressure from the director level after a project manager had promised it would be available before August 2019
+-   Only one developer in the team at the time with competing demands for time
+-   No front-end development experience within the Solutions Development team
+
+As it stands, it will require significant refactoring in the future to make it viable for use long-term and to improve code quality.
+
+A roadmap with planned future changes can be found in [docs](https://github.com/Fdawgs/ydh-discharge-summary-form/tree/master/docs/).
+
 # Prerequisites
 
 -   Windows Vista or greater; Windows Server 2008 or greater
@@ -19,19 +33,6 @@ To ensure the longevity and security of the discharge summaries it has been deci
 -   Latest Current version of [Node.js](https://nodejs.org)
 -   Latest release of [PostgreSQL DB](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads) 12
 -   [Yarn](https://yarnpkg.com)
-
-# Development
-
-This Node.js web application has been built using the [Express framework](https://expressjs.com/), with [Embedded JavaScript](https://ejs.co/) templating providing front-end rendering.
-
-Internet Explorer 11 is used at YDH due to legacy web applications being unable to run on anything other than IE. The site is transcompiled to be backwards compatible with IE using [Babel](https://babeljs.io/).
-
-To make further additions in a deployment:
-
-1. Alter files in /src
-2. Run `npm run copy` to migrate files to /dist
-3. Run `npm run build` to transcompile the changes in /dist.
-4. Run `iisreset` to restart the IIS instance to load the changes
 
 # Deployment
 
@@ -117,29 +118,9 @@ Site configuration options can be found in `src/config.js` (and `dist/config.js`
 7. Run `%systemdrive%\windows\system32\icacls.exe c:\inetpub\ydh-discharge-summary-form\dist\iisnode\ /grant IIS_IUSRS:(OI)(CI)F` in CMD to grant the default IIS user access to write log files for the site
 8. Run `net stop was /y & net start w3svc` to restart WAS
 
-# FAQ
+# Contributing
 
-## Why is the build quality of the application subpar?
-
-A number of challenges have reduced the robustness of this project:
-
--   Disowned by its original project manager (Solutions Development team manager stepped in)
--   No technical lead/architect
--   No formal specification
--   No documentation of how the existing discharge summary SharePoint form works
--   Built rapidly under pressure from the director level after a project manager had promised it would be available before August 2019
--   Only one developer in the team at the time with competing demands for time
--   No front-end development experience within the Solutions Development team
-
-As it stands, it will require significant refactoring in the future to make it viable for use long-term and to improve code quality.
-
-## Will additional features be added?
-
-Due to hardships faced during its initial development as documented in the previous question, the initial release only attempts to mimic the original Inpatient Discharge Summary SharePoint form.
-
-Any further changes or additions that need to be made after the release of v1.0.0 will require a high-quality formal specification, and oversight from a digitally fluent project manager.
-
-A roadmap with planned future changes can be found in [docs](https://github.com/Fdawgs/ydh-discharge-summary-form/tree/master/docs/).
+Please see [CONTRIBUTING.md](https://github.com/Fdawgs/ydh-discharge-summary-form/blob/master/CONTRIBUTING.md) for more details regarding contributing to this project.
 
 # License
 
