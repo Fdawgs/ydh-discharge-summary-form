@@ -1,6 +1,6 @@
 # Roadmap
 
-## v0.*.0
+## v0.\*.0
 
 ### Discharge Summary
 
