@@ -106,7 +106,7 @@ Site configuration options can be found in `src/config.js` (and `dist/config.js`
 
 1. Ensure all prerequisites have been met
 2. Deploy this repo to its own folder in the IIS root directory (usually C:\inetpub\)
-3. Navigate to the repo directory using a CLI and run `yarn install` or `npm install` (if using `npm install` then delete the yarn.lock file to stop conflicting lock files) to install dependencies
+3. Navigate to the repo directory using a CLI and run `yarn install` to install dependencies
 4. Add the repo as a website within IIS
 5. Navigate to IIS Manager > Home > Management > Feature Delegation
     1. Set Handler Mappings to `Read/Write`
