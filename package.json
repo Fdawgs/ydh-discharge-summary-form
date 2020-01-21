@@ -2,19 +2,16 @@
 	"name": "ydh-discharge-summary-form",
 	"version": "0.16.0",
 	"description": "",
-	"keywords": [
-		"YDH",
-		"NHS",
-		"FHIR",
-		"Discharge"
-	],
 	"main": "src/index.js",
+	"repository": "git+https://github.com/Fdawgs/ydh-discharge-summary-form.git",
+	"author": "Frazer Smith <frazer.smith@ydh.nhs.uk>",
+	"license": "MIT",
 	"scripts": {
 		"build": "babel src --out-dir dist --copy-files --ignore \"src/**/*.test.js\"",
 		"changelog": "conventional-changelog -p @commitlint/config-conventional -s -i CHANGELOG.md",
 		"dupe-check": "yarn jsinspect src/**/*.js",
 		"lint": "eslint src/**/*.js",
-		"prettier": "prettier src/**/*.js --write",
+		"prettier": "prettier ** --write",
 		"serve": "node dist/index.js",
 		"start": "node --exec babel-node dist/index.js",
 		"test": "yarn lint && yarn test-coverage",
@@ -25,7 +22,7 @@
 	"jest": {
 		"clearMocks": true,
 		"collectCoverageFrom": [
-			"src/*/*/*.js"
+			"src/**/*.js"
 		],
 		"testEnvironment": "node",
 		"testPathIgnorePatterns": [
@@ -33,13 +30,6 @@
 		],
 		"verbose": true
 	},
-	"repository": "git+https://github.com/Fdawgs/ydh-discharge-summary-form.git",
-	"author": "Frazer Smith <frazer.smith@ydh.nhs.uk>",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/Fdawgs/ydh-discharge-summary-form/issues"
-	},
-	"homepage": "https://github.com/Fdawgs/ydh-discharge-summary-form#readme",
 	"prettier": {
 		"arrowParens": "always",
 		"bracketSpacing": true,
