@@ -1,0 +1,89 @@
+<div class="half-column">
+    <div class="block">
+        <h4>Search by ward:</h4>
+    </div>
+    <div class="block">
+        <label>Discharging Ward:</label>
+        <select class="input">
+            <% const dischargeWards = [];
+            
+            awaitingsignoff['any'].forEach((element) => {
+                if (typeof element.raw.discharge_ward !== 'undefined') {
+                    dischargeWards.push(element.raw.discharge_ward);
+                }
+            });
+            
+            const uniqueDischargeWards = Array.from(new Set(dischargeWards));
+            for (let o = 0; o < uniqueDischargeWards.length; o += 1) {
+                let attributes;
+                attributes = `onclick="hideClass('ward'); showClass('ward-${uniqueDischargeWards[o]}')"`;
+            %>
+            <option value="<%=uniqueDischargeWards[o]%>" <%-attributes%>><%=uniqueDischargeWards[o]%></option>
+            <% } %>
+        </select>
+    </div>
+</div>
+
+
+<div class="full-column">
+
+    <% uniqueDischargeWards.forEach((ward) => { %>
+    <div class="ward ward-<%=ward%>">
+        <% awaitingsignoff['any'].forEach((element) => {
+        if (element.raw.discharge_ward !== 'undefined' && element.raw.discharge_ward === ward) { %>
+        <form action="/discharge_summary" method="POST">
+            <div class="block form-block">
+                <div class="banner">
+                    <strong> Ward:</strong> <%=element.raw.discharge_ward %>
+
+                    <% if (typeof element.id !== 'undefined') { %>
+                    | <strong>Document ID:</strong> <%=element.id%>
+                    <%}%>
+                    
+                    <% if (typeof element.raw.patient_mrn !== 'undefined') { %>
+                    | <strong>MRN:</strong> <%=element.raw.patient_mrn%>
+                    <%}%>
+                    
+                    <% if (typeof element.raw.patient_nhsNo !== 'undefined' && element.raw.patient_nhsNo !== '') { %>
+                    | <strong>NHS No:</strong> <%=element.raw.patient_nhsNo%>
+                    <%}%>
+                    
+                    <% if (typeof element.raw.patient_surname !== 'undefined' && element.raw.patient_surname !== '') { %>
+                    | <strong>Surname:</strong> <%=element.raw.patient_surname%>
+                    <%}%>
+                    
+                    <% if (typeof element.raw.patient_dob !== 'undefined' && element.raw.patient_dob !== '') { %>
+                    | <strong>DoB:</strong> <%=element.raw.patient_dob%>
+                    <%}%>
+                              <button type="submit" class="btn-link" style="float: right">Continue Form</button>
+                    
+                    
+                    <!-- Build up inputs to pass through to continue form -->
+                    <% /**
+                    * Stupid way of getting it into DD/MM/YYYY because for some
+                    * reason localestring pushes it into American
+                    */
+                    const lastUpdated = new Date(element.lastUpdate);
+                    const lastUpdatedString = [
+                        lastUpdated.getDate(),
+                        ((lastUpdated.getMonth() + 1) < 10 ? `0${lastUpdated.getMonth() + 1}` : (lastUpdated.getMonth() + 1)),
+                        lastUpdated.getFullYear()
+                    ].join('/');
+                    %>
+                    <input type="hidden" name="row_id" value="<%= element.id %>" />
+                    <input type="hidden" name="version" value="<%= element.version %>" />
+                    <input type="hidden" name="lastUpdate"
+                        value="<%- lastUpdatedString + ' ' +  new Date(element.lastUpdate).toLocaleTimeString() %>" />
+                    <% Object.keys(element.raw).forEach((rawElement) => {
+                                        %>
+                    <input type="hidden" name="<%= rawElement %>"
+                        value="<%= typeof element.raw[rawElement] === 'object' ? JSON.stringify(element.raw[rawElement]) : element.raw[rawElement] %>" />
+                    <% }) %>
+                </div>
+            </div>
+        </form>
+        <% }}) %>
+    </div>
+    <% }) %>
+
+</div>

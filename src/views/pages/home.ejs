@@ -30,13 +30,18 @@
                 </div>
             </form>
         </div>
+
         <div class="full-column">
             <div class="block">
-                <h3>Discharge Summaries awaiting sign off:</h3>
+                <h3>Awaiting sign off:</h3>
             </div>
+            <% include ../partials/home/awaiting_signoff_section.ejs %>
 
-            <% include ../partials/home/in_progress_section.ejs %>
+            <% include ../partials/home/awaiting_signoff_ward_section.ejs %>
 
+        </div>
+
+        <div class="half-column">
             <div class="block">
                 <h3>Test patient Hospital Nos:</h3>
                 <p>
@@ -48,8 +53,6 @@
                 </p>
             </div>
         </div>
-
-
     </div>
     <% include ../partials/footer %>
 </body>

@@ -3,21 +3,24 @@
  * @description Query PostgreSQL DB for discharge summaries awaiting sign-offs.
  *
  * @param {Object} pool - Pool object.
- * @param {('dr'|'nurse'|'pharmacy')} signOffType - String specifying type
- * of sign-off that is still needed.
+ * @param {('any'|'dr'|'nurse'|'pharmacy'|'ward')} signOffType - String specifying type of view to generate.
+ * @param {String=} ward - optional if signOffType param not set to 'ward'.
  * @return {Function} express middleware
  */
 module.exports = function postgresqlAwaitingSignOffMiddleware(
 	pool,
-	signOffType
+	signOffType,
+	ward
 ) {
 	return async (req, res, next) => {
 		const predicateParts = {
+			any: `(raw::jsonb ? 'signoff_drCheckbox' = FALSE OR raw::jsonb ? 'medication_overallPharmacySignOffCheck' = FALSE OR raw::jsonb ? 'signoff_nurseFirstCheck' = FALSE OR raw::jsonb ? 'signoff_nurseSecondCheck' = FALSE)`,
+			dr: "(raw::jsonb ? 'signoff_drCheckbox' = FALSE)",
 			nurse:
 				"(raw::jsonb ? 'signoff_nurseFirstCheck' = FALSE OR raw::jsonb ? 'signoff_nurseSecondCheck' = FALSE)",
-			dr: "(raw::jsonb ? 'signoff_drCheckbox' = FALSE)",
 			pharmacy:
-				"(raw::jsonb ? 'medication_overallPharmacySignOffCheck' = FALSE) AND (json_array_length(raw->'ttos') IS NOT NULL)"
+				"(raw::jsonb ? 'medication_overallPharmacySignOffCheck' = FALSE) AND (json_array_length(raw->'ttos') IS NOT NULL)",
+			ward: `(raw::jsonb ? 'discharge_ward' = ${ward} AND (raw::jsonb ? 'signoff_drCheckbox' = FALSE OR raw::jsonb ? 'medication_overallPharmacySignOffCheck' = FALSE OR raw::jsonb ? 'signoff_nurseFirstCheck' = FALSE OR raw::jsonb ? 'signoff_nurseSecondCheck' = FALSE))`
 		};
 
 		const getInProgress = () =>

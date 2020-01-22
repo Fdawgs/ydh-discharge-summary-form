@@ -129,9 +129,10 @@ class Server {
 		this.app.get(
 			'/',
 			gatherCustomParams(),
-			retrieveAwaitSignOff(this.pool, 'dr'),
-			retrieveAwaitSignOff(this.pool, 'nurse'),
-			retrieveAwaitSignOff(this.pool, 'pharmacy'),
+			retrieveAwaitSignOff(this.pool, 'dr', undefined),
+			retrieveAwaitSignOff(this.pool, 'nurse', undefined),
+			retrieveAwaitSignOff(this.pool, 'pharmacy', undefined),
+			retrieveAwaitSignOff(this.pool, 'any', undefined),
 			(req, res) => {
 				res.render('./pages/home', req);
 			}
