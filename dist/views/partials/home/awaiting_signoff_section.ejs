@@ -1,0 +1,60 @@
+<% const signOffCollection = ['dr', 'nurse', 'pharmacy'];
+   for (let i = 0; i < signOffCollection.length; i += 1) {
+%>
+<button class="collapsible" onclick="collapse(this)">Awaiting <%=signOffCollection[i]%> Sign Off</button>
+<div class="collapsible-div">
+  <% awaitingsignoff[`${signOffCollection[i]}`].forEach((element) => { %>
+  <form action="/discharge_summary" method="POST">
+    <div class="block form-block">
+      <div class="banner">
+        <% if (typeof element.id !== 'undefined') { %>
+        <strong>Document ID:</strong> <%=element.id%>
+        <%}%>
+
+        <% if (typeof element.raw.patient_mrn !== 'undefined') { %>
+        | <strong>MRN:</strong> <%=element.raw.patient_mrn%>
+        <%}%>
+
+        <% if (typeof element.raw.patient_nhsNo !== 'undefined' && element.raw.patient_nhsNo !== '') { %>
+        | <strong>NHS No:</strong> <%=element.raw.patient_nhsNo%>
+        <%}%>
+
+          <% if (typeof element.raw.patient_surname !== 'undefined' && element.raw.patient_surname !== '') { %>
+        | <strong>Surname:</strong> <%=element.raw.patient_surname%>
+        <%}%>
+
+          <% if (typeof element.raw.patient_dob !== 'undefined' && element.raw.patient_dob !== '') { %>
+        | <strong>DoB:</strong> <%=element.raw.patient_dob%>
+        <%}%>
+          <button type="submit" class="btn-link" style="float: right">Continue Form</button>
+
+
+          <!-- Build up inputs to pass through to continue form -->
+          <% /**
+          * Stupid way of getting it into DD/MM/YYYY because for some
+          * reason localestring pushes it into American
+          */
+          const lastUpdated = new Date(element.lastUpdate);
+          const lastUpdatedString = [
+              lastUpdated.getDate(),
+              ((lastUpdated.getMonth() + 1) < 10 ? `0${lastUpdated.getMonth() + 1}` : (lastUpdated.getMonth() + 1)),
+              lastUpdated.getFullYear()
+          ].join('/');
+          %>
+        <input type="hidden" name="row_id" value="<%= element.id %>" />
+        <input type="hidden" name="version" value="<%= element.version %>" />
+        <input type="hidden" name="lastUpdate"
+          value="<%- lastUpdatedString + ' ' +  new Date(element.lastUpdate).toLocaleTimeString() %>" />
+        <% Object.keys(element.raw).forEach((rawElement) => {
+                    %>
+        <input type="hidden" name="<%= rawElement %>"
+          value="<%= typeof element.raw[rawElement] === 'object' ? JSON.stringify(element.raw[rawElement]) : element.raw[rawElement] %>" />
+        <% }) %>
+
+      </div>
+    </div>
+  </form>
+  <% }) %>
+</div>
+<br>
+<%}%>

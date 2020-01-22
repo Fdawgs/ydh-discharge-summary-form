@@ -1,3 +1,31 @@
+## 0.17.0 (2020-01-22)
+
+* build(babel): ignore test files ([9f63a4f](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/9f63a4f))
+* build(deps-dev): bump babel-jest from 24.9.0 to 25.1.0 ([fe2d52d](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/fe2d52d))
+* build(deps-dev): bump jest from 24.9.0 to 25.1.0 ([f4ee9d8](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/f4ee9d8))
+* chore: add prettierignore file ([e1cd477](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/e1cd477))
+* chore: change number to number ([ccc04d7](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/ccc04d7))
+* chore: enforce Prettier ([0f7b3f3](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/0f7b3f3))
+* chore: replace static release text with github link ([40fb3b1](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/40fb3b1))
+* chore: standardise scripts ([a6ca5a9](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/a6ca5a9))
+* chore: tidy package structure ([2b6c9a9](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/2b6c9a9))
+* chore: update contributors list ([a817471](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/a817471))
+* fix: add link to release button ([29e24be](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/29e24be))
+* feat: add ability to search for in-progress discharges by ward ([94163c6](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/94163c6))
+* docs: add contributing guide ([85b104c](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/85b104c))
+* docs: declare yarn a non-optional prerequisite ([8fd794b](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/8fd794b))
+* docs: escape asterisk ([6f6f54a](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/6f6f54a))
+* docs: remove reference to date and time issues ([416cb5e](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/416cb5e))
+* docs: remove reference to npm over yarn ([f6a7009](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/f6a7009))
+* docs: reorganise readme structure ([f7b5d18](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/f7b5d18))
+* docs: replace release button with pre-release button ([172d85e](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/172d85e))
+* docs: update roadmap ([06ac025](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/06ac025))
+* style: add whitespace ([5fa874d](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/5fa874d))
+* style: remove excessive tabs ([81158ba](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/81158ba))
+* refactor: replace case statement with object ([e8cc7f2](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/e8cc7f2))
+
+
+
 ## 0.16.0 (2020-01-21)
 
 -   chore: add changelog generator ([68cff79](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/68cff79))
