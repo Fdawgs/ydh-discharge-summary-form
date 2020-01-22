@@ -37,7 +37,6 @@
 -   Only show patients that require pharmacy sign off to users who are part of the 'pharmacy' user group
 -   Only show patients that require nurse sign off to users who are part of the 'nurse' and 'transcribe' user group
 -   Only show patients that require doctor sign off to users who are part of the 'doctor' user group
--   Add ability to search by ward
 
 #### Medication Tab
 
