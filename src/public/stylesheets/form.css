@@ -53,7 +53,8 @@ div.block .binaryinput {
 .medication-tto-button,
 .medication-change-button,
 .therapycare-social-care-div,
-.therapycare-equipment-div {
+.therapycare-equipment-div,
+.ward {
 	display: none;
 }
 

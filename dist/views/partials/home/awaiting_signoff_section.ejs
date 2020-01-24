@@ -1,7 +1,7 @@
 <% const signOffCollection = ['dr', 'nurse', 'pharmacy'];
    for (let i = 0; i < signOffCollection.length; i += 1) {
 %>
-<button class="collapsible" onclick="collapse(this)">Awaiting <%=signOffCollection[i]%> Sign Off</button>
+<button class="collapsible" onclick="collapse(this)">Awaiting <%=signOffCollection[i]%> sign off</button>
 <div class="collapsible-div">
   <% awaitingsignoff[`${signOffCollection[i]}`].forEach((element) => { %>
   <form action="/discharge_summary" method="POST">

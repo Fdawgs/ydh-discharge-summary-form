@@ -17,6 +17,8 @@ module.exports = function fhirPatientMiddleware(config) {
 			typeof req.query.mrn !== 'undefined'
 		) {
 			searchPath = `${config.url}Patient?identifier=https://fhir.ydh.nhs.uk/Id/local-patient-identifier|${req.query.mrn}`;
+		} else {
+			res.redirect(400, 'back');
 		}
 
 		await request
@@ -131,8 +133,8 @@ module.exports = function fhirPatientMiddleware(config) {
 				req.patientresource = params;
 				next();
 			})
-			.catch((err) => {
-				next(err);
+			.catch(() => {
+				res.redirect(400, 'back');
 			});
 	};
 };
