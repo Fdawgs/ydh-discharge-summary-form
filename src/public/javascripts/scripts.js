@@ -77,7 +77,6 @@ function addFollowUpBlock() {
 			<option value="" selected ></option>
 			<option value="AEC">AEC</option>
 			<option value="Community Pharmacy">Community Pharmacy</option>
-			<option value="Community Rehab Team">Community Rehab Team</option>
 			<option value="ICRT - Dorset">ICRT - Dorset</option>
 			<option value="Dietician">Dietician</option>
 			<option value="District Nurse">District Nurse</option>
