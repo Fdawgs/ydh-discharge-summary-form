@@ -42,53 +42,23 @@ module.exports = function adAuthorizationMiddleware(activedirectory) {
 				}
 			}
 
-			// access object used to limit access to html elements
-			const access = {
-				doctor: {
-					disabled: 'disabled',
-					readonly: 'readonly'
-				},
-				nurse: {
-					disabled: 'disabled',
-					readonly: 'readonly'
-				},
-				pharmacy: {
-					disabled: 'disabled',
-					readonly: 'readonly'
-				},
-				transcribe: {
-					disabled: 'disabled',
-					readonly: 'readonly'
-				}
-			};
+			// access array used to limit access to html elements
+			const access = [];
+
 			if (inpatGroups.includes('doctor')) {
-				access.doctor.disabled = '';
-				access.doctor.readonly = '';
-				access.transcribe.disabled = '';
-				access.transcribe.readonly = '';
+				access.push('clinical', 'doctor', 'transcribe');
 			}
 			if (inpatGroups.includes('nurse')) {
-				access.nurse.disabled = '';
-				access.nurse.readonly = '';
+				access.push('clinicial', 'nurse');
 			}
 			if (inpatGroups.includes('transcribe')) {
-				access.transcribe.disabled = '';
-				access.transcribe.readonly = '';
+				access.push('transcribe');
 			}
 			if (inpatGroups.includes('pharmacy')) {
-				access.pharmacy.disabled = '';
-				access.pharmacy.readonly = '';
+				access.push('pharmacy', 'transcribe');
 			}
-
 			if (inpatGroups.includes('admin')) {
-				access.doctor.disabled = '';
-				access.doctor.readonly = '';
-				access.nurse.disabled = '';
-				access.nurse.readonly = '';
-				access.transcribe.disabled = '';
-				access.transcribe.readonly = '';
-				access.pharmacy.disabled = '';
-				access.pharmacy.readonly = '';
+				access.push('doctor', 'nurse', 'pharmacy', 'transcribe');
 			}
 
 			res.locals.useraccess = access;

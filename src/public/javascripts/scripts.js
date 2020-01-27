@@ -1,23 +1,4 @@
 /**
- * @param {String} name - cookie name.
- */
-// eslint-disable-next-line consistent-return
-function getCookie(name) {
-	const value = `; ${document.cookie}`;
-	const parts = value.split(`; ${name}=`);
-	if (parts.length === 2) {
-		return decodeURIComponent(
-			decodeURI(
-				parts
-					.pop()
-					.split(';')
-					.shift()
-			)
-		);
-	}
-}
-
-/**
  * @param {*} evt - event.
  * @param {*} tabName - id of element.
  * @description Switches the display of a tab.
@@ -242,5 +223,3 @@ function signOff(that) {
 		}
 	}
 }
-
-const useraccess = JSON.parse(getCookie('useraccess'));

@@ -12,7 +12,7 @@
             <label>TTOs Explained to Patient:</label>
             <input class="binaryinput" type="checkbox" name="signoff_nurseTTOs"
                 title="Confirm that TTOs have been explained to patient"
-                <%- typeof signoff_nurseTTOs !== 'undefined' && signoff_nurseTTOs === 'on' ? 'checked' : '' %> />
+                <%- typeof signoff_nurseTTOs !== 'undefined' && signoff_nurseTTOs === 'on' ? 'checked' : '' %>/>
         </div>
         <div class="block">
             <label>
@@ -26,7 +26,7 @@
                 <input class="binaryinput" type="checkbox" name="signoff_nurseFirstCheck"
                     title="Confirm discharge summary correct" onclick="signOff(this);"
                     <% if (typeof signoff_nurseFirstCheck !== 'undefined' && signoff_nurseFirstCheck === 'on') { %>
-                   checked <% } %> />
+                   checked <% } %>/>
 
             </div>
 
@@ -63,7 +63,7 @@
                 <input class="binaryinput" type="checkbox" name="signoff_nurseSecondCheck"
                     title="Confirm discharge summary correct" onclick="signOff(this);"
                     <% if (typeof signoff_nurseSecondCheck !== 'undefined' && signoff_nurseSecondCheck === 'on') { %>
-                   checked <% } %> />
+                   checked <% } %>/>
 
             </div>
 
@@ -106,7 +106,7 @@
                 <input class="binaryinput" type="checkbox" name="signoff_drCheckbox"
                     title="Confirm discharge summary correct" onclick="signOff(this);"
                     <% if (typeof signoff_drCheckbox !== 'undefined' && signoff_drCheckbox === 'on') { %> checked
-                    <% } %> />
+                    <% } %>/>
 
             </div>
 
