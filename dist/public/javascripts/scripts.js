@@ -14,8 +14,9 @@ function getCookie(a){var b="; ".concat(document.cookie),c=b.split("; ".concat(a
  * @description Hides all elements in a specified class.
  */function hideClass(a){for(var b=document.getElementsByClassName(a),c=0;c<b.length;c+=1)b[c].style.display="none"}/**
  * @param {string} className - name of class.
+ * @param {string} displayStyle - element's display type.
  * @description Unhides all elements in a specified class.
- */function showClass(a){for(var b=document.getElementsByClassName(a),c=0;c<b.length;c+=1)b[c].style.display="block"}/**
+ */function showClass(a,b){for(var c=document.getElementsByClassName(a),d=0;d<c.length;d+=1)c[d].style.display=b}/**
  * @param {string} className - name of class.
  * @description Uncheck all input checkboxes in a specified class.
  */function uncheckRadio(a){for(var b=document.getElementsByClassName(a),c=0;c<b.length;c+=1)b[c].checked=!1}/**

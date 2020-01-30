@@ -17,8 +17,7 @@
         </div>
 
         <div class="block">
-            <label>Drug Allergies<sup style="color: red; font-weight: bold; font-size: large;"
-                    title="Required">*</sup>:</label>
+            <label>Drug Allergies<sup class="required" title="Required">*</sup>:</label>
             <textarea class="input" name="medication_allergiesFreetext" cols="20" rows="4" spellcheck="true"
                 required><%- typeof medication_allergiesFreetext !== 'undefined' ? medication_allergiesFreetext : '' %></textarea>
         </div>
@@ -33,7 +32,7 @@
             <select class="binaryinput" name="medication_change">
                 <option value="" onclick="hideClass('medication-change-button');"></option>
                 <option value="No" onclick="hideClass('medication-change-button');">No</option>
-                <option value="Yes" onclick="showClass('medication-change-button')">Yes</option>
+                <option value="Yes" onclick="showClass('medication-change-button', 'block')">Yes</option>
             </select>
             <button class="input medication-change-button" style="width:25%" onclick="addMedicationChangeBlock()"
                 type="button" title="Add new medication change item">Add new Medication Change</button>
@@ -101,7 +100,7 @@
             <select class="binaryinput" name="medication_tto">
                 <option value="" onclick="hideClass('medication-tto-button');"></option>
                 <option value="No" onclick="hideClass('medication-tto-button');">No</option>
-                <option value="Yes" onclick="showClass('medication-tto-button')">Yes</option>
+                <option value="Yes" onclick="showClass('medication-tto-button', 'block')">Yes</option>
             </select>
             <button class="input medication-tto-button" style="width:25%;" onclick="addMedicationBlock()" type="button"
                 title="Add new pharmacy TTO item">Add new TTO</button>
