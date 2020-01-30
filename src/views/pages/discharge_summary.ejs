@@ -11,23 +11,32 @@
 
 <% const onloadArray = [];
 if (typeof discharge_destination !== 'undefined' && discharge_destination !== 'Usual place of residence') {
-    onloadArray.push('showClass(\'discharge-different-address\')');
+    onloadArray.push('showClass(\'discharge-different-address\',\'block\')');
 };
 if (typeof clinical_aki !== 'undefined' && clinical_aki === 'Yes') {
-    onloadArray.push('showClass(\'clinical-aki-div\');');
+    onloadArray.push('showClass(\'clinical-aki-div\',\'block\');');
 };
 
 if (typeof clinical_advancedCarePlan !== 'undefined' && clinical_advancedCarePlan === 'Yes') {
-    onloadArray.push('showClass(\'clinical-advancedcareplan-text\');');
+    onloadArray.push('showClass(\'clinical-advancedcareplan-text\',\'block\');');
 };
 
 if (typeof therapycare_equipmentNeeds !== 'undefined' && therapycare_equipmentNeeds === 'Yes') {
-    onloadArray.push('showClass(\'therapycare-equipment-div\');');
+    onloadArray.push('showClass(\'therapycare-equipment-div\',\'block\');');
 };
 
 if (typeof therapycare_socialNeeds !== 'undefined' && therapycare_socialNeeds === 'Yes') {
-    onloadArray.push('showClass(\'therapycare-social-care-div\');');
+    onloadArray.push('showClass(\'therapycare-social-care-div\',\'block\');');
 };
+
+if (typeof clinical_dnar !== 'undefined' && clinical_dnar === 'Yes') {
+    onloadArray.push('showClass(\'clinical-dnar-span\',\'inline\');');
+};
+
+if (typeof clinical_antmeds !== 'undefined' && clinical_antmeds === 'Yes') {
+    onloadArray.push('showClass(\'clinical-mar-span\',\'inline\');');
+};
+
 
 const onload = onloadArray.join(' ; ');
 %>

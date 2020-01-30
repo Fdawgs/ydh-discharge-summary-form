@@ -16,7 +16,7 @@
             const uniqueDischargeWards = Array.from(new Set(dischargeWards));
             for (let o = 0; o < uniqueDischargeWards.length; o += 1) {
                 let attributes;
-                attributes = `onclick="hideClass('ward'); showClass('ward-${uniqueDischargeWards[o]}')"`;
+                attributes = `onclick="hideClass('ward'); showClass('ward-${uniqueDischargeWards[o]}', 'block')"`;
             %>
             <option value="<%=uniqueDischargeWards[o]%>" <%-attributes%>><%=uniqueDischargeWards[o]%></option>
             <% } %>
