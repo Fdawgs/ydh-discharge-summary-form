@@ -112,7 +112,8 @@ function getCookie(name) {
 
 /**
  * @author Frazer Smith
- * @description 
+ * @description disable editing functionality for
+ * inputs based on user's AD group.
  * 
  * @param {Array} accessGroupList 
  */
