@@ -129,12 +129,13 @@ function hideClass(className) {
 }
 /**
  * @param {string} className - name of class.
+ * @param {string} displayStyle - element's display type.
  * @description Unhides all elements in a specified class.
  */
-function showClass(className) {
+function showClass(className, displayStyle) {
 	const x = document.getElementsByClassName(className);
 	for (let i = 0; i < x.length; i += 1) {
-		x[i].style.display = 'block';
+		x[i].style.display = displayStyle;
 	}
 }
 
