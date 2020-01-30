@@ -66,6 +66,12 @@ div.block .binaryinput {
 	display: none;
 }
 
+.clinical-dnar-span,
+.clinical-mar-span
+{
+	margin-left: 4px;
+}
+
 textarea {
 	resize: vertical;
 }

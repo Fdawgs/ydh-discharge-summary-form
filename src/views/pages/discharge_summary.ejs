@@ -26,8 +26,17 @@ if (typeof therapycare_equipmentNeeds !== 'undefined' && therapycare_equipmentNe
 };
 
 if (typeof therapycare_socialNeeds !== 'undefined' && therapycare_socialNeeds === 'Yes') {
-    onloadArray.push('showClass(\'therapycare-social-care-div\');');
+    onloadArray.push('showClass(\'therapycare-social-care-div\',\'block\');');
 };
+
+if (typeof clinical_dnar !== 'undefined' && clinical_dnar === 'Yes') {
+    onloadArray.push('showClass(\'clinical-dnar-span\',\'inline\');');
+};
+
+if (typeof clinical_antmeds !== 'undefined' && clinical_antmeds === 'Yes') {
+    onloadArray.push('showClass(\'clinical-mar-span\',\'inline\');');
+};
+
 
 const onload = onloadArray.join(' ; ');
 %>
