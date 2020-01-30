@@ -47,8 +47,16 @@ div.block .binaryinput {
 	background-color: #6d944a;
 }
 
+.required {
+	color: red;
+	font-weight: bold;
+	font-size: large;
+}
+
 .clinical-advancedcareplan-text,
 .clinical-aki-div,
+.clinical-dnar-span,
+.clinical-mar-span,
 .discharge-different-address,
 .medication-tto-button,
 .medication-change-button,
