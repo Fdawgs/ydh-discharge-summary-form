@@ -38,13 +38,13 @@ activateReloader();
  * @author Frazer Smith
  * @description
  *
- * @param {*} admissionSpecialty
- * @param {*} admissionMethod
- * @param {*} admissionCareProvider
- * @param {*} admissionSource
- * @param {*} dischargeDate
- * @param {*} dischargeMethod
- * @param {*} dischargeCareProvider
+ * @param {String} admissionSpecialty
+ * @param {String} admissionMethod
+ * @param {String} admissionCareProvider
+ * @param {String} admissionSource
+ * @param {String} dischargeDate
+ * @param {String} dischargeMethod
+ * @param {String} dischargeCareProvider
  */
 function changeAdmission(
 	admissionSpecialty,
@@ -90,3 +90,53 @@ function changeAdmission(
 	);
 	discharge_careProvider.value = dischargeCareProvider;
 }
+
+/**
+ * @param {String} name - cookie name.
+ */
+// eslint-disable-next-line consistent-return
+function getCookie(name) {
+	const value = `; ${document.cookie}`;
+	const parts = value.split(`; ${name}=`);
+	if (parts.length === 2) {
+		return decodeURIComponent(
+			decodeURI(
+				parts
+					.pop()
+					.split(';')
+					.shift()
+			)
+		);
+	}
+}
+
+/**
+ * @author Frazer Smith
+ * @description disable editing functionality for
+ * inputs based on user's AD group.
+ * 
+ * @param {Array} accessGroupList 
+ */
+function setEditingRights(accessGroupList) {
+
+	const fieldList = {
+		patient_addressAccommodationType: 'clinical',
+		clinical_admissionReason: 'clinical'
+	}
+
+	Object.keys(fieldList).forEach((key) => {
+		const element = document.getElementById(key);
+		const adGroup = fieldList[key];
+		if (!accessGroupList.includes(adGroup)) {
+			if ( typeof element !== 'undefined' &&
+				(element.tagName === 'INPUT'|| element.tagName === 'TEXTAREA') &&
+				element.type.toLowerCase() !== 'checkbox'
+			) {
+				element.setAttribute('readonly', true);
+				element.classList.add('disabled');
+			}
+		}
+	})
+}
+
+setEditingRights(getCookie('useraccess'));

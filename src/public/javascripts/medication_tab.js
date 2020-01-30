@@ -14,15 +14,15 @@ function addMedicationBlock() {
 	<div class="half-column">
 		<div class="block">
 			<label>Medication:</label>
-			<input class="input ${useraccess.transcribe.disabled}" type="text" name="medication_ttoMedication" value="" onchange="highRiskDrugCheck(this)" ${useraccess.transcribe.readonly}/>
+			<input class="input" type="text" name="medication_ttoMedication" value="" onchange="highRiskDrugCheck(this)"/>
 		</div>
 	
 		<div class="block">
 			<label style="width: 15%">Dose:</label>
-			<input style="width: 30%" class="input ${useraccess.transcribe.disabled}" name="medication_ttoDose" type="number" min="1" value="1" ${useraccess.transcribe.readonly}/>
+			<input style="width: 30%" class="input" name="medication_ttoDose" type="number" min="1" value="1"/>
 			<label style="width: 15%">Unit:</label>
 
-			<input style="width:30%;" class="input ${useraccess.transcribe.disabled}" list="medicationTtoUnits" name="medication_ttoUnit">
+			<input style="width:30%;" class="input" list="medicationTtoUnits" name="medication_ttoUnit">
 			<datalist id="medicationTtoUnits">
 				<option value=""></option>
 				<option value="application">application</option>
@@ -50,7 +50,7 @@ function addMedicationBlock() {
 		<div class="block">
 			<label>Route:</label>
 
-			<input class="input ${useraccess.transcribe.disabled}" list="medicationTtoRoutes" name="medication_ttoRoute">
+			<input class="input" list="medicationTtoRoutes" name="medication_ttoRoute">
 			<datalist id="medicationTtoRoutes">
 				<option value=""></option>
 				<option value="BUC - Buccal">BUC - Buccal</option>
@@ -79,7 +79,7 @@ function addMedicationBlock() {
 	
 		<div class="block">
 			<label>Frequency:</label>
-			<input class="input ${useraccess.transcribe.disabled}" list="medicationTtoFrequencies" name="medication_ttoFrequency">
+			<input class="input" list="medicationTtoFrequencies" name="medication_ttoFrequency">
 			<datalist id="medicationTtoFrequencies">
 				<option value=""></option>
 				<option value="5 times per day">5 times per day</option>
@@ -104,12 +104,12 @@ function addMedicationBlock() {
 	
 		<div class="block">
 			<label>Start Date:</label>
-			<input class="input ${useraccess.transcribe.disabled}" type="date" name="medication_ttoStartDate value="" ${useraccess.transcribe.readonly}/>
+			<input class="input" type="date" name="medication_ttoStartDate value=""/>
 		</div>
 		<div class="block">
 			<label>Length of Course:</label>
-			<input class="input ${useraccess.transcribe.disabled}" list="medicationTtoLengthOfCourses"
-			name="medication_ttoLengthOfCourse" ${useraccess.transcribe.readonly}>
+			<input class="input" list="medicationTtoLengthOfCourses"
+			name="medication_ttoLengthOfCourse">
 			<datalist id="medicationTtoLengthOfCourses">
 				<option value=""></option>
 				<option value="1 day">1 day</option>
@@ -133,8 +133,8 @@ function addMedicationBlock() {
 	
 		<div class="block">
 			<label>Comments:</label>
-			<textarea class="input ${useraccess.transcribe.disabled}" name="medication_ttoComments" cols="20" rows="4" spellcheck="true"
-				 ${useraccess.transcribe.readonly}></textarea>
+			<textarea class="input" name="medication_ttoComments" cols="20" rows="4" spellcheck="true"
+				></textarea>
 		</div>
 	</div>
 	
@@ -156,8 +156,8 @@ function addMedicationBlock() {
 		<div class="sign-off">
 			<div class="block">
 				<label>I confirm this TTO is correct:</label>
-				<input class="binaryinput ${useraccess.pharmacy.disabled}" type="checkbox" name="medication_ttoPharmacySignOffCheck"
-					title="Confirm TTO correct" onclick="signOff(this);" ${useraccess.pharmacy.disabled}>
+				<input class="binaryinput" type="checkbox" name="medication_ttoPharmacySignOffCheck"
+					title="Confirm TTO correct" onclick="signOff(this);">
 	
 			</div>
 	
@@ -188,18 +188,18 @@ function addMedicationBlock() {
 	
 		<div class="block">
 			<label>Availability:</label>
-			<select class="input ${useraccess.pharmacy.disabled}" name="medication_ttoPharmacyAvailability">
-				<option value="" ${useraccess.pharmacy.disabled}></option>
-				<option value="CD Prescription" ${useraccess.pharmacy.disabled}>CD Prescription</option>
-				<option value="For Dispensing" style="background-color: green;" ${useraccess.pharmacy.disabled}>For Dispensing</option>
-				<option value="Kitchen" ${useraccess.pharmacy.disabled}>Kitchen</option>
-				<option value="Not Dispensed" ${useraccess.pharmacy.disabled}>Not Dispensed</option>
-				<option value="On Ward" ${useraccess.pharmacy.disabled}>On Ward</option>
-				<option value="Ordered from Pharmacy today" ${useraccess.pharmacy.disabled}>Ordered from Pharmacy today</option>
-				<option value="PODs (At Home)" ${useraccess.pharmacy.disabled}>PODs (At Home)</option>
-				<option value="PODs (Blister Pack)" ${useraccess.pharmacy.disabled}>PODs (Blister Pack)</option>
-				<option value="PODs (Patient Locker)" ${useraccess.pharmacy.disabled}>PODs (Patient Locker)</option>
-				<option value="TTO pack on ward" ${useraccess.pharmacy.disabled}>TTO pack on ward</option>
+			<select class="input" name="medication_ttoPharmacyAvailability">
+				<option value=""></option>
+				<option value="CD Prescription">CD Prescription</option>
+				<option value="For Dispensing" style="background-color: green;">For Dispensing</option>
+				<option value="Kitchen">Kitchen</option>
+				<option value="Not Dispensed">Not Dispensed</option>
+				<option value="On Ward">On Ward</option>
+				<option value="Ordered from Pharmacy today">Ordered from Pharmacy today</option>
+				<option value="PODs (At Home)">PODs (At Home)</option>
+				<option value="PODs (Blister Pack)">PODs (Blister Pack)</option>
+				<option value="PODs (Patient Locker)">PODs (Patient Locker)</option>
+				<option value="TTO pack on ward">TTO pack on ward</option>
 			</select>
 		</div>
 	
@@ -212,8 +212,8 @@ function addMedicationBlock() {
 		<div class="sign-off">
 			<div class="block">
 				<label>I confirm this TTO is correct:</label>
-				<input class="binaryinput ${useraccess.pharmacy.disabled}" type="checkbox" name="medication_finalPharmacySignOffCheck"
-					title="Confirm TTO correct" onclick="signOff(this);" ${useraccess.pharmacy.disabled}>
+				<input class="binaryinput" type="checkbox" name="medication_finalPharmacySignOffCheck"
+					title="Confirm TTO correct" onclick="signOff(this);">
 	
 			</div>
 			<div class="block">

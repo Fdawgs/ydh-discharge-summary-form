@@ -1,23 +1,4 @@
 /**
- * @param {String} name - cookie name.
- */
-// eslint-disable-next-line consistent-return
-function getCookie(name) {
-	const value = `; ${document.cookie}`;
-	const parts = value.split(`; ${name}=`);
-	if (parts.length === 2) {
-		return decodeURIComponent(
-			decodeURI(
-				parts
-					.pop()
-					.split(';')
-					.shift()
-			)
-		);
-	}
-}
-
-/**
  * @param {*} evt - event.
  * @param {*} tabName - id of element.
  * @description Switches the display of a tab.
@@ -77,7 +58,6 @@ function addFollowUpBlock() {
 			<option value="" selected ></option>
 			<option value="AEC">AEC</option>
 			<option value="Community Pharmacy">Community Pharmacy</option>
-			<option value="Community Rehab Team">Community Rehab Team</option>
 			<option value="ICRT - Dorset">ICRT - Dorset</option>
 			<option value="Dietician">Dietician</option>
 			<option value="District Nurse">District Nurse</option>
@@ -244,5 +224,3 @@ function signOff(that) {
 		}
 	}
 }
-
-const useraccess = JSON.parse(getCookie('useraccess'));

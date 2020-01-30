@@ -9,7 +9,7 @@
 
         <div class="block">
             <label>Reason For Admission:</label>
-            <textarea class="input" name="clinical_admissionReason" cols="20" rows="4"
+            <textarea class="input" id="clinical_admissionReason" name="clinical_admissionReason" cols="20" rows="4"
                 spellcheck="true"><%- typeof clinical_admissionReason !== 'undefined' ? clinical_admissionReason : '' %></textarea>
         </div>
 
@@ -21,19 +21,19 @@
 
         <div class="block">
             <label>Initial Diagnosis:</label>
-            <textarea class="input" name="clinical_initialPresentation" cols="20" rows="4"
+            <textarea class="input" id="clinical_initialPresentation" name="clinical_initialPresentation" cols="20" rows="4"
                 spellcheck="true"><%- typeof clinical_initialPresentation !== 'undefined' ? clinical_initialPresentation : '' %></textarea>
         </div>
 
         <div class="block">
             <label>Pre-existing Medical Conditions and Past Medical History:</label>
-            <textarea class="input" name="clinical_preexistingConditions" cols="20" rows="4"
+            <textarea class="input" id="clinical_preexistingConditions" name="clinical_preexistingConditions" cols="20" rows="4"
                 spellcheck="true"><%- typeof clinical_preexistingConditions !== 'undefined' ? clinical_preexistingConditions : '' %></textarea>
         </div>
 
         <div class="block">
             <label>Significant Investigations And Procedures:</label>
-            <textarea class="input" name="clinical_significantInvestigations" cols="20" rows="4"
+            <textarea class="input" id="clinical_significantInvestigations" name="clinical_significantInvestigations" cols="20" rows="4"
                 spellcheck="true"><%- typeof clinical_significantInvestigations !== 'undefined' ? clinical_significantInvestigations : '' %></textarea>
         </div>
 
@@ -41,50 +41,50 @@
             <label><a href="#" class=" info"
                     title="Include any details of consultant escalation plans entered onto SPN">&#9072; Course and
                     Management of Condition:</a></label>
-            <textarea class="input" name="clinical_conditionManagement" cols="20" rows="4"
+            <textarea class="input" id="clinical_conditionManagement" name="clinical_conditionManagement" cols="20" rows="4"
                 spellcheck="true"><%- typeof clinical_conditionManagement !== 'undefined' ? clinical_conditionManagement : '' %></textarea>
         </div>
 
         <div class="block">
             <label>Details of Outstanding Results and Investigations:</label>
-            <textarea class="input" name="clinical_outstandingResults" cols="20" rows="4"
+            <textarea class="input" id="clinical_outstandingResults" name="clinical_outstandingResults" cols="20" rows="4"
                 spellcheck="true"><%- typeof clinical_outstandingResults !== 'undefined' ? clinical_outstandingResults : '' %></textarea>
         </div>
 
         <div class="block">
             <label>Patient's Concerns, Expectations, and Wishes:</label>
-            <textarea class="input" name="clinical_patientConcerns" cols="20" rows="4"
+            <textarea class="input" id="clinical_patientConcerns" name="clinical_patientConcerns" cols="20" rows="4"
                 spellcheck="true"><%- typeof clinical_patientConcerns !== 'undefined' ? clinical_patientConcerns : '' %></textarea>
         </div>
 
         <div class="block">
             <label>Significant Events:</label>
-            <textarea class="input" name="clinical_significantEvents" cols="20" rows="4"
+            <textarea class="input" id="clinical_significantEvents" name="clinical_significantEvents" cols="20" rows="4"
                 spellcheck="true"><%- typeof clinical_significantEvents !== 'undefined' ? clinical_significantEvents : '' %></textarea>
         </div>
 
         <div class="block">
             <label>Adverse Incidents:</label>
-            <textarea class="input" name="clinical_adverseIncidents" cols="20" rows="4"
+            <textarea class="input" id="clinical_adverseIncidents" name="clinical_adverseIncidents" cols="20" rows="4"
                 spellcheck="true"><%- typeof clinical_adverseIncidents !== 'undefined' ? clinical_adverseIncidents : '' %></textarea>
         </div>
 
         <div class="block">
             <label>Final Observations:</label>
-            <textarea class="input" name="clinical_finalObservations" cols="20" rows="4"
+            <textarea class="input" id="clinical_finalObservations" name="clinical_finalObservations" cols="20" rows="4"
                 spellcheck="true"><%- typeof clinical_finalObservations !== 'undefined' ? clinical_finalObservations : '' %></textarea>
         </div>
 
         <div class="block">
             <label>NEWS2 Score:</label>
-            <input class="input" name="clinical_news2_score" style="width: 10%" type="number" min="0" max="20"
+            <input class="input" id="clinical_news2_score" name="clinical_news2_score" style="width: 10%" type="number" min="0" max="20"
                 value="<%- typeof clinical_news2_score !== 'undefined' ? clinical_news2_score : '' %>">
 
         </div>
 
         <div class="block">
             <label>Rockwood Frailty Score:</label>
-            <input class="input" name="clinical_rfs_score" style="width: 10%" type="number" min="1" max="9"
+            <input class="input" id="clinical_rfs_score" name="clinical_rfs_score" style="width: 10%" type="number" min="1" max="9"
                 value="<%- typeof clinical_rfs_score !== 'undefined' ? clinical_rfs_score : '' %>">
         </div>
 
@@ -97,7 +97,7 @@
 
         <div class="block">
             <label>Has a falls assessment for the patient taken place?:</label>
-            <select class="binaryinput" name="clinical_fallsAssessment">
+            <select class="binaryinput" id="clinical_fallsAssessment" name="clinical_fallsAssessment">
                 <%  const clinicalFallsAssessmentOption = ['', 'No', 'Yes'];
                     for (let i = 0; i < clinicalFallsAssessmentOption.length; i += 1) {
                         let attributes;
@@ -125,7 +125,7 @@
 
         <div class="block">
             <label>Has the patient suffered an Acute Kidney Injury (AKI)?:</label>
-            <select class="binaryinput" name="clinical_aki">
+            <select class="binaryinput" id="clinical_aki" name="clinical_aki">
                 <%  const clinicalAkiOption = [
                         {
                             value: '',
@@ -172,7 +172,7 @@
 
         <div class="clinical-aki-div block">
             <label>AKI Present on admission?:</label>
-            <select class="clinical-aki-input binaryinput" name="clinical_akiPresent">
+            <select class="clinical-aki-input binaryinput" id="clinical_akiPresent" name="clinical_akiPresent">
                 <%  const clinicalAkiPresentOption = ['', 'No', 'Yes'];
                     for (let r = 0; r < clinicalAkiPresentOption.length; r += 1) {
                         let attributes;
@@ -193,7 +193,7 @@
 
         <div class="clinical-aki-div block">
             <label>AKI Hospital acquired?:</label>
-            <select class="clinical-aki-input binaryinput" name="clinical_akiHospital">
+            <select class="clinical-aki-input binaryinput" id="clinical_akiHospital" name="clinical_akiHospital">
                 <%  const clinicalAkiHospitalOption = ['', 'No', 'Yes'];
                     for (let s = 0; s < clinicalAkiHospitalOption.length; s += 1) {
                         let attributes;
@@ -214,7 +214,7 @@
 
         <div class="clinical-aki-div block">
             <label>Highest AKI Stage:</label>
-            <select class="clinical-aki-input binaryinput" name="clinical_akiStage">
+            <select class="clinical-aki-input binaryinput" id="clinical_akiStage" name="clinical_akiStage">
                 <%  const clinicalAkiStageOption = ['', 'Stage 1', 'Stage 2', 'Stage 3'];
                     for (let i = 0; i < clinicalAkiStageOption.length; i += 1) {
                         let attributes;
@@ -234,7 +234,7 @@
 
         <div class="clinical-aki-div block">
             <label>Confirm a medication review has been undertaken for AKI:</label>
-            <select class="clinical-aki-input binaryinput" name="clinical_akiMedReview">
+            <select class="clinical-aki-input binaryinput" id="clinical_akiMedReview" name="clinical_akiMedReview">
                 <%  const clinicalAkiMedReviewOption = ['No', 'Yes'];
                     for (let i = 0; i < clinicalAkiMedReviewOption.length; i += 1) {
                         let attributes;
