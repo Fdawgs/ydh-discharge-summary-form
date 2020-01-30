@@ -1,29 +1,41 @@
 # Roadmap
 
-## v0.\*.0
+## v0.18.0
 
 ### Discharge Summary
 
--   Add Safeguarding Section to a tab
-    -   Add Risk to Self question
-    -   Add Risk to Others question
-    -   Add Risk from Others question
--   Add Mental Capacity Section to a tab
--   Add Lasting Power of Attorney Section to a tab
-
+#### Admission Tab
+-   Add 'Weight on Admission' field name
+    -   Add numeric input
+    
 #### Clinical Tab
 
 -   Revise Advanced Care Section (with input from Palliative Care Nurse Consultant)
 
 #### Therapy and Care Arrangements Tab
 
+-   Add Safeguarding section
+    -   Add 'Have social services been involved in the discharge?' field name
+        -   Add mandatory select input with options of '', 'No', 'Yes'
+        -   If 'Yes' selected then present textbox input
+    -   Add 'Was there a Deprivation of Liberty (DOL) during this admission?' field name
+        -   Add mandatory select input with options of '', 'No', 'Yes'    
+
 -   Add Care Arrangements Section (with input from Therapy Lead)
--   Add Mobility Section
--   Add Continence Section
--   Add Dressings Section
+-   Add Mobility Section (with input from Therapy Lead)
+-   Add Continence Section (with input from Therapy Lead)
+-   Add Dressings Section (with input from Therapy Lead)
 
 #### Discharge Tab
+-   Add 'Weight on Discharge' field name
+    -   Add numeric input
 
+
+
+## v0.19.0
+
+#### Discharge Tab
+-   Add 'Paediatric Discharge Notes' fieldname and text area input that appears if a patient is under the age of 18
 -   Revise Discharge Specialty list
 
 ### Patient Landing Page
