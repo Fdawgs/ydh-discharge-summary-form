@@ -262,7 +262,7 @@
 
         <div class="block">
             <label>Does the patient have a Do Not Attempt Resuscitation (DNAR) order in place?<sup class="required" title="Required">*</sup>:</label>
-            <select class="binaryinput" name="clinical_dnar" required>
+            <select class="binaryinput" id="clinical_dnar" name="clinical_dnar" required>
                 <%  const clinicalDnarOption = [
                         {
                             value: '',
@@ -301,13 +301,13 @@
 
         <div class="block">
             <label>Please summarise any advance care planning conversations and any Treatment Escalation Plan (TEP):</label>
-            <textarea class="input" name="clinical_advancedCarePlanning" cols="20" rows="4"
+            <textarea class="input" id="clinical_advancedCarePlanning" name="clinical_advancedCarePlanning" cols="20" rows="4"
                 spellcheck="true"><%- typeof clinical_advancedCarePlanning !== 'undefined' ? clinical_advancedCarePlanning : '' %></textarea>
         </div>
 
         <div class="block">
             <label>Have anticipatory medications been included?<sup class="required" title="Required">*</sup>:</label>
-            <select class="binaryinput" name="clinical_antmeds" required>
+            <select class="binaryinput" id="clinical_antmeds" name="clinical_antmeds" required>
                 <%  const clinicalAntMedsOption = [
                         {
                             value: '',
