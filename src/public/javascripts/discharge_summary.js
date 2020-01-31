@@ -114,29 +114,30 @@ function getCookie(name) {
  * @author Frazer Smith
  * @description disable editing functionality for
  * inputs based on user's AD group.
- * 
- * @param {Array} accessGroupList 
+ *
+ * @param {Array} accessGroupList
  */
 function setEditingRights(accessGroupList) {
-
 	const fieldList = {
 		patient_addressAccommodationType: 'clinical',
 		clinical_admissionReason: 'clinical'
-	}
+	};
 
 	Object.keys(fieldList).forEach((key) => {
 		const element = document.getElementById(key);
 		const adGroup = fieldList[key];
 		if (!accessGroupList.includes(adGroup)) {
-			if ( typeof element !== 'undefined' &&
-				(element.tagName === 'INPUT'|| element.tagName === 'TEXTAREA') &&
+			if (
+				typeof element !== 'undefined' &&
+				(element.tagName === 'INPUT' ||
+					element.tagName === 'TEXTAREA') &&
 				element.type.toLowerCase() !== 'checkbox'
 			) {
 				element.setAttribute('readonly', true);
 				element.classList.add('disabled');
 			}
 		}
-	})
+	});
 }
 
 setEditingRights(getCookie('useraccess'));
