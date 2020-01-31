@@ -5,8 +5,8 @@
 <head>
     <% include ../partials/head %>
     <script src="/javascripts/discharge_summary.js" async></script>
-    <script src="/javascripts/medication_tab.js"> async</script>
-    <script src="/javascripts/discharge_tab.js"> async</script>
+    <script src="/javascripts/medication_tab.js" async></script>
+    <script src="/javascripts/discharge_tab.js" async></script>
 </head>
 
 <% const onloadArray = [];
@@ -37,6 +37,9 @@ if (typeof clinical_antmeds !== 'undefined' && clinical_antmeds === 'Yes') {
     onloadArray.push('showClass(\'clinical-mar-span\',\'inline\');');
 };
 
+if (typeof therapycare_socialservicesText !== 'undefined' && therapycare_socialservicesText === 'Yes') {
+    onloadArray.push('showClass(\'therapycare-social-services-div\',\'block\');');
+};
 
 const onload = onloadArray.join(' ; ');
 %>

@@ -8,6 +8,83 @@
         </div>
 
         <div class="block">
+            <label>
+                <h4>Safeguarding</h4>
+            </label>
+        </div>
+
+        <div class="block">
+            <label>Have social services been involved during this admission period?<sup class="required"
+                    title="Required">*</sup>:</label>
+            <select class="binaryinput" id=name="therapycare_socialServices" name="therapycare_socialServices">
+                <%  const therapycareSocialServicesOption = [
+                            {
+                                value: '',
+                                option: '',
+                                attributes: 'onclick="hideClass(\'therapycare-social-services-div\'); clearValue(\'therapycare-social-services-textarea\');"'
+                            },
+                            {
+                                value: 'No',
+                                option: 'No',
+                                attributes: 'onclick="hideClass(\'therapycare-social-services-div\'); clearValue(\'therapycare-social-services-textarea\');"'
+                            },
+                            {
+                                value: 'Yes',
+                                option: 'Yes',
+                                attributes: 'onclick="showClass(\'therapycare-social-services-div\',\'block\');"'
+                            }
+                        ];
+    
+                        for (let q = 0; q < therapycareSocialServicesOption.length; q += 1) {
+                            let attributes;
+    
+                            if (typeof therapycare_socialServices !== 'undefined' && therapycare_socialServices === therapycareSocialServicesOption[q].value) {
+                                attributes = `${therapycareSocialServicesOption[q].attributes} selected`;
+                            } else {
+                                attributes = therapycareSocialServicesOption[q].attributes;
+                            }
+                    %>
+                <option value="<%=therapycareSocialServicesOption[q].value%>" <%-attributes%>>
+                    <%=therapycareSocialServicesOption[q].option%>
+                </option>
+                <%
+                        }
+                    %>
+            </select>
+        </div>
+
+        <div class="therapycare-social-services-div block">
+            <label>Additional Details:</label>
+            <textarea class="therapycare-social-services-textarea input" id="therapycare_socialservicesText" name="therapycare_socialservicesText" cols="20"
+                rows="4"
+                spellcheck="true"><%- typeof therapycare_socialservicesText !== 'undefined' ? therapycare_socialservicesText : '' %></textarea>
+        </div>
+
+        <div class="block">
+            <label>Was there a Deprivation of Liberty (DOL) during admission?<sup class="required"
+                    title="Required">*</sup>:</label>
+            <select class="binaryinput" id="therapycare_depOfLib" name="therapycare_depOfLib" required>
+                <%  const therapycaredepOfLibOption = ['', 'No', 'Yes'];
+                    for (let i = 0; i < therapycaredepOfLibOption.length; i += 1) {
+                        let attributes;
+
+                        if (typeof therapycare_depOfLib !== 'undefined' && therapycare_depOfLib === therapycaredepOfLibOption[i]) {
+                            attributes = 'selected';
+                        } else {
+                            attributes = '';
+                        }
+                %>
+                <option value="<%=therapycaredepOfLibOption[i]%>" <%-attributes%>>
+                    <%=therapycaredepOfLibOption[i]%>
+                </option>
+                <%
+                    }
+                %>
+            </select>
+        </div>
+
+
+        <div class="block">
             <label><a href="#" class="info"
                     title="These may be communication, cultural, cognitive, or mobility needs">&#9072; Individual
                     requirements:</a></label>

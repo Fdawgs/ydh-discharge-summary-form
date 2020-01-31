@@ -1,6 +1,6 @@
 {
 	"name": "ydh-discharge-summary-form",
-	"version": "0.17.0",
+	"version": "0.18.0",
 	"description": "",
 	"main": "src/index.js",
 	"repository": "git+https://github.com/Fdawgs/ydh-discharge-summary-form.git",

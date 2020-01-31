@@ -280,7 +280,7 @@
                         <input class="binaryinput" type="checkbox" name="medication_ttoPharmacySignOffCheck"
                             title="Confirm TTO correct" onclick="signOff(this);"
                             <% if (typeof element.medication_ttoPharmacySignOffCheck !== 'undefined' && element.medication_ttoPharmacySignOffCheck === 'on') { %>
-                            checked disabled <% } else if (useraccess.pharmacy.disabled === '') {%> <%} else {%>
+                            checked disabled <% } else {%>
                             disabled <%} %> />
 
                         <input name="medication_ttoPharmacySignOffCheck" type="hidden"
@@ -347,9 +347,6 @@
                                     } else {
                                         attributes = medicationTtoPharmacyAvailability[k].attributes;
                                     }
-
-                                    attributes += `${useraccess.pharmacy.disabled}`;
-
                             %>
                         <option value="<%=medicationTtoPharmacyAvailability[k].value%>" <%-attributes%>>
                             <%=medicationTtoPharmacyAvailability[k].value%></option>
