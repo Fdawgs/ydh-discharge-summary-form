@@ -126,6 +126,13 @@
         </div>
 
         <div class="block">
+            <label>Weight on Discharge:</label>
+            <input class="input" id="discharge_weight" name="discharge_weight" style="width: 10%" type="number" min="0" step="0.01"
+            value="<%- typeof discharge_weight !== 'undefined' ? discharge_weight : '' %>"><span style="margin-left: 4px;">kg</span>
+        </div>
+
+
+        <div class="block">
             <label>Discharge Destination:</label>
             <select class="input" id="discharge_destination" name="discharge_destination"
                 onchange="selectToggle('discharge_destination', 'Usual place of residence', 'discharge-different-address');">
