@@ -12,11 +12,9 @@
 		"dupe-check": "yarn jsinspect src/**/*.js",
 		"lint": "eslint src/**/*.js",
 		"prettier": "prettier ** --write",
-		"serve": "node dist/index.js",
-		"start": "node --exec babel-node dist/index.js",
-		"test": "yarn lint && yarn test-coverage",
-		"test-coverage": "jest --coverage --verbose",
-		"test-only": "jest --verbose",
+		"test": "cross-env NODE_ENV=test yarn lint && yarn test-coverage",
+		"test-coverage": "cross-env NODE_ENV=test jest --coverage --verbose",
+		"test-only": "cross-env NODE_ENV=test jest --verbose",
 		"tidy": "eslint ./src --fix"
 	},
 	"jest": {
@@ -49,6 +47,7 @@
 		"babel-jest": "^25.1.0",
 		"conventional-changelog-cli": "^2.0.31",
 		"coveralls": "^3.0.9",
+		"cross-env": "^7.0.0",
 		"eslint": "^6.8.0",
 		"eslint-config-airbnb-base": "^14.0.0",
 		"eslint-config-prettier": "^6.10.0",
