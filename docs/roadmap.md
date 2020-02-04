@@ -4,9 +4,6 @@
 
 ### Discharge Summary
 
-#### Admission Tab
--   Autopopulate 'Admitting Ward' input from TrakCare (requires additions to YDH's FHIR Encounter Resource API)
-
 #### Therapy and Care Arrangements Tab
 
 -   Revise Therapy and Care Arrangements Tab with input from Therapy Lead
@@ -14,8 +11,6 @@
 #### Discharge Tab
 
 -   Add 'Paediatric Discharge Notes' fieldname and text area input that appears if a patient is under the age of 18
--   Autopopulate 'Discharging Specialty' input from TrakCare (requires additions to YDH's FHIR Encounter Resource API)
--   Autopopulate 'Discharging Ward' input from TrakCare (requires additions to YDH's FHIR Encounter Resource API)
 
 ### Patient Landing Page
 
