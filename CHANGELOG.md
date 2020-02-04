@@ -1,3 +1,11 @@
+## 0.19.0 (2020-02-04)
+
+* feat: auto-populate from fhir endpoint ([eedce08](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/eedce08))
+* perf: set node_env variable for testing ([5d5e718](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/5d5e718))
+* build(deps-dev): bump eslint-plugin-import from 2.20.0 to 2.20.1 ([838032b](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/838032b))
+
+
+
 ## 0.18.0 (2020-01-31)
 
 -   feat(adm-tab): add id attribute to inputs ([60bca78](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/60bca78))
