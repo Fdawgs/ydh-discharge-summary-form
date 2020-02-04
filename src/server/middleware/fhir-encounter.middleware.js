@@ -40,18 +40,40 @@ module.exports = function fhirEncounterMiddleware(config) {
 						// Retrieve admitting specialty
 						if (element.resource.type) {
 							element.resource.type.forEach((specialtyType) => {
-								specialtyType.coding.forEach(
-									(specialtyTypeCode) => {
+								specialtyType.extension.forEach(
+									(specialtyTypeExtension) => {
 										if (
-											specialtyTypeCode.system ===
-											'https://fhir.nhs.uk/STU3/CodeSystem/DCH-Specialty-1'
+											specialtyTypeExtension.valueCodeableConcept.coding[0].system ===
+											'https://fhir.ydh.nhs.uk/STU3/ValueSet/Extension-YDH-SpecialtyContext-1'
+											&& specialtyTypeExtension.valueCodeableConcept.coding[0].code === 'DIS' 
 										) {
 											inpatEncounter.admission_specialty =
-												specialtyTypeCode.display;
+												specialtyType.coding[0].display;
+										}
+
+										if (
+											specialtyTypeExtension.valueCodeableConcept.coding[0].system ===
+											'https://fhir.ydh.nhs.uk/STU3/ValueSet/Extension-YDH-SpecialtyContext-1'
+											&& specialtyTypeExtension.valueCodeableConcept.coding[0].code === 'ADM' 
+										) {
+											inpatEncounter.discharge_specialty =
+												specialtyType.coding[0].display;
 										}
 									}
 								);
 							});
+						}
+
+						// Retrieve admitting and discharging ward
+						if (element.resource.location) {
+							element.resource.location.forEach((wardLocation) => {
+								if (wardLocation.period.start) {
+									inpatEncounter.admission_ward = wardLocation.location.display;
+								}
+								if (wardLocation.period.end) {
+									inpatEncounter.discharge_ward = wardLocation.location.display;
+								}
+							})
 						}
 
 						inpatEncounter.admission_date =
