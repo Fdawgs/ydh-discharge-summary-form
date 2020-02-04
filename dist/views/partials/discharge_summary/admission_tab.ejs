@@ -11,10 +11,12 @@
                     admission_careProvider: '',
                     admission_method: '',
                     admission_source: '',
+                    admission_ward: '',
                     discharge_specialty: '',
                     discharge_careProvider: '',
                     discharge_method: '',
-                    discharge_date: ''
+                    discharge_date: '',
+                    discharge_ward: ''
                 };
         
                 admissionDates[encounter.admission_date.replace('T', ' ')] = Object.assign(defaultObject, encounter);
@@ -34,8 +36,10 @@
                 Object.keys(admissionDates).sort().forEach((admission) => {
                     let attributes = `onclick="changeAdmission('${admissionDates[admission].admission_specialty}',
                         '${admissionDates[admission].admission_method}', '${admissionDates[admission].admission_careProvider}',
-                        '${admissionDates[admission].admission_source}', '${admissionDates[admission].discharge_date}',
-                        '${admissionDates[admission].discharge_method}', '${admissionDates[admission].discharge_careProvider}');"`;
+                        '${admissionDates[admission].admission_ward}', '${admissionDates[admission].admission_source}',
+                        '${admissionDates[admission].discharge_date}', '${admissionDates[admission].discharge_specialty}',
+                        '${admissionDates[admission].discharge_method}', '${admissionDates[admission].discharge_careProvider}',
+                        '${admissionDates[admission].discharge_ward}');"`;
 
                     if (typeof admission_date !== 'undefined' && admission_date === admission) {
                         attributes += ' selected';
@@ -70,24 +74,8 @@
 
         <div class="block">
             <label>Admitting Ward:</label>
-            <select class="input" id="admission_ward" name="admission_ward">
-                <%  const admissionWardOption = ['', '10', '6A', '6B', '7A', '7B', '8A', '8B', '9A',
-                        '9B', 'AAU', 'ACCU', 'AEC', 'CDU(P)', 'DL', 'DYTH', 'EAU', 'ED', 'FAU', 'FREYA',
-                        'GYNAE THEATRES', 'ICU', 'JASMINE', 'KW', 'MAIN THEATRES', 'QDH', 'QUEENSWAY'];
-                    for (let l = 0; l < admissionWardOption.length; l += 1) {
-                        let attributes;
-
-                        if (typeof admission_ward !== 'undefined' && admission_ward === admissionWardOption[l]) {
-                            attributes = 'selected';
-                        } else {
-                            attributes = '';
-                        }
-                %>
-                <option value="<%=admissionWardOption[l]%>" <%-attributes%>><%=admissionWardOption[l]%></option>
-                <%
-                    }
-                %>
-            </select>
+            <input class="input disabled" type="text" id="admission_ward" name="admission_ward"
+                value="<%- typeof admission_ward !== 'undefined' ? admission_ward : '' %>" readonly />
         </div>
 
         <div class="block">

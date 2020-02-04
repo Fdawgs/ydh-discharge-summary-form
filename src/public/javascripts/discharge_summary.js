@@ -40,20 +40,26 @@ activateReloader();
  *
  * @param {String} admissionSpecialty
  * @param {String} admissionMethod
+ * @param {String} admissionWard
  * @param {String} admissionCareProvider
  * @param {String} admissionSource
  * @param {String} dischargeDate
+ * @param {String} dischargeSpecialty
  * @param {String} dischargeMethod
  * @param {String} dischargeCareProvider
+ * @param {String} dischargeWard
  */
 function changeAdmission(
 	admissionSpecialty,
 	admissionMethod,
+	admissionWard,
 	admissionCareProvider,
 	admissionSource,
 	dischargeDate,
+	dischargeSpecialty,
 	dischargeMethod,
-	dischargeCareProvider
+	dischargeCareProvider,
+	dischargeWard
 ) {
 	// Set Admission tab values
 	const admission_specialty = document.querySelector(
@@ -65,6 +71,11 @@ function changeAdmission(
 		'[name="admission_method"]'
 	);
 	admission_method.value = admissionMethod;
+
+	const admission_ward = document.querySelector(
+		'[name="admission_ward"]'
+	);
+	admission_ward.value = admissionWard;
 
 	const admission_careProvider = document.querySelector(
 		'[name="admission_careProvider"]'
@@ -80,6 +91,11 @@ function changeAdmission(
 	const discharge_date = document.querySelector('[name="discharge_date"]');
 	discharge_date.value = dischargeDate.replace('T', ' ');
 
+	const discharge_specialty = document.querySelector(
+		'[name="discharge_specialty"]'
+	);
+	discharge_specialty.value = dischargeSpecialty;
+
 	const discharge_method = document.querySelector(
 		'[name="discharge_method"]'
 	);
@@ -89,6 +105,11 @@ function changeAdmission(
 		'[name="discharge_careProvider"]'
 	);
 	discharge_careProvider.value = dischargeCareProvider;
+
+	const discharge_ward = document.querySelector(
+		'[name="discharge_ward"]'
+	);
+	discharge_ward.value = dischargeWard;
 }
 
 /**

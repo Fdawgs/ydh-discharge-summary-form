@@ -20,58 +20,15 @@
         </div>
 
         <div class="block">
-            <label>Discharging Specialty:</label>
-            <!-- Refer to https://www.datadictionary.nhs.uk/data_dictionary/attributes/m/main_specialty_code_de.asp -->
-            <select class="input" id="discharge_specialty" name="discharge_specialty">
-                <%  const dischargeSpecialtyOption = ['',
-                    'ACCIDENT & EMERGENCY',
-                    'ANAESTHETICS',
-                    'CARDIOLOGY',
-                    'CLINICAL HAEMATOLOGY',
-                    'DERMATOLOGY',
-                    'ENT',
-                    'GASTROENTEROLOGY',
-                    'GENERAL MEDICINE',
-                    'GENERAL SURGERY',
-                    'GERIATRIC MEDICINE',
-                    'GYNAECOLOGY',
-                    'MEDICAL ONCOLOGY',
-                    'MIDWIFE EPISODE',
-                    'NEPHROLOGY',
-                    'NEUROLOGY',
-                    'OBSTETRICS',
-                    'OPHTHALMOLOGY',
-                    'ORAL & MAXILLO FACIAL SURGERY',
-                    'ORAL SURGERY',
-                    'PAEDIATRIC CARDIOLOGY',
-                    'PAEDIATRIC DENTISTRY',
-                    'PAEDIATRICS',
-                    'PLASTIC SURGERY',
-                    'RESPIRATORY MEDICINE',
-                    'RHEUMATOLOGY',
-                    'TRAUMA & ORTHOPAEDICS',
-                    'UROLOGY'];
-                    for (let i = 0; i < dischargeSpecialtyOption.length; i += 1) {
-                        let attributes;
-
-                        if (typeof discharge_specialty !== 'undefined' && discharge_specialty === dischargeSpecialtyOption[i]) {
-                            attributes = 'selected';
-                        } else {
-                            attributes = '';
-                        }
-                %>
-                <option value="<%=dischargeSpecialtyOption[i]%>" <%-attributes%>><%=dischargeSpecialtyOption[i]%>
-                </option>
-                <%
-                    }
-                %>
-            </select>
+            <label>Discharge Specialty:</label>
+            <input class="input disabled" type="text" id="discharge_specialty" name="discharge_specialty"
+                value="<%- typeof discharge_specialty !== 'undefined' ? discharge_specialty : '' %>" readonly />
         </div>
 
         <div class="block">
             <label>Discharge Method:</label>
             <input class="input disabled" type="text" id="discharge_method" name="discharge_method"
-            value="<%- typeof discharge_method !== 'undefined' ? discharge_method : '' %>" readonly />
+                value="<%- typeof discharge_method !== 'undefined' ? discharge_method : '' %>" readonly />
         </div>
 
         <div class="block">
@@ -82,24 +39,9 @@
 
         <div class="block">
             <label>Discharging Ward:</label>
-            <select class="input" id="discharge_ward" name="discharge_ward">
-                <%  const dischargeWardOption = ['', '10', '6A', '6B', '7A', '7B', '8A', '8B', '9A',
-                    '9B', 'AAU', 'ACCU', 'AEC', 'CDU(P)', 'DL', 'DYTH', 'EAU', 'ED', 'FAU', 'FREYA',
-                    'GYNAE THEATRES', 'ICU', 'JASMINE', 'KW', 'MAIN THEATRES', 'QDH', 'QUEENSWAY'];
-                    for (let o = 0; o < dischargeWardOption.length; o += 1) {
-                        let attributes;
 
-                        if (typeof discharge_ward !== 'undefined' && discharge_ward === dischargeWardOption[o]) {
-                            attributes = 'selected';
-                        } else {
-                            attributes = '';
-                        }
-                %>
-                <option value="<%=dischargeWardOption[o]%>" <%-attributes%>><%=dischargeWardOption[o]%></option>
-                <%
-                    }
-                %>
-            </select>
+            <input class="input disabled" type="text" id="discharge_ward" name="discharge_ward"
+                value="<%- typeof discharge_ward !== 'undefined' ? discharge_ward : '' %>" readonly />
         </div>
 
         <div class="block">
@@ -127,8 +69,9 @@
 
         <div class="block">
             <label>Weight on Discharge:</label>
-            <input class="input" id="discharge_weight" name="discharge_weight" style="width: 10%" type="number" min="0" step="0.01"
-            value="<%- typeof discharge_weight !== 'undefined' ? discharge_weight : '' %>"><span style="margin-left: 4px;">kg</span>
+            <input class="input" id="discharge_weight" name="discharge_weight" style="width: 10%" type="number" min="0"
+                step="0.01" value="<%- typeof discharge_weight !== 'undefined' ? discharge_weight : '' %>"><span
+                style="margin-left: 4px;">kg</span>
         </div>
 
 
@@ -194,43 +137,50 @@
 
         <div class="discharge-different-address block">
             <label>Line 1:</label>
-            <input class="input discharge-input" type="text" id="discharge_differentAddressLine1" name="discharge_differentAddressLine1"
+            <input class="input discharge-input" type="text" id="discharge_differentAddressLine1"
+                name="discharge_differentAddressLine1"
                 value="<%- typeof discharge_differentAddressLine1 !== 'undefined' ? discharge_differentAddressLine1 : '' %>" />
         </div>
 
         <div class="discharge-different-address block">
             <label>Line 2:</label>
-            <input class="input discharge-input" type="text" id="discharge_differentAddressLine2" name="discharge_differentAddressLine2"
+            <input class="input discharge-input" type="text" id="discharge_differentAddressLine2"
+                name="discharge_differentAddressLine2"
                 value="<%- typeof discharge_differentAddressLine2 !== 'undefined' ? discharge_differentAddressLine2 : '' %>" />
         </div>
 
         <div class="discharge-different-address block">
             <label>City:</label>
-            <input class="input discharge-input" type="text" id="discharge_differentAddressCity" name="discharge_differentAddressCity"
+            <input class="input discharge-input" type="text" id="discharge_differentAddressCity"
+                name="discharge_differentAddressCity"
                 value="<%- typeof discharge_differentAddressCity !== 'undefined' ? discharge_differentAddressCity : '' %>" />
         </div>
 
         <div class="discharge-different-address block">
             <label>County:</label>
-            <input class="input discharge-input" type="text" id="discharge_differentAddressDistrict" name="discharge_differentAddressDistrict"
+            <input class="input discharge-input" type="text" id="discharge_differentAddressDistrict"
+                name="discharge_differentAddressDistrict"
                 value="<%- typeof discharge_differentAddressDistrict !== 'undefined' ? discharge_differentAddressDistrict : '' %>" />
         </div>
 
         <div class="discharge-different-address block">
             <label>Postcode:</label>
-            <input class="input discharge-input" type="text" id="discharge_differentAddressPostalCode" name="discharge_differentAddressPostalCode"
+            <input class="input discharge-input" type="text" id="discharge_differentAddressPostalCode"
+                name="discharge_differentAddressPostalCode"
                 value="<%- typeof discharge_differentAddressPostalCode !== 'undefined' ? discharge_differentAddressPostalCode : '' %>" />
         </div>
 
         <div class="discharge-different-address block">
             <label>Contact No:</label>
-            <input class="input discharge-input" type="tel" id="discharge_differentAddressContactNo" name="discharge_differentAddressContactNo"
+            <input class="input discharge-input" type="tel" id="discharge_differentAddressContactNo"
+                name="discharge_differentAddressContactNo"
                 value="<%- typeof discharge_differentAddressContactNo !== 'undefined' ? discharge_differentAddressContactNo : '' %>" />
         </div>
 
         <div class="discharge-different-address block">
             <label>Comments:</label>
-            <textarea class="input discharge-input" id="discharge_differentAddressComments" name="discharge_differentAddressComments" cols="20" rows="4"
+            <textarea class="input discharge-input" id="discharge_differentAddressComments"
+                name="discharge_differentAddressComments" cols="20" rows="4"
                 spellcheck="true"><%- typeof discharge_differentAddressComments !== 'undefined' ? discharge_differentAddressComments : '' %></textarea>
         </div>
     </div>
