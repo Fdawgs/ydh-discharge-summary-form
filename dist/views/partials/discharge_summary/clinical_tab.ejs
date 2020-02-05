@@ -20,9 +20,9 @@
         </div>
 
         <div class="block">
-            <label>Initial Diagnosis:</label>
+            <label>Initial Diagnosis<sup class="required" title="Required">*</sup>:</label>
             <textarea class="input" id="clinical_initialPresentation" name="clinical_initialPresentation" cols="20" rows="4"
-                spellcheck="true"><%- typeof clinical_initialPresentation !== 'undefined' ? clinical_initialPresentation : '' %></textarea>
+                spellcheck="true" required><%- typeof clinical_initialPresentation !== 'undefined' ? clinical_initialPresentation : '' %></textarea>
         </div>
 
         <div class="block">
@@ -32,9 +32,9 @@
         </div>
 
         <div class="block">
-            <label>Significant Investigations And Procedures:</label>
+            <label>Significant Investigations And Procedures<sup class="required" title="Required">*</sup>:</label>
             <textarea class="input" id="clinical_significantInvestigations" name="clinical_significantInvestigations" cols="20" rows="4"
-                spellcheck="true"><%- typeof clinical_significantInvestigations !== 'undefined' ? clinical_significantInvestigations : '' %></textarea>
+                spellcheck="true" required><%- typeof clinical_significantInvestigations !== 'undefined' ? clinical_significantInvestigations : '' %></textarea>
         </div>
 
         <div class="block">
