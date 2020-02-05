@@ -17,7 +17,7 @@
 
 ### Patient Landing Page
 
--   Add 'Recently Sent' section
+-   Add 'Recently Sent' section (requires all inputs, input restrictions, and mandatory inputs to be finalised and in place)
 
 ## v1.0.0 - Live Release
 
