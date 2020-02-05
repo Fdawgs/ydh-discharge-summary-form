@@ -1,3 +1,13 @@
+## 0.20.0 (2020-02-05)
+
+-   docs(roadmap): add comment to 'recently sent' task ([2db2705](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/2db2705))
+-   docs(roadmap): remove mandatory task ([5b4e829](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/5b4e829))
+-   docs(roadmap): update roadmap ([bd59430](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/bd59430))
+-   docs(soldev-spec): update solutions development specification ([c2a3800](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/c2a3800))
+-   feat(clin-tab): make select fields mandatory ([06ce754](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/06ce754))
+-   feat(fol-tab): add rapid response option to 'follow-up with' drop-down ([3c09423](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/3c09423))
+-   Update roadmap.md ([83182b7](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/83182b7))
+
 ## <small>0.19.1 (2020-02-05)</small>
 
 -   docs(roadmap): increment next release number ([5625858](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/5625858))
