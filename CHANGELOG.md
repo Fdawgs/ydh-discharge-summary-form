@@ -1,10 +1,16 @@
+## <small>0.19.1 (2020-02-05)</small>
+
+-   docs(roadmap): increment next release number ([5625858](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/5625858))
+-   docs(roadmap): revise roadmap ([f023103](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/f023103))
+-   style(dis-sum): tidy whitespace ([f566ff1](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/f566ff1))
+-   fix(enc-middleware): fix error when patient has no encounters ([26472a3](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/26472a3))
+-   fix(pat-conf): fix error when patient doesn't have address ([a2a3832](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/a2a3832))
+
 ## 0.19.0 (2020-02-04)
 
-* feat: auto-populate from fhir endpoint ([eedce08](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/eedce08))
-* perf: set node_env variable for testing ([5d5e718](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/5d5e718))
-* build(deps-dev): bump eslint-plugin-import from 2.20.0 to 2.20.1 ([838032b](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/838032b))
-
-
+-   feat: auto-populate from fhir endpoint ([eedce08](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/eedce08))
+-   perf: set node_env variable for testing ([5d5e718](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/5d5e718))
+-   build(deps-dev): bump eslint-plugin-import from 2.20.0 to 2.20.1 ([838032b](https://github.com/Fdawgs/ydh-discharge-summary-form/commit/838032b))
 
 ## 0.18.0 (2020-01-31)
 
