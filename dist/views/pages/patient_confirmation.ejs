@@ -58,29 +58,31 @@
                     </label>
                 </div>
 
-                <% patient_address.forEach((element, index) => { %>
+                <% 
+                if (typeof patient_address !== 'undefined') {
+                patient_address.forEach((element, index) => { %>
                 <div class="block">
                     <label>Line <%= index + 1 %>:</label>
                     <input class="input disabled" type="search" name="patient_addressLine<%= index + 1 %>"
                         value="<%= element %>" readonly />
                 </div>
-                <% }) %>
+                <% })} %>
 
                 <div class="block">
                     <label>City:</label>
-                    <input type="search" name="patient_addressCity" value="<%= patient_addressCity %>"
+                    <input type="search" name="patient_addressCity" value="<%- typeof patient_addressCity !== 'undefined' ? patient_addressCity : '' %>"
                         class="input disabled" readonly />
                 </div>
 
                 <div class="block">
                     <label>County:</label>
-                    <input type="search" name="patient_addressDistrict" value="<%= patient_addressDistrict %>"
+                    <input type="search" name="patient_addressDistrict" value="<%- typeof patient_addressDistrict !== 'undefined' ? patient_addressDistrict : '' %>"
                         class="input disabled" readonly />
                 </div>
 
                 <div class="block">
                     <label>Postcode:</label>
-                    <input type="search" name="patient_addressPostalCode" value="<%= patient_addressPostalCode %>"
+                    <input type="search" name="patient_addressPostalCode" value="<%- typeof patient_addressPostalCode !== 'undefined' ? patient_addressPostalCode : '' %>"
                         class="input disabled" readonly />
                 </div>
 

@@ -72,9 +72,7 @@ function changeAdmission(
 	);
 	admission_method.value = admissionMethod;
 
-	const admission_ward = document.querySelector(
-		'[name="admission_ward"]'
-	);
+	const admission_ward = document.querySelector('[name="admission_ward"]');
 	admission_ward.value = admissionWard;
 
 	const admission_careProvider = document.querySelector(
@@ -106,9 +104,7 @@ function changeAdmission(
 	);
 	discharge_careProvider.value = dischargeCareProvider;
 
-	const discharge_ward = document.querySelector(
-		'[name="discharge_ward"]'
-	);
+	const discharge_ward = document.querySelector('[name="discharge_ward"]');
 	discharge_ward.value = dischargeWard;
 }
 
