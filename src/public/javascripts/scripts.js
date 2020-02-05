@@ -68,6 +68,7 @@ function addFollowUpBlock() {
 			<option value="Patient to Arrange">Patient to Arrange</option>
 			<option value="Practice Nurse">Practice Nurse</option>
 			<option value="QCAC">QCAC</option>
+			<option value="Rapid Response">Rapid Response</option>
 			<option value="YDH">YDH</option>
 		</select>
 	</div>
