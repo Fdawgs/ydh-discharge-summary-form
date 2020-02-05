@@ -5,7 +5,7 @@
 ### Discharge Summary
 
 -   Restrict editing of input fields to certain user groups (i.e. only a nurse can tick the nurse sign off boxes) (**QI Group: requires input as to who can edit what**)
--   Apply mandatory flags to input fields where required (**QI Group: requires input)
+-   Apply mandatory flags to input fields where required (**QI Group: requires input**)
 
 #### Therapy and Care Arrangements Tab
 
