@@ -4,11 +4,66 @@
 
 ### Discharge Summary
 
--   Restrict editing of input fields to certain user groups (i.e. only a nurse can tick the nurse sign off boxes) (**QI Group: requires input as to who can edit what**)
+-   Move 'Medications' tab to be after 'Clinical' tab
+
+#### Patient Tab
+-   Accommodation Type input
+    - Rename 'Warden Controlled' option to 'Sheltered/Warden Controlled'
+
+#### Admission Tab
+
+-   Remove 'Weight on Admission' label and associated input
+-   Rename 'Admission Date' label to 'Admission Date/Time'
+
+#### Clinical Tab
+
+-   Reduce textarea box height by half
+-   Move 'Patient's Concerns, Expectations, and Wishes' label and associated input to bottom of tab
+-   Remove 'Rockwood Frailty Score' label and associated input
+-   Remove 'Details of Outstanding Results' label and associated input
+-   Remove 'Significant Events' label and associated input
+-   Remove 'Final Observations' label and associated input
+-   Remove 'NEWS2 Score' label and associated input
+-   Rename 'Course and Management of Condition' label to 'Clinical Summary'
+-   Rename 'Significant Investigations And Procedures' label to 'Significant Investigations, Procedures, and Results'
+-   Rename 'Adverse Incidents' label to 'Adverse Incidents and Complications'
 
 #### Therapy and Care Arrangements Tab
 
--   Revise Therapy and Care Arrangements Tab (**QI Group: requires input**)
+-   Rename tab to 'Therapy and Nursing Care'
+-   Add 'Equipment' section header
+-   Add 'Weight on Admission' label and number input
+-   Add 'Weight on Discharge' label and number input
+-   Rename 'Equipment Needs' label to 'Equipment Needs (e.g. frames, dressings, therapy equipment)'
+-   Rename 'Social Care Details' label to 'Social Care Details (e.g. package of care, frequency, provider)'
+-   Household Composition input
+    - Remove 'In sheltered accommodation' select option
+    - Make input mandatory
+
+
+#### Discharge Tab
+
+-   Rename 'Discharge Date' label to 'Discharge Date/Time'
+-   Remove 'Weight on Discharge' label and associated input
+-   Discharge Pathway input
+    - Remove 'Discharged' text from each select option
+    - Rename 'Discharge Palliative Pathway' select option to 'End of Life'
+-   Discharge Destination input
+    - Remove '' select option
+    - Move 'Usual Place of Residence' to top of select input
+
+#### Sign Off Tab
+
+##### Nurse Sign Off Section
+-   Add 'Final Set of Vitals' label and textarea input
+-   Add 'NEWS2 Score' label and number input
+
+
+## v0.22.0
+
+### Discharge Summary
+
+-   Restrict editing of input fields to certain user groups (i.e. only a nurse can tick the nurse sign off boxes) (**QI Group: requires input as to who can edit what**)
 
 #### Discharge Tab
 
