@@ -19,7 +19,6 @@
 
 -   Reduce textarea box height by half
 -   Move 'Patient's Concerns, Expectations, and Wishes' label and associated input to bottom of tab
--   Remove 'Rockwood Frailty Score' label and associated input
 -   Remove 'Details of Outstanding Results' label and associated input
 -   Remove 'Significant Events' label and associated input
 -   Remove 'Final Observations' label and associated input
@@ -34,7 +33,7 @@
 -   Add 'Equipment' section header
 -   Add 'Weight on Admission' label and number input
 -   Add 'Weight on Discharge' label and number input
--   Rename 'Equipment Needs' label to 'Equipment Needs (e.g. frames, dressings, therapy equipment)'
+-   Rename 'Equipment Needs' label to 'Equipment Needs (e.g. frames, dressings, continence aids, therapy equipment)'
 -   Rename 'Social Care Details' label to 'Social Care Details (e.g. package of care, frequency, provider)'
 -   Household Composition input
     - Remove 'In sheltered accommodation' select option
@@ -47,7 +46,7 @@
 -   Remove 'Weight on Discharge' label and associated input
 -   Discharge Pathway input
     - Remove 'Discharged' text from each select option
-    - Rename 'Discharge Palliative Pathway' select option to 'End of Life'
+    - Rename 'Discharge Palliative Pathway' select option to 'End of Life Pathway'
 -   Discharge Destination input
     - Remove '' select option
     - Move 'Usual Place of Residence' to top of select input
@@ -55,7 +54,7 @@
 #### Sign Off Tab
 
 ##### Nurse Sign Off Section
--   Add 'Final Set of Vitals' label and textarea input
+-   Add 'Final Set of Vital Signs' label and textarea input
 -   Add 'NEWS2 Score' label and number input
 
 
