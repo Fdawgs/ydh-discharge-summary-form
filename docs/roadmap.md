@@ -5,10 +5,13 @@
 ### Discharge Summary
 
 -   Move 'Medications' tab to be after 'Clinical' tab
+-   Refactor patient banner to be sticky (stay at top of page)
+-   Add tab status bar to top of page under patient banner to indicate whether mandatory inputs have been filled
 
 #### Patient Tab
+
 -   Accommodation Type input
-    - Rename 'Warden Controlled' option to 'Sheltered/Warden Controlled'
+    -   Rename 'Warden Controlled' option to 'Sheltered/Warden Controlled'
 
 #### Admission Tab
 
@@ -36,27 +39,43 @@
 -   Rename 'Equipment Needs' label to 'Equipment Needs (e.g. frames, dressings, continence aids, therapy equipment)'
 -   Rename 'Social Care Details' label to 'Social Care Details (e.g. package of care, frequency, provider)'
 -   Household Composition input
-    - Remove 'In sheltered accommodation' select option
-    - Make input mandatory
-
+    -   Remove 'In sheltered accommodation' select option
+    -   Make input mandatory
 
 #### Discharge Tab
 
 -   Rename 'Discharge Date' label to 'Discharge Date/Time'
 -   Remove 'Weight on Discharge' label and associated input
 -   Discharge Pathway input
-    - Remove 'Discharged' text from each select option
-    - Rename 'Discharge Palliative Pathway' select option to 'End of Life Pathway'
+    -   Remove 'Discharged' text from each select option
+    -   Rename 'Discharge Palliative Pathway' select option to 'End of Life Pathway'
 -   Discharge Destination input
-    - Remove '' select option
-    - Move 'Usual Place of Residence' to top of select input
+    -   Remove '' select option
+    -   Move 'Usual Place of Residence' to top of select input
+
+#### Medication Tab
+
+-   Make inputs single lined for changes
+
+##### TTOs
+
+-   Condense 'Dose', 'Unit', and 'Route' inputs to single line
+-   Condense 'Name', 'Date', and 'Time' sign off inputs to single line
+-   Remove 'Start Date' label and associated input
+-   Single line name, date, time for both sign off checks
+-   Add textarea input under 'Availability' if 'For Dispensing' selected as option
+-   If for dispensing then make freetext box appear
+-   Add 'Dispensed' tickbox and sign off inputs under 'Availablity' input
+-   Remove 'Overall Pharmacy Sign Off' sign off inputs
+-   Add onChange function to each input that will clear the 'Pharmacy Clinical Screen' and 'Pharmacy Final Check' sign off inputs
+-   Move sign off tickbox up be in line with title section for all sign off divs
 
 #### Sign Off Tab
 
 ##### Nurse Sign Off Section
+
 -   Add 'Final Set of Vital Signs' label and textarea input
 -   Add 'NEWS2 Score' label and number input
-
 
 ## v0.22.0
 
