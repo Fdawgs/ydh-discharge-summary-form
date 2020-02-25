@@ -68,7 +68,7 @@
 		"core-js": "^3.6.4",
 		"ejs": "=2.7.4",
 		"express": "^4.17.1",
-		"helmet": "^3.21.2",
+		"helmet": "^3.21.3",
 		"pg": "^7.18.2",
 		"regenerator-runtime": "^0.13.3",
 		"request": "^2.88.2",
