@@ -60,9 +60,6 @@ typings/
 # next.js build output
 .next
 
-# development certs
-ssl_certs/
-
 # development config
 src/test.config.js
 dist/test.config.js
