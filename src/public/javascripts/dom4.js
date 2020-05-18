@@ -21,7 +21,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 */
-(function(window) {
+(function (window) {
 	'use strict';
 	/* jshint loopfunc: true, noempty: false*/
 	// http://www.w3.org/TR/dom/#element
@@ -73,7 +73,7 @@ THE SOFTWARE.
 			hOP = Object.prototype.hasOwnProperty,
 			defineProperty =
 				Object.defineProperty ||
-				function(object, property, descriptor) {
+				function (object, property, descriptor) {
 					if (hOP.call(descriptor, 'value')) {
 						object[property] = descriptor.value;
 					} else {
@@ -96,7 +96,7 @@ THE SOFTWARE.
 					return length;
 				},
 			// http://www.w3.org/TR/domcore/#domtokenlist
-			verifyToken = function(token) {
+			verifyToken = function (token) {
 				if (!token) {
 					throw 'SyntaxError';
 				} else if (spaces.test(token)) {
@@ -104,7 +104,7 @@ THE SOFTWARE.
 				}
 				return token;
 			},
-			DOMTokenList = function(node) {
+			DOMTokenList = function (node) {
 				var noClassName = typeof node.className === 'undefined',
 					className = noClassName
 						? node.getAttribute('class') || ''
@@ -126,7 +126,7 @@ THE SOFTWARE.
 				get: function get() {
 					return new DOMTokenList(this);
 				},
-				set: function() {}
+				set: function () {}
 			},
 			trim = /^\s+|\s+$/g,
 			spaces = /\s+/,
@@ -269,7 +269,7 @@ THE SOFTWARE.
 		// https://github.com/WebReflection/dom4/pull/48
 		if (property === 'remove' && !selectRemove._dom4) {
 			// see https://github.com/WebReflection/dom4/issues/19
-			(HTMLSelectElement.prototype[property] = function() {
+			(HTMLSelectElement.prototype[property] = function () {
 				return 0 < arguments.length
 					? selectRemove.apply(this, arguments)
 					: ElementPrototype.remove.call(this);
@@ -302,8 +302,8 @@ THE SOFTWARE.
 	// most likely an IE9 only issue
 	// see https://github.com/WebReflection/dom4/issues/6
 	if (!createElement('a').matches('a')) {
-		ElementPrototype[property] = (function(matches) {
-			return function(selector) {
+		ElementPrototype[property] = (function (matches) {
+			return function (selector) {
 				return matches.call(
 					this.parentNode
 						? this
@@ -330,14 +330,14 @@ THE SOFTWARE.
 				this._.className = '' + this;
 			}
 		},
-		contains: (function(indexOf) {
+		contains: (function (indexOf) {
 			return function contains(token) {
 				i = indexOf.call(this, (property = verifyToken(token)));
 				return -1 < i;
 			};
 		})(
 			[].indexOf ||
-				function(token) {
+				function (token) {
 					i = this.length;
 					while (i-- && this[i] !== token) {}
 					return i;
@@ -387,8 +387,8 @@ THE SOFTWARE.
 				// ASHA double fails in here
 				TemporaryPrototype = window.TemporaryTokenList.prototype;
 			}
-			wrapVerifyToken = function(original) {
-				return function() {
+			wrapVerifyToken = function (original) {
+				return function () {
 					var i = 0;
 					while (i < arguments.length) {
 						original.call(this, arguments[i++]);
@@ -406,7 +406,7 @@ THE SOFTWARE.
 
 	if (!('contains' in NodePrototype)) {
 		defineProperty(NodePrototype, 'contains', {
-			value: function(el) {
+			value: function (el) {
 				while (el && el !== this) el = el.parentNode;
 				return this === el;
 			}
@@ -415,7 +415,7 @@ THE SOFTWARE.
 
 	if (!('head' in document)) {
 		defineProperty(document, 'head', {
-			get: function() {
+			get: function () {
 				return (
 					head || (head = document.getElementsByTagName('head')[0])
 				);
@@ -424,7 +424,7 @@ THE SOFTWARE.
 	}
 
 	// requestAnimationFrame partial polyfill
-	(function() {
+	(function () {
 		for (
 			var raf,
 				rAF = window.requestAnimationFrame,
@@ -443,23 +443,23 @@ THE SOFTWARE.
 			// some FF apparently implemented rAF but no cAF
 			if (rAF) {
 				raf = rAF;
-				rAF = function(callback) {
+				rAF = function (callback) {
 					var goOn = true;
-					raf(function() {
+					raf(function () {
 						if (goOn) callback.apply(this, arguments);
 					});
-					return function() {
+					return function () {
 						goOn = false;
 					};
 				};
-				cAF = function(id) {
+				cAF = function (id) {
 					id();
 				};
 			} else {
-				rAF = function(callback) {
+				rAF = function (callback) {
 					return setTimeout(callback, 15, 15);
 				};
-				cAF = function(id) {
+				cAF = function (id) {
 					clearTimeout(id);
 				};
 			}
@@ -472,7 +472,7 @@ THE SOFTWARE.
 	try {
 		new window.CustomEvent('?');
 	} catch (o_O) {
-		window.CustomEvent = (function(eventName, defaultInitDict) {
+		window.CustomEvent = (function (eventName, defaultInitDict) {
 			// the infamous substitute
 			function CustomEvent(type, eventInitDict) {
 				/*jshint eqnull:true */
@@ -526,7 +526,7 @@ THE SOFTWARE.
 		new Event('_');
 	} catch (o_O) {
 		/* jshint -W022 */
-		o_O = (function($Event) {
+		o_O = (function ($Event) {
 			function Event(type, init) {
 				enoughArguments(arguments.length, 'Event');
 				var out = document.createEvent('Event');
@@ -547,7 +547,7 @@ THE SOFTWARE.
 		new KeyboardEvent('_', {});
 	} catch (o_O) {
 		/* jshint -W022 */
-		o_O = (function($KeyboardEvent) {
+		o_O = (function ($KeyboardEvent) {
 			// code inspired by https://gist.github.com/termi/4654819
 			var initType = 0,
 				defaults = {
@@ -755,7 +755,7 @@ THE SOFTWARE.
 		new MouseEvent('_', {});
 	} catch (o_O) {
 		/* jshint -W022 */
-		o_O = (function($MouseEvent) {
+		o_O = (function ($MouseEvent) {
 			function MouseEvent(type, init) {
 				enoughArguments(arguments.length, 'MouseEvent');
 				var out = document.createEvent('MouseEvent');
@@ -788,7 +788,7 @@ THE SOFTWARE.
 	}
 
 	if (!document.querySelectorAll('*').forEach) {
-		(function() {
+		(function () {
 			function patch(what) {
 				var querySelectorAll = what.querySelectorAll;
 				what.querySelectorAll = function qSA(css) {
@@ -806,7 +806,7 @@ THE SOFTWARE.
 		// https://drafts.csswg.org/selectors-4/#the-scope-pseudo
 		document.querySelector(':scope *');
 	} catch (o_O) {
-		(function() {
+		(function () {
 			var dataScope = 'data-scope-' + ((Math.random() * 1e9) >>> 0);
 			var proto = Element.prototype;
 			var querySelector = proto.querySelector;
@@ -821,7 +821,7 @@ THE SOFTWARE.
 				node.setAttribute(dataScope, null);
 				var result = method.call(
 					node,
-					String(css).replace(/(^|,\s*)(:scope([ >]|$))/g, function(
+					String(css).replace(/(^|,\s*)(:scope([ >]|$))/g, function (
 						$0,
 						$1,
 						$2,
@@ -836,13 +836,13 @@ THE SOFTWARE.
 		})();
 	}
 })(window);
-(function(global) {
+(function (global) {
 	'use strict';
 
 	// a WeakMap fallback for DOM nodes only used as key
 	var DOMMap =
 		global.WeakMap ||
-		(function() {
+		(function () {
 			var counter = 0,
 				dispatched = false,
 				drop = false,
@@ -946,7 +946,7 @@ THE SOFTWARE.
 		aEL = global.addEventListener,
 		rEL = global.removeEventListener,
 		counter = 0,
-		increment = function() {
+		increment = function () {
 			counter++;
 		},
 		indexOf =
@@ -960,7 +960,7 @@ THE SOFTWARE.
 				}
 				return length;
 			},
-		getListenerKey = function(options) {
+		getListenerKey = function (options) {
 			return ''.concat(
 				options.capture ? '1' : '0',
 				options.passive ? '1' : '0',
@@ -977,7 +977,7 @@ THE SOFTWARE.
 	} catch (o_O) {}
 
 	if (counter !== 1) {
-		(function() {
+		(function () {
 			var dm = new DOMMap();
 			function createAEL(aEL) {
 				return function addEventListener(type, handler, options) {
@@ -1054,7 +1054,7 @@ THE SOFTWARE.
 				};
 			}
 
-			augment = function(Constructor) {
+			augment = function (Constructor) {
 				if (!Constructor) return;
 				var proto = Constructor.prototype;
 				proto.addEventListener = createAEL(proto.addEventListener);

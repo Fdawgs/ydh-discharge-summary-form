@@ -16,17 +16,8 @@
 				"devDependencies": true
 			}
 		],
-		"import/no-unresolved": "off",
-		"lines-between-class-members": ["error", "always"],
+		"lines-between-class-members": "error",
 		"no-console": "off",
-		"no-multiple-empty-lines": [
-			"error",
-			{
-				"max": 1,
-				"maxBOF": 0,
-				"maxEOF": 0
-			}
-		],
 		"no-undef": "off",
 		"no-unused-vars": "off",
 		"prefer-destructuring": "off"
