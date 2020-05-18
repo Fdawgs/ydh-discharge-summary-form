@@ -12,9 +12,9 @@
 		"dupe-check": "yarn jsinspect src/**/*.js",
 		"lint": "eslint src/**/*.js",
 		"prettier": "prettier ** --write",
-		"test": "cross-env NODE_ENV=test yarn lint && yarn test-coverage",
-		"test-coverage": "cross-env NODE_ENV=test jest --coverage --verbose",
-		"test-only": "cross-env NODE_ENV=test jest --verbose",
+		"test": "cross-env NODE_ENV=test yarn lint && yarn test-only",
+		"test-coverage": "cross-env NODE_ENV=test jest --coverage --runInBand",
+		"test-only": "cross-env NODE_ENV=test jest --detectOpenHandles --runInBand",
 		"tidy": "eslint ./src --fix"
 	},
 	"jest": {
